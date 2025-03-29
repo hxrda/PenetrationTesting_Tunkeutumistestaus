@@ -27,9 +27,41 @@ Harry Sintonen on tunnettu hakkeri, joka on löytänyt poikkeuksellisen monta ko
 - Sintonen on löytänyt ja raportoinut useita kymmeniä CVE:itä/haavoittuvuuksia (arvio 40–50 kpl).
 - Podcastissa käydään läpi muutamia esimerkkitapauksia.
 
+## 
+## The Art of Hacking - Active Reconnaissance
+
+<ins>Phases of Reconnaissance</ins>  
+- Reconnaissance = Tiedustelu
+- The success of subsequent Intrusion Kill Chain phases depend on the completion and success of the Recon phase.
+- The Active Recon phase follows immediately after Passive Recon. 
+
+1. Passive Reconnaissance:  
+- Involves gathering information about target from publicly available sources (e.g. web searches, social media profiles etc.), without directly interacting with the target system.
+- Advantages include invisibility to the target system and legality. Cons include potentially inaccurate information.
+  
+2. Active Reconnaissance:
+- Involves direct, active interaction with the target system to gather more specific information. Includes e.g. port scanning or scanning for security vulnerabilities
+- Advantages include the accuracy of collected information. Cons include the higher risk of getting detected since direct contact is involved (e.g. visibility in logs, setting of alarms) and illegality.
+
+<ins>Active Recon Methodology & tools</ins>
+- A solid methodology is important for shifting through large amounts of data to select the right systems and services to attack. 
+- Steps in the Active recon methodology:
+1. Port scanning
+  - Tools: Nmap, Masscan, Udpprotoscanner  
+2. Web service review  
+  - Tools: EyeWitness  
+3. Vulnerability scanning  
+  - Network vulnerability scanners: OpenVAS, Nmap (limited), Nessus, Nexpose, Qualys
+  - Web vulnerability scanners: Nikto, WPScan, SQLMap, Burp Suite, Zed Attack Proxy
+
+
+## KKO:2003:36
 
 ## References:
 - Herrasmieshakkerit. (2022). Haavoittuvuuksien metsästäjä, vieraana Harry Sintonen | 0x23. Available at: https://podcasts.apple.com/fi/podcast/haavoittuvuuksien-mets%C3%A4st%C3%A4j%C3%A4-vieraana-harry-sintonen/id1479000931?i=1000588315329
+- Hutchins et al 2011: Intelligence-Driven Computer Network Defense Informed by Analysis of Adversary Campaigns and Intrusion Kill Chains, chapters Abstract, 3.2 Intrusion Kill Chain.
+- Santos et al: The Art of Hacking (Video Collection): 4.3 Surveying Essential Tools for Active Reconnaissance. Available at: https://learning.oreilly.com/videos/the-art-of/9780135767849/9780135767849-SPTT_04_00/ 
+- Finlex. (2003). KKO:2003:36 | Ennakkopäätökset | Korkein oikeus | Finlex. Available at: https://finlex.fi/fi/oikeuskaytanto/korkein-oikeus/ennakkopaatokset/2003/36 
 
 # A) Install Kali Virtual Machine / Asenna Kali virtuaalikoneeseen
 
