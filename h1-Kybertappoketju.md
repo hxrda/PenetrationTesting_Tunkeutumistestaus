@@ -27,7 +27,26 @@ Harry Sintonen on tunnettu hakkeri, joka on löytänyt poikkeuksellisen monta ko
 - Sintonen on löytänyt ja raportoinut useita kymmeniä CVE:itä/haavoittuvuuksia (arvio 40–50 kpl).
 - Podcastissa käydään läpi muutamia esimerkkitapauksia.
 
-## 
+## Intelligence-Driven Computer Network Defense Informed by Analysis of Adversary Campaigns and Intrusion Kill Chains
+
+- Traditional security tools and response methods focus on vulnerabilities and assume that defensive efforts should occur in response to a successful attack, treating the compromise as a result of a fixable flaw. This "reactive" approach is often ineffective against more advanced threats, such as APTs, skilled attackers, and sophisticated tools.
+- APTs (Advanced Persistent Threats) are a newer, more advanced type of threat involving well-funded and skilled attackers who carry out long-term campaigns targeting sensitive information, like economic, proprietary, or national security data.
+- Intelligence-driven computer network defense (CND) is a strategy that improves security and reduces the likelihood of success for attackers. It uses knowledge gained from studying adversaries’ behaviors during each intrusion attempt, identifying patterns, and predicting future threats. This approach is more "proactive" because it addresses both vulnerabilities and the threat components.
+- CND uses the Kill Chain model, which outlines different stages of an attack and links each stage to specific defensive actions: detection, mitigation, and response. It helps track attacks at various points, develop strong countermeasures, and prioritize security investments.
+- In the Kill Chain model, the attacker must successfully move through each stage in order. Stopping the attacker at any stage can disrupt the chain and prevent success.
+  
+- The stages of the Kill Chain model are:
+  -	Reconnaissance
+  -	Weaponization
+  -	Delivery
+  -	Exploitation
+  -	Installation
+  -	Command & Control (C2)
+  -	Actions on Objectives
+    
+-	A key goal of CND is to implement defenses faster than attackers evolve, making intrusion attempts more costly and less attractive.
+
+
 ## The Art of Hacking - Active Reconnaissance
 
 <ins>Phases of Reconnaissance</ins>  
@@ -60,7 +79,7 @@ Harry Sintonen on tunnettu hakkeri, joka on löytänyt poikkeuksellisen monta ko
 - Tapaus 2003:36 koskee alaikäistä henkilöä, joka jäi kiinni porttiskannauksesta. Tuomio oli sakkorangaistus, joka velvoitti henkilön maksamaan yhteensä 75 000 markkaa vahingonkorvauksina korkoineen.
 
 
-## References:
+## References/ Lähteet:
 - Herrasmieshakkerit. (2022). Haavoittuvuuksien metsästäjä, vieraana Harry Sintonen | 0x23. Available at: https://podcasts.apple.com/fi/podcast/haavoittuvuuksien-mets%C3%A4st%C3%A4j%C3%A4-vieraana-harry-sintonen/id1479000931?i=1000588315329
 - Hutchins et al 2011: Intelligence-Driven Computer Network Defense Informed by Analysis of Adversary Campaigns and Intrusion Kill Chains, chapters Abstract, 3.2 Intrusion Kill Chain.
 - Santos et al: The Art of Hacking (Video Collection): 4.3 Surveying Essential Tools for Active Reconnaissance. Available at: https://learning.oreilly.com/videos/the-art-of/9780135767849/9780135767849-SPTT_04_00/ 
@@ -68,32 +87,34 @@ Harry Sintonen on tunnettu hakkeri, joka on löytänyt poikkeuksellisen monta ko
 
 # A) Install Kali Virtual Machine / Asenna Kali virtuaalikoneeseen
 
-## References:
+    -	Code test
+
+## References/ Lähteet:
 
 # B) Irroita Kali-virtuaalikone verkosta.
 
-## References:
+## References/ Lähteet:
 
 # C) Porttiskannaa 1000 tavallisinta tcp-porttia omasta koneestasi
 
-## References:
+## References/ Lähteet:
 
 # D) Asenna kaksi vapaavalintaista daemonia. Skannaa uudelleen, analysoi ja selitä erot
 
-## References:
+## References/ Lähteet:
 
 # E) Asenna Metasploitable 2 virtuaalikoneeseen
 
-## References:
+## References/ Lähteet:
 
 # F) Tee koneiden välille virtuaaliverkko.
 
-## References:
+## References/ Lähteet:
 
 # G) Etsi Metasploitable porttiskannaamalla
 
-## References:
+## References/ Lähteet:
 
 # H) Porttiskannaa Metasploitable huolellisesti ja kaikki portit. Poimi 2-3 hyökkääjälle kiinnostavinta porttia
 
-## References:
+## References/ Lähteet:
