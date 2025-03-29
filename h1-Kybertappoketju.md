@@ -36,12 +36,12 @@ Harry Sintonen on tunnettu hakkeri, joka on löytänyt poikkeuksellisen monta ko
 - The Active Recon phase follows immediately after Passive Recon. 
 
 1. Passive Reconnaissance:  
-  - Involves gathering information about target from publicly available sources (e.g. web searches, social media profiles etc.), without directly interacting with the target system.
-  - Advantages include invisibility to the target system and legality. Cons include potentially inaccurate information.
+    - Involves gathering information about target from publicly available sources (e.g. web searches, social media profiles etc.), without directly interacting with the target system.
+    - Advantages include invisibility to the target system and legality. Cons include potentially inaccurate information.
   
 2. Active Reconnaissance:
-  - Involves direct, active interaction with the target system to gather more specific information. Includes e.g. port scanning or scanning for security vulnerabilities
-  - Advantages include the accuracy of collected information. Cons include the higher risk of getting detected since direct contact is involved (e.g. visibility in logs, setting of alarms) and illegality.
+    - Involves direct, active interaction with the target system to gather more specific information. Includes e.g. port scanning or scanning for security vulnerabilities
+    - Advantages include the accuracy of collected information. Cons include the higher risk of getting detected since direct contact is involved (e.g. visibility in logs, setting of alarms) and illegality.
 
 <ins>Active Recon Methodology & tools</ins>
 - A solid methodology is important for shifting through large amounts of data to select the right systems and services to attack. 
