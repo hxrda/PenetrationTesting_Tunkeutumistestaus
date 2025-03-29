@@ -56,6 +56,9 @@ Harry Sintonen on tunnettu hakkeri, joka on löytänyt poikkeuksellisen monta ko
 
 
 ## KKO:2003:36
+- Suomen rikoslain mukaan oikeudeton tunkeutuminen tietojärjestelmään on rangaistavaa sakolla tai vankeudella (38 luku: Tieto- ja viestintärikoksista, 8 §). Myös pelkkä yritys on rangaistava.
+- Tapaus 2003:36 koskee alaikäistä henkilöä, joka jäi kiinni porttiskannauksesta. Tuomio oli sakkorangaistus, joka velvoitti henkilön maksamaan yhteensä 75 000 markkaa vahingonkorvauksina korkoineen.
+
 
 ## References:
 - Herrasmieshakkerit. (2022). Haavoittuvuuksien metsästäjä, vieraana Harry Sintonen | 0x23. Available at: https://podcasts.apple.com/fi/podcast/haavoittuvuuksien-mets%C3%A4st%C3%A4j%C3%A4-vieraana-harry-sintonen/id1479000931?i=1000588315329
