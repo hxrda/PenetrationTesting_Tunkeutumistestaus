@@ -36,23 +36,23 @@ Harry Sintonen on tunnettu hakkeri, joka on löytänyt poikkeuksellisen monta ko
 - The Active Recon phase follows immediately after Passive Recon. 
 
 1. Passive Reconnaissance:  
-- Involves gathering information about target from publicly available sources (e.g. web searches, social media profiles etc.), without directly interacting with the target system.
-- Advantages include invisibility to the target system and legality. Cons include potentially inaccurate information.
+  - Involves gathering information about target from publicly available sources (e.g. web searches, social media profiles etc.), without directly interacting with the target system.
+  - Advantages include invisibility to the target system and legality. Cons include potentially inaccurate information.
   
 2. Active Reconnaissance:
-- Involves direct, active interaction with the target system to gather more specific information. Includes e.g. port scanning or scanning for security vulnerabilities
-- Advantages include the accuracy of collected information. Cons include the higher risk of getting detected since direct contact is involved (e.g. visibility in logs, setting of alarms) and illegality.
+  - Involves direct, active interaction with the target system to gather more specific information. Includes e.g. port scanning or scanning for security vulnerabilities
+  - Advantages include the accuracy of collected information. Cons include the higher risk of getting detected since direct contact is involved (e.g. visibility in logs, setting of alarms) and illegality.
 
 <ins>Active Recon Methodology & tools</ins>
 - A solid methodology is important for shifting through large amounts of data to select the right systems and services to attack. 
 - Steps in the Active recon methodology:
 1. Port scanning
-  - Tools: Nmap, Masscan, Udpprotoscanner  
+    - Tools: Nmap, Masscan, Udpprotoscanner  
 2. Web service review  
-  - Tools: EyeWitness  
+    - Tools: EyeWitness  
 3. Vulnerability scanning  
-  - Network vulnerability scanners: OpenVAS, Nmap (limited), Nessus, Nexpose, Qualys
-  - Web vulnerability scanners: Nikto, WPScan, SQLMap, Burp Suite, Zed Attack Proxy
+    - Network vulnerability scanners: OpenVAS, Nmap (limited), Nessus, Nexpose, Qualys
+    - Web vulnerability scanners: Nikto, WPScan, SQLMap, Burp Suite, Zed Attack Proxy
 
 
 ## KKO:2003:36
