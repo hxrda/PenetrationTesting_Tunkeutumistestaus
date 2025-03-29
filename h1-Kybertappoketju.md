@@ -89,6 +89,8 @@ Harry Sintonen on tunnettu hakkeri, joka on löytänyt poikkeuksellisen monta ko
 
     -	Code test
 
+  - Kuvatesti: ![test](h3-images/a_2.jpg)  ->   ![test](images/h1-imgs/a_2.jpg)
+
 ## References/ Lähteet:
 
 # B) Irroita Kali-virtuaalikone verkosta.
