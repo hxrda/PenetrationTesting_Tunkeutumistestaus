@@ -101,12 +101,12 @@ Ympäristö:
     - Video memory: 128 MB (Display)
     - Muut asetukset oletuksena
       
-![VM](images/h1-images/a_0.jpg)
+![VM](images/h1-images/hw1_a0.jpg)
 
 Kali Linux:
 - kali-linux-2025.1a-installer-amd64.iso (https://www.kali.org/get-kali/#kali-installer-images)
 
-![Kali](images/h1-images/a_1.jpg)
+![Kali](images/h1-images/hw1_a1.jpg)
 
 Järjestelmän päivitys & palomuuriasetukset:
 
@@ -123,6 +123,8 @@ Järjestelmän päivitys & palomuuriasetukset:
 
 
 # B) Irroita Kali-virtuaalikone verkosta.
+
+![network](images/h1-images/hw1_b1.jpg)
 
 ## References/ Lähteet:
 
