@@ -101,12 +101,12 @@ Ympäristö:
     - Video memory: 128 MB (Display)
     - Muut asetukset oletuksena
       
-![VM](images/h1-images/hw1_a0.jpg)
+![VM](images/h1-images/hw1_a0.png)
 
 Kali Linux:
 - kali-linux-2025.1a-installer-amd64.iso (https://www.kali.org/get-kali/#kali-installer-images)
 
-![Kali](images/h1-images/hw1_a1.jpg)
+![Kali](images/h1-images/hw1_a1.png)
 
 Järjestelmän päivitys & palomuuriasetukset:
 
@@ -122,19 +122,79 @@ Järjestelmän päivitys & palomuuriasetukset:
 - Karvinen 2021: Install Debian on Virtualbox - Updated 2024 at https://terokarvinen.com/2021/install-debian-on-virtualbox/
 
 
-# B) Irroita Kali-virtuaalikone verkosta.
+# B) Irroita Kali-virtuaalikone verkosta. Todista testein, että kone ei saa yhteyttä Internetiin.
 
-![network](images/h1-images/hw1_b1.jpg)
+- Alustava tilanne: nettiyhteys testattu selaimella & ping komennolla `ping 8.8.8.8`
+
+![network](images/h1-images/hw1_b1.png)
+
+- Virtuaalikoneen irroittaminen verkosta: Verkkoasetusten advanced-kohdasta virtuaalinen verkkokaapeli irti
+
+![network](images/h1-images/hw1_b2.png)
+
+- Selain- & pingtestit näyttävät, ettei kone ole yhteydessä internetiin.
+
+![network](images/h1-images/hw1_b3.png)
+![network](images/h1-images/hw1_b4.png)
+
+
+# C) Porttiskannaa 1000 tavallisinta tcp-porttia omasta koneestasi (nmap -T4 -A localhost). Selitä komennon parametrit. Analysoi ja selitä tulokset.
+
+Nmapin asennus & version tarkistus (Marijan, 2024):
+
+    sudo apt-get install nmap -y. 
+    nmap --version
+
+![nmap](images/h1-images/hw1_c1.png) 
+
+Porttiskannaus:
+- Irroita kone ensin verkosta
+- `nmap -T4 -A localhost`
+- Komennon parametrit:
+    - nmap Discovers hosts & services on a computer network
+    - `-T4` Option to speed up scans while maintaining relatively good accuracy
+    - `-A` Option enables comprehensive scan features (aggressive scanning), including OS detection, version detection, script scanning and traceroute. 
+    - `localhost` Refers to the target of the scan, in this case, the local machine (127.0.0.1)
+      
+![nmap](images/h1-images/hw1_c2.png) 
+
+Skannauksen tulokset:
+- Kaikki 1000 skannattua porttia olivat kiinni (ignored states, closed tcp ports), mikä viittaa siihen, ettei järjestelmään ole asennettu palveluja/daemoneja, jotka kuuntelisivat näitä portteja. 
+-Network distance: 0 hops osoittaa, ettei Nmap -skannausvälineen ja kohteen (localhost) välillä ole välilaitteita kuten esim. reititintä.  
+
 
 ## References/ Lähteet:
+- Zero To Mastery. The Best Nmap Cheat Sheet. Available at: https://zerotomastery.io/cheatsheets/nmap-cheat-sheet/.
+- Marijan, B. (2024). How to Install & Use NMAP Security Scanner on Linux. Knowledge Base by phoenixNAP. Available at: https://phoenixnap.com/kb/how-to-install-use-nmap-scanning-linux.
 
-# C) Porttiskannaa 1000 tavallisinta tcp-porttia omasta koneestasi
+
+# D) Asenna kaksi vapaavalintaista daemonia. Skannaa uudelleen, analysoi ja selitä erot. 
+
+Daemonien asennus:
+- Asennetut daemonit: Apache 2 & OpenSSH
+- Kyseisten daemonien asennusprosessi oli tuttu aiemmalta kurssilta (Karvinen 2025 – Information Security). Käytin referenssinä kyseisen kurssin komentoja omasta repostani:
+
+      sudo apt-get update
+  
+      sudo apt-get -y install apache2   
+      sudo systemctl start apache2
+      sudo systemctl status apache2
+      
+      sudo apt-get install ssh 
+      sudo systemctl start ssh 
+      sudo systemctl status ssh 
+
+Porttiskannauksen tulokset:
+- `nmap -T4 -A localhost `
+-  Skannaustulokset näyttävät, että SSH kuuntelee porttia 22 ja Apache porttia 80 (http protokolla). SSH:ta käytetään turvallisen etäyhteyden muodostamiseen toiseen järjestelmään, ja Apache käyttää http protokollaa selaimen ja WWW-palvelimen väliseen keskusteluun.
+
+
+![nmap](images/h1-images/hw1_d1.png) 
 
 ## References/ Lähteet:
+- Karvinen 2025 - Information security at https://terokarvinen.com/information-security/
+- https://github.com/hxrda/Information-security-course/tree/main
 
-# D) Asenna kaksi vapaavalintaista daemonia. Skannaa uudelleen, analysoi ja selitä erot
-
-## References/ Lähteet:
 
 # E) Asenna Metasploitable 2 virtuaalikoneeseen
 
