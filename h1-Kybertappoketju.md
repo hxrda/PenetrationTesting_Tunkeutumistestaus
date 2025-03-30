@@ -85,13 +85,41 @@ Harry Sintonen on tunnettu hakkeri, joka on löytänyt poikkeuksellisen monta ko
 - Santos et al: The Art of Hacking (Video Collection): 4.3 Surveying Essential Tools for Active Reconnaissance. Available at: https://learning.oreilly.com/videos/the-art-of/9780135767849/9780135767849-SPTT_04_00/ 
 - Finlex. (2003). KKO:2003:36 | Ennakkopäätökset | Korkein oikeus | Finlex. Available at: https://finlex.fi/fi/oikeuskaytanto/korkein-oikeus/ennakkopaatokset/2003/36 
 
-# A) Install Kali Virtual Machine / Asenna Kali virtuaalikoneeseen
+# A) Asenna Kali virtuaalikoneeseen
 
-    -	Code test
+Virtuaalikoneen ja Kali Linuxin asennus sujui ongelmitta. Referenssinä käytin Kalin virallisia dokumentaatioita ja aiemman kurssin Debian-asennusohjeita.
 
-  - Kuvatesti: ![test](h3-images/a_2.jpg)  ->   ![test](images/h1-imgs/a_2.jpg)
+Ympäristö:
+- VirtualBox 7.1.6 platform package / extension pack
+- Virtuaalikone (VM):
+  - RAM 4GB (4000 MB), Disk space 60GB, CPU x3
+  - ISO image: kali-linux-2025.1a-installer-amd64.iso
+  - Subtype: Debian, Version: Debian 64-bit
+  - Virtuaalikoneen lisäasetukset:
+    - Shared clipboard & Drag’n’drop: Bidirectional (General > Advanced)
+    - Boot order: 1. Hard disk, 2. Optical (System)
+    - Video memory: 128 MB (Display)
+    - Muut asetukset oletuksena
+![VM](images/h1-images/a_0.jpg)
+
+Kali Linux:
+- kali-linux-2025.1a-installer-amd64.iso (https://www.kali.org/get-kali/#kali-installer-images)
+
+![VM](images/h1-images/a_1.jpg)
+
+Järjestelmän päivitys & palomuuriasetukset:
+
+    sudo apt-get update
+    sudo apt-get -y dist-upgrade
+
+    sudo apt-get -y install ufw
+    sudo ufw enable  (sudo systemctl status ufw)
 
 ## References/ Lähteet:
+- Kali Linux (2025). Kali inside VirtualBox (Guest VM) | Kali Linux Documentation. Available at: https://www.kali.org/docs/virtualization/install-virtualbox-guest-vm/.
+- Kali Linux. (2024). Install Kali Linux | Kali Linux Documentation. [online] Available at: https://www.kali.org/docs/installation/hard-disk-install/.
+- Karvinen 2021: Install Debian on Virtualbox - Updated 2024 at https://terokarvinen.com/2021/install-debian-on-virtualbox/
+
 
 # B) Irroita Kali-virtuaalikone verkosta.
 
