@@ -100,12 +100,13 @@ Ympäristö:
     - Boot order: 1. Hard disk, 2. Optical (System)
     - Video memory: 128 MB (Display)
     - Muut asetukset oletuksena
+      
 ![VM](images/h1-images/a_0.jpg)
 
 Kali Linux:
 - kali-linux-2025.1a-installer-amd64.iso (https://www.kali.org/get-kali/#kali-installer-images)
 
-![VM](images/h1-images/a_1.jpg)
+![Kali](images/h1-images/a_1.jpg)
 
 Järjestelmän päivitys & palomuuriasetukset:
 
