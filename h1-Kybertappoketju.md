@@ -235,11 +235,13 @@ Lataa ja pura zip-tiedosto (sisältää Metasploitable.vmdk -levytiedoston)
 
 ## References/ Lähteet:
 
-# G) Etsi Metasploitable porttiskannaamalla
+# G) Etsi Metasploitable porttiskannaamalla (nmap -sn). Tarkista selaimella, että löysit oikean IP:n.
+-Selain: Metasploitablen weppipalvelimen etusivulla lukee Metasploitable.
 
 ## References/ Lähteet:
 
-# H) Porttiskannaa Metasploitable huolellisesti ja kaikki portit. Poimi 2-3 hyökkääjälle kiinnostavinta porttia
+# H) Porttiskannaa Metasploitable huolellisesti ja kaikki portit (nmap -A -T4 -p-). Poimi 2-3 hyökkääjälle kiinnostavinta porttia. Analysoi ja selitä tulokset näiden porttien osalta.
+
 
 ## References/ Lähteet:
 
