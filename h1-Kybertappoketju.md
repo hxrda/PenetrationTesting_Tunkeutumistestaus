@@ -79,7 +79,7 @@ Harry Sintonen on tunnettu hakkeri, joka on löytänyt poikkeuksellisen monta ko
 - Tapaus 2003:36 koskee alaikäistä henkilöä, joka jäi kiinni porttiskannauksesta. Tuomio oli sakkorangaistus, joka velvoitti henkilön maksamaan yhteensä 75 000 markkaa vahingonkorvauksina korkoineen.
 
 
-## References/ Lähteet:
+### References/ Lähteet:
 - Herrasmieshakkerit. (2022). Haavoittuvuuksien metsästäjä, vieraana Harry Sintonen | 0x23. Available at: https://podcasts.apple.com/fi/podcast/haavoittuvuuksien-mets%C3%A4st%C3%A4j%C3%A4-vieraana-harry-sintonen/id1479000931?i=1000588315329
 - Hutchins et al 2011: Intelligence-Driven Computer Network Defense Informed by Analysis of Adversary Campaigns and Intrusion Kill Chains, chapters Abstract, 3.2 Intrusion Kill Chain.
 - Santos et al: The Art of Hacking (Video Collection): 4.3 Surveying Essential Tools for Active Reconnaissance. Available at: https://learning.oreilly.com/videos/the-art-of/9780135767849/9780135767849-SPTT_04_00/ 
@@ -116,7 +116,7 @@ Järjestelmän päivitys & palomuuriasetukset:
     sudo apt-get -y install ufw
     sudo ufw enable  (sudo systemctl status ufw)
 
-## References/ Lähteet:
+### References/ Lähteet:
 - Kali Linux (2025). Kali inside VirtualBox (Guest VM) | Kali Linux Documentation. Available at: https://www.kali.org/docs/virtualization/install-virtualbox-guest-vm/.
 - Kali Linux. (2024). Install Kali Linux | Kali Linux Documentation. [online] Available at: https://www.kali.org/docs/installation/hard-disk-install/.
 - Karvinen 2021: Install Debian on Virtualbox - Updated 2024 at https://terokarvinen.com/2021/install-debian-on-virtualbox/
@@ -165,7 +165,7 @@ Skannauksen tulokset:
 - Network distance: 0 hops osoittaa, ettei Nmap -skannausvälineen ja kohteen (localhost) välillä ole välilaitteita kuten esim. reititintä.  
 
 
-## References/ Lähteet:
+### References/ Lähteet:
 - Zero To Mastery. The Best Nmap Cheat Sheet. Available at: https://zerotomastery.io/cheatsheets/nmap-cheat-sheet/.
 - Marijan, B. (2024). How to Install & Use NMAP Security Scanner on Linux. Knowledge Base by phoenixNAP. Available at: https://phoenixnap.com/kb/how-to-install-use-nmap-scanning-linux.
 
@@ -193,7 +193,7 @@ Porttiskannauksen tulokset:
 
 ![nmap](images/h1-images/hw1_d1.png) 
 
-## References/ Lähteet:
+### References/ Lähteet:
 - Karvinen 2025 - Information security at https://terokarvinen.com/information-security/
 - https://github.com/hxrda/Information-security-course/tree/main
 
@@ -201,8 +201,10 @@ Porttiskannauksen tulokset:
 
 # E) Asenna Metasploitable 2 virtuaalikoneeseen.
 
-Metasploitable 2 haettu: https://sourceforge.net/projects/metasploitable/ 
-Lataa ja pura zip-tiedosto (sisältää Metasploitable.vmdk -levytiedoston)
+Metasploitable 2 haettu: https://sourceforge.net/projects/metasploitable/  
+
+Lataa ja pura zip-tiedosto (sisältää Metasploitable.vmdk -levytiedoston)  
+
 Uuden virtuaalikoneen luonti Metasploitablelle:
 - Type: Linux
 - Version: Ubuntu 32-bit
@@ -210,20 +212,24 @@ Uuden virtuaalikoneen luonti Metasploitablelle:
 - CPU x1
 - Disk: Use an existing hard disk file (Metasploitable.vmdk)
   
-![meta](images/h1-images/hw1_e1.png) 
-![meta](images/h1-images/hw1_e2.png) 
-![meta](images/h1-images/hw1_e21.png) 
+![meta](images/h1-images/hw1_e1.png)  
+
+![meta](images/h1-images/hw1_e2.png)  
+
+![meta](images/h1-images/hw1_e21.png)  
 
 Koneen käynnistys & testaus:
 - Verkkoasetukset: Poista valinta kohdasta Enable network adapter ennen käynnistystä.
 - Käynnistä kone & valinnaisesti kirjaudu sisään oletustunnuksilla: `msfadmin:msfadmin`
   
-![meta](images/h1-images/hw1_e3.png) 
-![meta](images/h1-images/hw1_e31.png) 
+![meta](images/h1-images/hw1_e3.png)  
+
+![meta](images/h1-images/hw1_e31.png)  
+
 ![meta](images/h1-images/hw1_e32.png) 
 
 
-## References/ Lähteet:
+### References/ Lähteet:
 - SourceForge. (2019). Metasploitable. Available at: https://sourceforge.net/projects/metasploitable/.
 - James McAlonan (2022). Creating a Metasploitable 2 VM with VirtualBox (Intentionally Vulnerable/Target VM). Available at: https://www.youtube.com/watch?v=vJSA2bM9GoI 
 
