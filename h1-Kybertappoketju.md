@@ -199,9 +199,33 @@ Porttiskannauksen tulokset:
 
 
 
-# E) Asenna Metasploitable 2 virtuaalikoneeseen
+# E) Asenna Metasploitable 2 virtuaalikoneeseen.
+
+Metasploitable 2 haettu: https://sourceforge.net/projects/metasploitable/ 
+Lataa ja pura zip-tiedosto (sisältää Metasploitable.vmdk -levytiedoston)
+Uuden virtuaalikoneen luonti Metasploitablelle:
+- Type: Linux
+- Version: Ubuntu 32-bit
+- Memory: 1024 MB
+- CPU x1
+- Disk: Use an existing hard disk file (Metasploitable.vmdk)
+  
+![meta](images/h1-images/hw1_e1.png) 
+![meta](images/h1-images/hw1_e2.png) 
+![meta](images/h1-images/hw1_e21.png) 
+
+Koneen käynnistys & testaus:
+- Verkkoasetukset: Poista valinta kohdasta Enable network adapter ennen käynnistystä.
+- Käynnistä kone & valinnaisesti kirjaudu sisään oletustunnuksilla: `msfadmin:msfadmin`
+  
+![meta](images/h1-images/hw1_e3.png) 
+![meta](images/h1-images/hw1_e31.png) 
+![meta](images/h1-images/hw1_e32.png) 
+
 
 ## References/ Lähteet:
+- SourceForge. (2019). Metasploitable. Available at: https://sourceforge.net/projects/metasploitable/.
+- James McAlonan (2022). Creating a Metasploitable 2 VM with VirtualBox (Intentionally Vulnerable/Target VM). Available at: https://www.youtube.com/watch?v=vJSA2bM9GoI 
 
 # F) Tee koneiden välille virtuaaliverkko.
 
