@@ -116,7 +116,7 @@ Järjestelmän päivitys & palomuuriasetukset:
     sudo apt-get -y install ufw
     sudo ufw enable  (sudo systemctl status ufw)
 
-### References/ Lähteet:
+## References/ Lähteet:
 - Kali Linux (2025). Kali inside VirtualBox (Guest VM) | Kali Linux Documentation. Available at: https://www.kali.org/docs/virtualization/install-virtualbox-guest-vm/.
 - Kali Linux. (2024). Install Kali Linux | Kali Linux Documentation. [online] Available at: https://www.kali.org/docs/installation/hard-disk-install/.
 - Karvinen 2021: Install Debian on Virtualbox - Updated 2024 at https://terokarvinen.com/2021/install-debian-on-virtualbox/
@@ -165,7 +165,7 @@ Skannauksen tulokset:
 - Network distance: 0 hops osoittaa, ettei Nmap -skannausvälineen ja kohteen (localhost) välillä ole välilaitteita kuten esim. reititintä.  
 
 
-### References/ Lähteet:
+## References/ Lähteet:
 - Zero To Mastery. The Best Nmap Cheat Sheet. Available at: https://zerotomastery.io/cheatsheets/nmap-cheat-sheet/.
 - Marijan, B. (2024). How to Install & Use NMAP Security Scanner on Linux. Knowledge Base by phoenixNAP. Available at: https://phoenixnap.com/kb/how-to-install-use-nmap-scanning-linux.
 
@@ -193,7 +193,7 @@ Porttiskannauksen tulokset:
 
 ![nmap](images/h1-images/hw1_d1.png) 
 
-### References/ Lähteet:
+## References/ Lähteet:
 - Karvinen 2025 - Information security at https://terokarvinen.com/information-security/
 - https://github.com/hxrda/Information-security-course/tree/main
 
@@ -227,7 +227,7 @@ Lataa ja pura zip-tiedosto (sisältää Metasploitable.vmdk -levytiedoston)
 ![meta](images/h1-images/hw1_e32.png) 
 
 
-### References/ Lähteet:
+## References/ Lähteet:
 - SourceForge. (2019). Metasploitable. Available at: https://sourceforge.net/projects/metasploitable/.
 - James McAlonan (2022). Creating a Metasploitable 2 VM with VirtualBox (Intentionally Vulnerable/Target VM). Available at: https://www.youtube.com/watch?v=vJSA2bM9GoI 
 
