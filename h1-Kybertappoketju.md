@@ -242,3 +242,7 @@ Lataa ja pura zip-tiedosto (sisältää Metasploitable.vmdk -levytiedoston)
 # H) Porttiskannaa Metasploitable huolellisesti ja kaikki portit. Poimi 2-3 hyökkääjälle kiinnostavinta porttia
 
 ## References/ Lähteet:
+
+# Tehtävänanto:
+
+- Karvinen 2025 - Tunkeutumistestaus at https://terokarvinen.com/tunkeutumistestaus/
