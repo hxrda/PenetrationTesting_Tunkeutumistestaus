@@ -221,8 +221,6 @@ Uuden virtuaalikoneen luonti Metasploitablelle:
 Koneen käynnistys & testaus:
 - Verkkoasetukset: Poista valinta kohdasta Enable network adapter ennen käynnistystä.
 - Käynnistä kone & valinnaisesti kirjaudu sisään oletustunnuksilla: `msfadmin:msfadmin`
-  
-![meta](images/h1-images/hw1_e3.png)  
 
 ![meta](images/h1-images/hw1_e31.png)  
 
