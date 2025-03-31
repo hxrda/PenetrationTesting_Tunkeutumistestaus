@@ -205,7 +205,7 @@ Metasploitable 2 haettu: https://sourceforge.net/projects/metasploitable/
 
 Lataa ja pura zip-tiedosto (sisältää Metasploitable.vmdk -levytiedoston)  
 
-Uuden virtuaalikoneen luonti Metasploitablelle:
+<ins>Uuden virtuaalikoneen luonti Metasploitablelle:</ins>
 - Type: Linux
 - Version: Ubuntu 32-bit
 - Memory: 1024 MB
@@ -218,7 +218,7 @@ Uuden virtuaalikoneen luonti Metasploitablelle:
 
 ![meta](images/h1-images/hw1_e21.png)  
 
-Koneen käynnistys & testaus:
+<ins>Koneen käynnistys & testaus:</ins>
 - Verkkoasetukset: Poista valinta kohdasta Enable network adapter ennen käynnistystä.
 - Käynnistä kone & valinnaisesti kirjaudu sisään oletustunnuksilla: `msfadmin:msfadmin`
 
