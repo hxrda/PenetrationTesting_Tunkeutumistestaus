@@ -229,16 +229,64 @@ Lataa ja pura zip-tiedosto (sisältää Metasploitable.vmdk -levytiedoston)
 
 ## References/ Lähteet:
 - SourceForge. (2019). Metasploitable. Available at: https://sourceforge.net/projects/metasploitable/.
-- James McAlonan (2022). Creating a Metasploitable 2 VM with VirtualBox (Intentionally Vulnerable/Target VM). Available at: https://www.youtube.com/watch?v=vJSA2bM9GoI 
+- McAlonan, J. (2022). Creating a Metasploitable 2 VM with VirtualBox (Intentionally Vulnerable/Target VM). Available at: https://www.youtube.com/watch?v=vJSA2bM9GoI 
 
 # F) Tee koneiden välille virtuaaliverkko.
 
+<ins>Host-only-verkon määrittäminen (VirtualBoxissa)</ins>
+1.	Avaa verkonhallinta: File menu -> Tools-> Network manager
+2.	Host-only-verkon asettaminen:
+    - Siirry Host-only-verkot -välilehdelle.
+    - Valitse oletus host-only Ethernet -sovitin (tai tarvittaessa luo uusi).
+    - Verkon IP-osoite on 192.168.56.1/24.
+
+![network](images/h1-images/hw1_f1.png)  
+![network](images/h1-images/hw1_f1.png) 
+
+<ins>Virtuaalikoneiden verkkosovittimien määrittäminen</ins>
+
+Avaa asetukset:
+  - Settings -> Network -> Adapters
+    
+1.	Metasploitable 2 -virtuaalikone:
+- Valitse Adapteri 1
+- Ota käyttöön aiemmin luotu host-only sovitin. Tämä kone ei tarvitse internetyhteyttä.  
+
+![network](images/h1-images/hw1_f3.png) 
+ 
+2.	Kali-virtuaalikone:
+- Valitse Adapteri 2. Adapteri 1 varataan internetyhteydelle (mutta irroitetaan porttiskannauksen ajaksi)
+- Valitse aiemmin luotu host-only sovitin.
+
+![network](images/h1-images/hw1_f4.png)  
+
+<ins>Yhteyden testaaminen</ins>
+
+1. Katkaise Kalin internet-yhteys ja testaa yhteys ping-komennolla `ping 8.8.8.8` kuten aiemmin.
+2. Tarkista paikalliset IP-osoitteet `ifconfig` tai `ip a` & varmista, että koneet ovat samassa verkossa:
+   
+- Kali kone:
+  - eth1: 192.168.56.4
+![network](images/h1-images/hw1_f7.png) 
+
+- Metasploitable kone:
+  - eth0: 192.168.56.4
+![network](images/h1-images/hw1_f6_ifconfig.png)
+
+- Testaa yhteys koneiden välillä (Pingaa Metasploitable VM:n IP-osoitetta Kalista):
+  - `ping 192.168.56.4`
+![network](images/h1-images/hw1_f7.png)
+
+- Kuvista näkyy, että molemmat virtuaalikoneet ovat samassa verkossa, ja paketit liikkuvat koneiden välillä. 
+    
 ## References/ Lähteet:
 
 # G) Etsi Metasploitable porttiskannaamalla (nmap -sn). Tarkista selaimella, että löysit oikean IP:n.
 -Selain: Metasploitablen weppipalvelimen etusivulla lukee Metasploitable.
 
 ## References/ Lähteet:
+- Valkamo, T. (2022). Hacking into a Target Using Metasploit. Available at: https://tuomasvalkamo.com/PenTestCourse/week-2/
+- McAlonan, J. (2022). Host-Only Networking in VirtualBox (Connecting Your Virtual Machines). Available at: https://www.youtube.com/watch?v=uh-j_YubHbs 
 
 # H) Porttiskannaa Metasploitable huolellisesti ja kaikki portit (nmap -A -T4 -p-). Poimi 2-3 hyökkääjälle kiinnostavinta porttia. Analysoi ja selitä tulokset näiden porttien osalta.
 
