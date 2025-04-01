@@ -308,13 +308,13 @@ Metasploitable verkkoselaimessa:
 
 # H) Porttiskannaa Metasploitable huolellisesti ja kaikki portit (nmap -A -T4 -p-). Poimi 2-3 hyökkääjälle kiinnostavinta porttia. Analysoi ja selitä tulokset näiden porttien osalta.
 
-<ins>Kohteen `192.168.56.4` perusskannaus</ins>
+### Kohteen `192.168.56.4` perusskannaus
 - `nmap 192.168.56.4`
   - Skannaa yleisimmät 1000 TCP-porttia. Ilmoittaa, mitkä portit ovat avoinna, suljettuina tai suodatettuina. Ei kehittyneitä analysointitoimintoja.
 
 ![network](images/h1-images/hw1_h1.png)
 
-<ins>Kohteen `192.168.56.4` yksityiskohtainen skannaus (kaikki portit)</ins>  
+### Kohteen `192.168.56.4` yksityiskohtainen skannaus (kaikki portit)
 - `nmap -A -T4 -p- 192.168.56.4`
   - `-p-` Scan all 65,535 ports (not just common ones).
 
@@ -324,9 +324,9 @@ Metasploitable verkkoselaimessa:
 - <ins>Portti 21 (FTP)</ins>  
 
 ![network](images/h1-images/hw1_h2_ftp.png)
-  - FTP-palvelu vsftpd 2.3.4 on käynnissä ja anonyymi kirjautuminen on sallittu, eli kuka tahansa voi yhdistää ilman tunnistautumista.
-  - Anonyymi pääsy voi johtaa luvattomaan tiedostojen lataukseen ja siirtoihin. Lisäksi FTP lähettää tunnistetiedot selkokielisinä. Nämä voivat altistaa kohteen man-in-the-middle hyökkäyksille ja tietovuodoille (Schrader, 2024).
-  - vsftpd 2.3.4 sisältää takaoven (RedHat, 2011), mikä altistaa hyökkäyksille.
+    - FTP-palvelu vsftpd 2.3.4 on käynnissä ja anonyymi kirjautuminen on sallittu, eli kuka tahansa voi yhdistää ilman tunnistautumista.
+    - Anonyymi pääsy voi johtaa luvattomaan tiedostojen lataukseen ja siirtoihin. Lisäksi FTP lähettää tunnistetiedot selkokielisinä. Nämä voivat altistaa kohteen man-in-the-middle hyökkäyksille ja tietovuodoille (Schrader, 2024).
+    - vsftpd 2.3.4 sisältää takaoven (RedHat, 2011), mikä altistaa hyökkäyksille.
 
 - <ins>Portti 22 (SSH)</ins>  
 
