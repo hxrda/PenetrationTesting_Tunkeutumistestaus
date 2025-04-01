@@ -249,14 +249,14 @@ Avaa asetukset:
   - Settings -> Network -> Adapters
     
 1.	Metasploitable 2 -virtuaalikone:
-- Valitse Adapteri 1
-- Ota käyttöön aiemmin luotu host-only sovitin. Tämä kone ei tarvitse internetyhteyttä.  
+    - Valitse Adapteri 1
+    - Ota käyttöön aiemmin luotu host-only sovitin. Tämä kone ei tarvitse internetyhteyttä.  
 
 ![network](images/h1-images/hw1_f3.png) 
  
 2.	Kali-virtuaalikone:
-- Valitse Adapteri 2. Adapteri 1 varataan internetyhteydelle (mutta irroitetaan porttiskannauksen ajaksi)
-- Valitse aiemmin luotu host-only sovitin.
+    - Valitse Adapteri 2. Adapteri 1 varataan internetyhteydelle (mutta irroitetaan porttiskannauksen ajaksi)
+    - Valitse aiemmin luotu host-only sovitin.
 
 ![network](images/h1-images/hw1_f4.png)  
 
@@ -267,15 +267,19 @@ Avaa asetukset:
    
 - Kali kone:
   - eth1: 192.168.56.4
-![network](images/h1-images/hw1_f7.png) 
+    
+![network](images/h1-images/hw1_f4_ifconfig.png) 
 
 - Metasploitable kone:
   - eth0: 192.168.56.4
+    
 ![network](images/h1-images/hw1_f6_ifconfig.png)
 
 - Testaa yhteys koneiden välillä (Pingaa Metasploitable VM:n IP-osoitetta Kalista):
   - `ping 192.168.56.4`
+    
 ![network](images/h1-images/hw1_f7.png)
+
 
 - Kuvista näkyy, että molemmat virtuaalikoneet ovat samassa verkossa, ja paketit liikkuvat koneiden välillä. 
     
