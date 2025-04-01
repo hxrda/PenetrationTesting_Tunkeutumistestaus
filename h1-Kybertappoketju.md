@@ -291,8 +291,8 @@ Avaa asetukset:
 
 Host-only verkon skannaus komennolla:
 - `nmap -sn 192.168.56.0/24`
-- `-sn` Disables port scanning, only checks which hosts are up.
-- `192.168.56.0/24` Scan entire subnet (256 IPs from 192.168.56.0 to 192.168.56.255)
+  - `-sn` Disables port scanning, only checks which hosts are up.
+  - `192.168.56.0/24` Scan entire subnet (256 IPs from 192.168.56.0 to 192.168.56.255)
 
 - Metasploitable löytyi IP-osoitteesta `192.168.56.4`. Kali löytyi IP-osoitteesta `192.168.56.3`.
   
@@ -310,7 +310,7 @@ Metasploitable verkkoselaimessa:
 
 <ins>Kohteen `192.168.56.4` perusskannaus</ins>
 - `nmap 192.168.56.4`
-- Skannaa yleisimmät 1000 TCP-porttia. Ilmoittaa, mitkä portit ovat avoinna, suljettuina tai suodatettuina. Ei kehittyneitä analysointitoimintoja.
+  - Skannaa yleisimmät 1000 TCP-porttia. Ilmoittaa, mitkä portit ovat avoinna, suljettuina tai suodatettuina. Ei kehittyneitä analysointitoimintoja.
 
 ![network](images/h1-images/hw1_h1.png)
 
@@ -319,23 +319,23 @@ Metasploitable verkkoselaimessa:
   - `-p-` Scan all 65,535 ports (not just common ones).
 
 
-BleepingComputer-sivuston artikkelin mukaan (Ilascu, 2019) yleisimmin hyökätyt portit ovat: 22 (SSH), 80 (HTTP), 443 (HTTPS). Koska portti 443 ei näkynyt skannaustuloksissa, portit 21 (FTP) ja 3306 (MySQL) käydään läpi sen sijaan. Molemmat näistä luetaan top 10 haavoittuvimpiin portteihin tai merkittäviksi turvallisuusriskeiksi.
+- BleepingComputer-sivuston artikkelin mukaan (Ilascu, 2019) yleisimmin hyökätyt portit ovat: 22 (SSH), 80 (HTTP), 443 (HTTPS). Koska portti 443 ei näkynyt skannaustuloksissa, portit 21 (FTP) ja 3306 (MySQL) käydään läpi sen sijaan. Molemmat näistä luetaan top 10 haavoittuvimpiin portteihin tai merkittäviksi turvallisuusriskeiksi.
 
-<ins>Portti 21 (FTP)</ins>  
+- <ins>Portti 21 (FTP)</ins>  
 
 ![network](images/h1-images/hw1_h2_ftp.png)
   - FTP-palvelu vsftpd 2.3.4 on käynnissä ja anonyymi kirjautuminen on sallittu, eli kuka tahansa voi yhdistää ilman tunnistautumista.
   - Anonyymi pääsy voi johtaa luvattomaan tiedostojen lataukseen ja siirtoihin. Lisäksi FTP lähettää tunnistetiedot selkokielisinä. Nämä voivat altistaa kohteen man-in-the-middle hyökkäyksille ja tietovuodoille (Schrader, 2024).
   - vsftpd 2.3.4 sisältää takaoven (RedHat, 2011), mikä altistaa hyökkäyksille.
 
-<ins>Portti 22 (SSH)</ins>  
+- <ins>Portti 22 (SSH)</ins>  
 
 ![network](images/h1-images/hw1_h2_ssh.png)
 
   - OpenSSH 4.7p1 Debian 8ubuntu1 on käytössä, julkiset SSH host-avaimet ovat näkyvillä.
   - Vanhentunut SSH-versio voi sisältää haavoittuvuuksia, joita voidaan käyttää hallitsemaan murrettua kohdetta etäältä (OpenSSH, 2025).
 
-<ins>Portti 80 (HTTP)</ins>  
+- <ins>Portti 80 (HTTP)</ins>  
 
 ![network](images/h1-images/hw1_h2_http.png)
 
@@ -343,7 +343,7 @@ BleepingComputer-sivuston artikkelin mukaan (Ilascu, 2019) yleisimmin hyökätyt
   - Apache 2.2.8 on vanhentunut (Apache, 2025) ja saattaa sisältää tunnettuja haavoittuvuuksia.
   - HTTP-liikenne kulkee portin 80 kautta. Turvallisuusnäkökulmasta puutteellisesti suojatut verkkosivut voivat edesauttaa SQL-injektio- tai DDoS-hyökkäyksiä (Schrader, 2024).
 
-<ins>Portti 3306 (MySQL)</ins>  
+- <ins>Portti 3306 (MySQL)</ins>  
 
 ![network](images/h1-images/hw1_h2_mysql.png) 
 
