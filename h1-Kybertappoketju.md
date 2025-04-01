@@ -241,7 +241,7 @@ Lataa ja pura zip-tiedosto (sisältää Metasploitable.vmdk -levytiedoston)
     - Verkon IP-osoite on 192.168.56.1/24.
 
 ![network](images/h1-images/hw1_f1.png)  
-![network](images/h1-images/hw1_f1.png) 
+![network](images/h1-images/hw1_f2.png) 
 
 <ins>Virtuaalikoneiden verkkosovittimien määrittäminen</ins>
 
