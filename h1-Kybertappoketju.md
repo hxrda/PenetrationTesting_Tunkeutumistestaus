@@ -291,7 +291,7 @@ Avaa asetukset:
 
 Host-only verkon skannaus komennolla:
 - `nmap -sn 192.168.56.0/24`
-  - `-sn` Disables port scanning, only checks which hosts are up.
+  - `-sn` Disables port scanning, only checks which hosts are up 
   - `192.168.56.0/24` Scan entire subnet (256 IPs from 192.168.56.0 to 192.168.56.255)
 
 - Metasploitable löytyi IP-osoitteesta `192.168.56.4`. Kali löytyi IP-osoitteesta `192.168.56.3`.
@@ -326,7 +326,7 @@ Metasploitable verkkoselaimessa:
     - Anonyymi pääsy voi johtaa luvattomaan tiedostojen lataukseen ja siirtoihin. Lisäksi FTP lähettää tunnistetiedot selkokielisinä. Nämä voivat altistaa kohteen man-in-the-middle hyökkäyksille ja tietovuodoille (Schrader, 2024).
     - vsftpd 2.3.4 sisältää takaoven (RedHat, 2011), mikä altistaa hyökkäyksille.
 
-    ![network](images/h1-images/hw1_h2_ftp.png)
+      ![network](images/h1-images/hw1_h2_ftp.png)
 
 
 - <ins>Portti 22 (SSH):</ins>
