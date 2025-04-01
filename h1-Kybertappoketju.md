@@ -266,12 +266,12 @@ Avaa asetukset:
 2. Tarkista paikalliset IP-osoitteet `ifconfig` tai `ip a` & varmista, että koneet ovat samassa verkossa:
    
 - Kali kone:
-  - eth1: 192.168.56.4
+  - eth1: `192.168.56.4`
     
 ![network](images/h1-images/hw1_f6_ifconfig.png) 
 
 - Metasploitable kone:
-  - eth0: 192.168.56.4
+  - eth0: `192.168.56.4`
     
 ![network](images/h1-images/hw1_f5_ifconfig.png)
 
@@ -284,18 +284,80 @@ Avaa asetukset:
 - Kuvista näkyy, että molemmat virtuaalikoneet ovat samassa verkossa, ja paketit liikkuvat koneiden välillä. 
     
 ## References/ Lähteet:
-
-# G) Etsi Metasploitable porttiskannaamalla (nmap -sn). Tarkista selaimella, että löysit oikean IP:n.
--Selain: Metasploitablen weppipalvelimen etusivulla lukee Metasploitable.
-
-## References/ Lähteet:
 - Valkamo, T. (2022). Hacking into a Target Using Metasploit. Available at: https://tuomasvalkamo.com/PenTestCourse/week-2/
 - McAlonan, J. (2022). Host-Only Networking in VirtualBox (Connecting Your Virtual Machines). Available at: https://www.youtube.com/watch?v=uh-j_YubHbs 
 
-# H) Porttiskannaa Metasploitable huolellisesti ja kaikki portit (nmap -A -T4 -p-). Poimi 2-3 hyökkääjälle kiinnostavinta porttia. Analysoi ja selitä tulokset näiden porttien osalta.
+# G) Etsi Metasploitable porttiskannaamalla (nmap -sn). Tarkista selaimella, että löysit oikean IP:n.
+
+Host-only verkon skannaus komennolla:
+- `nmap -sn 192.168.56.0/24`
+- `-sn` Disables port scanning, only checks which hosts are up.
+- `192.168.56.0/24` Scan entire subnet (256 IPs from 192.168.56.0 to 192.168.56.255)
+
+- Metasploitable löytyi IP-osoitteesta `192.168.56.4`. Kali löytyi IP-osoitteesta `192.168.56.3`.
+  
+![network](images/h1-images/hw1_g1.png) 
+
+Metasploitable verkkoselaimessa:
+
+![network](images/h1-images/hw1_g2.png)  
 
 
 ## References/ Lähteet:
+- Zero To Mastery. The Best Nmap Cheat Sheet. Available at: https://zerotomastery.io/cheatsheets/nmap-cheat-sheet/.
+
+# H) Porttiskannaa Metasploitable huolellisesti ja kaikki portit (nmap -A -T4 -p-). Poimi 2-3 hyökkääjälle kiinnostavinta porttia. Analysoi ja selitä tulokset näiden porttien osalta.
+
+<ins>Kohteen `192.168.56.4` perusskannaus</ins>
+- `nmap 192.168.56.4`
+- Skannaa yleisimmät 1000 TCP-porttia. Ilmoittaa, mitkä portit ovat avoinna, suljettuina tai suodatettuina. Ei kehittyneitä analysointitoimintoja.
+
+![network](images/h1-images/hw1_h1.png)
+
+<ins>Kohteen `192.168.56.4` yksityiskohtainen skannaus (kaikki portit)</ins>  
+- `nmap -A -T4 -p- 192.168.56.4`
+  - `-p-` Scan all 65,535 ports (not just common ones).
+
+
+BleepingComputer-sivuston artikkelin mukaan (Ilascu, 2019) yleisimmin hyökätyt portit ovat: 22 (SSH), 80 (HTTP), 443 (HTTPS). Koska portti 443 ei näkynyt skannaustuloksissa, portit 21 (FTP) ja 3306 (MySQL) käydään läpi sen sijaan. Molemmat näistä luetaan top 10 haavoittuvimpiin portteihin tai merkittäviksi turvallisuusriskeiksi.
+
+<ins>Portti 21 (FTP)</ins>  
+
+![network](images/h1-images/hw1_h2_ftp.png)
+  - FTP-palvelu vsftpd 2.3.4 on käynnissä ja anonyymi kirjautuminen on sallittu, eli kuka tahansa voi yhdistää ilman tunnistautumista.
+  - Anonyymi pääsy voi johtaa luvattomaan tiedostojen lataukseen ja siirtoihin. Lisäksi FTP lähettää tunnistetiedot selkokielisinä. Nämä voivat altistaa kohteen man-in-the-middle hyökkäyksille ja tietovuodoille (Schrader, 2024).
+  - vsftpd 2.3.4 sisältää takaoven (RedHat, 2011), mikä altistaa hyökkäyksille.
+
+<ins>Portti 22 (SSH)</ins>  
+
+![network](images/h1-images/hw1_h2_ssh.png)
+
+  - OpenSSH 4.7p1 Debian 8ubuntu1 on käytössä, julkiset SSH host-avaimet ovat näkyvillä.
+  - Vanhentunut SSH-versio voi sisältää haavoittuvuuksia, joita voidaan käyttää hallitsemaan murrettua kohdetta etäältä (OpenSSH, 2025).
+
+<ins>Portti 80 (HTTP)</ins>  
+
+![network](images/h1-images/hw1_h2_http.png)
+
+  - Järjestelmässä on käynnissä Apache HTTP Server 2.2.8.
+  - Apache 2.2.8 on vanhentunut (Apache, 2025) ja saattaa sisältää tunnettuja haavoittuvuuksia.
+  - HTTP-liikenne kulkee portin 80 kautta. Turvallisuusnäkökulmasta puutteellisesti suojatut verkkosivut voivat edesauttaa SQL-injektio- tai DDoS-hyökkäyksiä (Schrader, 2024).
+
+<ins>Portti 3306 (MySQL)</ins>  
+
+![network](images/h1-images/hw1_h2_mysql.png) 
+
+  - MySQL 5.0.51a-3ubuntu5 on käytössä. Tulos näyttää myös palvelimen tukemat ominaisuudet sekä autocommit-tilan ja Saltin.
+  - Tietokantaportin suora näkyvyys verkkoon on tietoturvariski. Lisäksi MySQL-versio on vanhentunut ja sisältää tunnettuja haavoittuvuuksia (Tenable, 2012).
+  - On epävarmaa, voiko näkyvissä oleva salt auttaa hyökkääjiä salasanojen murtamisessa (mikäli käytetyt hajautusalgoritmit ovat heikkoja).
+
+## References/ Lähteet:
+- Ilascu, I. (2019). Most Cyber Attacks Focus on Just Three TCP Ports. [online] Available at: https://www.bleepingcomputer.com/news/security/most-cyber-attacks-focus-on-just-three-tcp-ports/.
+- OpenSSH (2025). OpenSSH: Release Notes. [online] www.openssh.com. Available at: https://www.openssh.com/releasenotes.html.
+- Apache (2025). Welcome! - The Apache HTTP Server Project. [online] Apache.org. Available at: https://httpd.apache.org/.
+- Schrader, D. (2024). Identifying Common Open Port Vulnerabilities in Your Network. [online] Netwrix.com. Available at: https://blog.netwrix.com/open-ports-vulnerability-list.
+- Tenable. (2012). MySQL < 5.0.51a / 5.1.23 / 6.0.4 Multiple Vulnerabilities. [online] Available at: https://www.tenable.com/plugins/nessus/17813.
+- RedHat. (2011). CVE-2011-2523. Available at: https://access.redhat.com/security/cve/cve-2011-2523.
 
 # Tehtävänanto:
 
