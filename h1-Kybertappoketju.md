@@ -310,7 +310,7 @@ Metasploitable verkkoselaimessa:
 
 ### Kohteen `192.168.56.4` perusskannaus
 - `nmap 192.168.56.4`
-  - Skannaa yleisimmät 1000 TCP-porttia. Ilmoittaa, mitkä portit ovat avoinna, suljettuina tai suodatettuina. Ei kehittyneitä analysointitoimintoja.
+- Skannaa yleisimmät 1000 TCP-porttia. Ilmoittaa, mitkä portit ovat avoinna, suljettuina tai suodatettuina. Ei kehittyneitä analysointitoimintoja.
 
 ![network](images/h1-images/hw1_h1.png)
 
@@ -321,35 +321,34 @@ Metasploitable verkkoselaimessa:
 
 - BleepingComputer-sivuston artikkelin mukaan (Ilascu, 2019) yleisimmin hyökätyt portit ovat: 22 (SSH), 80 (HTTP), 443 (HTTPS). Koska portti 443 ei näkynyt skannaustuloksissa, portit 21 (FTP) ja 3306 (MySQL) käydään läpi sen sijaan. Molemmat näistä luetaan top 10 haavoittuvimpiin portteihin tai merkittäviksi turvallisuusriskeiksi.
 
-- <ins>Portti 21 (FTP)</ins>  
-
-![network](images/h1-images/hw1_h2_ftp.png)
+- <ins>Portti 21 (FTP):</ins>
     - FTP-palvelu vsftpd 2.3.4 on käynnissä ja anonyymi kirjautuminen on sallittu, eli kuka tahansa voi yhdistää ilman tunnistautumista.
     - Anonyymi pääsy voi johtaa luvattomaan tiedostojen lataukseen ja siirtoihin. Lisäksi FTP lähettää tunnistetiedot selkokielisinä. Nämä voivat altistaa kohteen man-in-the-middle hyökkäyksille ja tietovuodoille (Schrader, 2024).
     - vsftpd 2.3.4 sisältää takaoven (RedHat, 2011), mikä altistaa hyökkäyksille.
 
-- <ins>Portti 22 (SSH)</ins>  
+![network](images/h1-images/hw1_h2_ftp.png)
 
-![network](images/h1-images/hw1_h2_ssh.png)
 
+- <ins>Portti 22 (SSH):</ins>
   - OpenSSH 4.7p1 Debian 8ubuntu1 on käytössä, julkiset SSH host-avaimet ovat näkyvillä.
   - Vanhentunut SSH-versio voi sisältää haavoittuvuuksia, joita voidaan käyttää hallitsemaan murrettua kohdetta etäältä (OpenSSH, 2025).
 
-- <ins>Portti 80 (HTTP)</ins>  
+![network](images/h1-images/hw1_h2_ssh.png)
 
-![network](images/h1-images/hw1_h2_http.png)
 
+- <ins>Portti 80 (HTTP):</ins>
   - Järjestelmässä on käynnissä Apache HTTP Server 2.2.8.
   - Apache 2.2.8 on vanhentunut (Apache, 2025) ja saattaa sisältää tunnettuja haavoittuvuuksia.
   - HTTP-liikenne kulkee portin 80 kautta. Turvallisuusnäkökulmasta puutteellisesti suojatut verkkosivut voivat edesauttaa SQL-injektio- tai DDoS-hyökkäyksiä (Schrader, 2024).
 
-- <ins>Portti 3306 (MySQL)</ins>  
+![network](images/h1-images/hw1_h2_http.png)
 
-![network](images/h1-images/hw1_h2_mysql.png) 
-
+- <ins>Portti 3306 (MySQL):</ins>
   - MySQL 5.0.51a-3ubuntu5 on käytössä. Tulos näyttää myös palvelimen tukemat ominaisuudet sekä autocommit-tilan ja Saltin.
   - Tietokantaportin suora näkyvyys verkkoon on tietoturvariski. Lisäksi MySQL-versio on vanhentunut ja sisältää tunnettuja haavoittuvuuksia (Tenable, 2012).
   - On epävarmaa, voiko näkyvissä oleva salt auttaa hyökkääjiä salasanojen murtamisessa (mikäli käytetyt hajautusalgoritmit ovat heikkoja).
+
+![network](images/h1-images/hw1_h2_mysql.png) 
 
 ## References/ Lähteet:
 - Ilascu, I. (2019). Most Cyber Attacks Focus on Just Three TCP Ports. [online] Available at: https://www.bleepingcomputer.com/news/security/most-cyber-attacks-focus-on-just-three-tcp-ports/.
