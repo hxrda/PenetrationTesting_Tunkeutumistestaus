@@ -326,14 +326,14 @@ Metasploitable verkkoselaimessa:
     - Anonyymi pääsy voi johtaa luvattomaan tiedostojen lataukseen ja siirtoihin. Lisäksi FTP lähettää tunnistetiedot selkokielisinä. Nämä voivat altistaa kohteen man-in-the-middle hyökkäyksille ja tietovuodoille (Schrader, 2024).
     - vsftpd 2.3.4 sisältää takaoven (RedHat, 2011), mikä altistaa hyökkäyksille.
 
-![network](images/h1-images/hw1_h2_ftp.png)
+    ![network](images/h1-images/hw1_h2_ftp.png)
 
 
 - <ins>Portti 22 (SSH):</ins>
   - OpenSSH 4.7p1 Debian 8ubuntu1 on käytössä, julkiset SSH host-avaimet ovat näkyvillä.
   - Vanhentunut SSH-versio voi sisältää haavoittuvuuksia, joita voidaan käyttää hallitsemaan murrettua kohdetta etäältä (OpenSSH, 2025).
 
-![network](images/h1-images/hw1_h2_ssh.png)
+    ![network](images/h1-images/hw1_h2_ssh.png)
 
 
 - <ins>Portti 80 (HTTP):</ins>
@@ -341,14 +341,14 @@ Metasploitable verkkoselaimessa:
   - Apache 2.2.8 on vanhentunut (Apache, 2025) ja saattaa sisältää tunnettuja haavoittuvuuksia.
   - HTTP-liikenne kulkee portin 80 kautta. Turvallisuusnäkökulmasta puutteellisesti suojatut verkkosivut voivat edesauttaa SQL-injektio- tai DDoS-hyökkäyksiä (Schrader, 2024).
 
-![network](images/h1-images/hw1_h2_http.png)
+    ![network](images/h1-images/hw1_h2_http.png)
 
 - <ins>Portti 3306 (MySQL):</ins>
   - MySQL 5.0.51a-3ubuntu5 on käytössä. Tulos näyttää myös palvelimen tukemat ominaisuudet sekä autocommit-tilan ja Saltin.
   - Tietokantaportin suora näkyvyys verkkoon on tietoturvariski. Lisäksi MySQL-versio on vanhentunut ja sisältää tunnettuja haavoittuvuuksia (Tenable, 2012).
   - On epävarmaa, voiko näkyvissä oleva salt auttaa hyökkääjiä salasanojen murtamisessa (mikäli käytetyt hajautusalgoritmit ovat heikkoja).
 
-![network](images/h1-images/hw1_h2_mysql.png) 
+    ![network](images/h1-images/hw1_h2_mysql.png) 
 
 ## References/ Lähteet:
 - Ilascu, I. (2019). Most Cyber Attacks Focus on Just Three TCP Ports. [online] Available at: https://www.bleepingcomputer.com/news/security/most-cyber-attacks-focus-on-just-three-tcp-ports/.
