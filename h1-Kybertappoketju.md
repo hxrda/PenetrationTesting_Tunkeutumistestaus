@@ -268,12 +268,12 @@ Avaa asetukset:
 - Kali kone:
   - eth1: 192.168.56.4
     
-![network](images/h1-images/hw1_f4_ifconfig.png) 
+![network](images/h1-images/hw1_f6_ifconfig.png) 
 
 - Metasploitable kone:
   - eth0: 192.168.56.4
     
-![network](images/h1-images/hw1_f6_ifconfig.png)
+![network](images/h1-images/hw1_f5_ifconfig.png)
 
 - Testaa yhteys koneiden välillä (Pingaa Metasploitable VM:n IP-osoitetta Kalista):
   - `ping 192.168.56.4`
