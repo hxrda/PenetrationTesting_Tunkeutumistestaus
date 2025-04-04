@@ -65,7 +65,7 @@
 - Attackers can gain access to internal services or external systems through the vulnerable server.
 - Common SSRF attack patterns & scenarios:
     - SSRF attacks typically exploit trust relationships to escalate/spread attacks from the vulnerable application. These trust relationships exist in relation to the server or other back-end systems within the same organization.
-    - Common scenarios include: server attacks, back-end system attacks and blind SSRF
+    - **Common scenarios include:** server attacks, back-end system attacks and blind SSRF
     - **Example scenario of attack against the server:** The attacker manipulates a request to use a local address (e.g., `http://localhost/admin`or ` http://127.0.0.1/admin`). This causes the server to bypass normal access control, as the request appears to come from a trusted location (the application implicitly trusts requests coming from the local machine). As a result, the attacker gains unauthorized access to the admin interface, which is usually restricted to authenticated users.
 
 - Many SSRF defenses, such as blacklist/whitelist input filters can be bypassed using methods like: obfuscating input or exploiting open redirection vulnerabilities 
