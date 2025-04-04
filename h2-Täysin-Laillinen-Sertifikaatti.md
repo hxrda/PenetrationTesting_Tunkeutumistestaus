@@ -22,7 +22,16 @@
 
 [A10:2021 – Server-Side Request Forgery (SSRF)](https://owasp.org/Top10/A10_2021-Server-Side_Request_Forgery_%28SSRF%29/ )
 
-- 
+- SSFR ranks 10th  in the 2021 OWASP Top 10 list. While it currently has a low incidence rate (2.72%), its severity/impact is growing higher. The incidence rate of SSRFs is expected to increase in the future.
+- SSRF occurs when a web app lets users request external resources but doesn’t properly check/validate the URLs provided by the users. This potentially allows attackers to trick the app into sending requests to unexpected destinations even within protected networks.
+- Modern web applications are more susceptible to SSRFs.
+  
+- Prevention:
+    - **Network level defense:** Enforce strict network segmentation and "deny by default" firewall rules to block unnecessary internal traffic and limit the impact of SSRF.
+    - ** Application level defense:** At the application level, validate and sanitize user inputs, allow only trusted URLs (positive allow list for URL schemas, port, destination), and disable HTTP redirections.
+    - ** Other security measures:**  Avoid placing security-critical services on exposed/front systems and use encryption for sensitive internal traffic.
+
+
 ## PortSwigger Academy: 
 
 ## References/ Lähteet:
