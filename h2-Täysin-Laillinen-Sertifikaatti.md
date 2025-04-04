@@ -34,9 +34,29 @@
 
 ## PortSwigger Academy: 
 
+[Insecure direct object references (IDOR)](https://portswigger.net/web-security/access-control/idor)
+-
+
+[Path traversal](https://portswigger.net/web-security/file-path-traversal)
+-
+
+[Server-side request forgery (SSRF)](https://portswigger.net/web-security/ssrf)
+-
+
+[Cross-site scripting](https://portswigger.net/web-security/cross-site-scripting)
+-
+
+[Server-side template injection (SSTI)](https://portswigger.net/web-security/server-side-template-injection)
+-
+
 ## References/ Lähteet:
 - A01:2021 - Broken Access Control at https://owasp.org/Top10/A01_2021-Broken_Access_Control/
-- A10:2021 - Server-Side Request Forgery (SSRF) at https://owasp.org/Top10/A10_2021-Server-Side_Request_Forgery_%28SSRF%29/ 
+- A10:2021 - Server-Side Request Forgery (SSRF) at https://owasp.org/Top10/A10_2021-Server-Side_Request_Forgery_%28SSRF%29/
+- Insecure direct object reference (IDOR) at https://portswigger.net/web-security/access-control/idor
+- Path traversal at https://portswigger.net/web-security/file-path-traversal
+- Server-side request forgery (SSRF) at https://portswigger.net/web-security/ssrf
+- Cross-site scripting at https://portswigger.net/web-security/cross-site-scripting
+- Server-side template injection (SSTI) at https://portswigger.net/web-security/server-side-template-injection
 
 # A) Totally Legit Sertificate. Asenna OWASP ZAP, generoi CA-sertifikaatti, ja asenna se selaimeesi. Laita ZAP proxyksi selaimeesi. Laita ZAP sieppaamaan myös kuvat, niitä tarvitaan tämän kerran kotitehtävissä. Osoita, että hakupyynnöt ilmestyvät ZAP:n käyttöliittymään.
 
