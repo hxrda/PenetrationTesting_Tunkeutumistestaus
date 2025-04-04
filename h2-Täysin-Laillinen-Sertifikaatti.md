@@ -45,7 +45,7 @@
     - **Direct references to static files:** e.g. if files are stored with predictable names (e.g., `/12144.txt`), the filename in the URL can be modified to access sensitive information.
 
 
-[Path traversal](https://portswigger.net/web-security/file-path-traversal)
+[Path/directory traversal](https://portswigger.net/web-security/file-path-traversal)
 
 - A type of access control vulnerability.
 - Allows attackers to access (read or sometimes write) arbitrary files on a server beyond their intended access permissions. These files include e.g., application data, credentials, and system files.
@@ -71,8 +71,15 @@
 - Many SSRF defenses, such as blacklist/whitelist input filters can be bypassed using methods like: obfuscating input or exploiting open redirection vulnerabilities 
 
 
-[Cross-site scripting](https://portswigger.net/web-security/cross-site-scripting)
--
+[Cross-site scripting (XSS)](https://portswigger.net/web-security/cross-site-scripting)
+
+- A web security vulnerability where a website is manipulated to return malicious JavaScript that executes in the victim’s browser. This allows the attacker to compromise and take control of the victim’s interaction with the application.
+- Attackers can impersonate users, steal their data, or perform actions within the user’s authority. If the victim has privileged access, the attacker can gain full control over the application and its data.
+- Main types of XSS attacks:
+    1. **Reflected XSS:** Malicious script comes from the current HTTP request
+    2. **Stored XSS:** Malicious script is stored in the website’s database
+    3. **DOM-based XSS:** The vulnerability exists in client-side code, not server-side code
+
 
 [Server-side template injection (SSTI)](https://portswigger.net/web-security/server-side-template-injection)
 -
