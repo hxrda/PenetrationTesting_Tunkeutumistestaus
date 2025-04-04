@@ -28,8 +28,8 @@
   
 - Prevention:
     - **Network level defense:** Enforce strict network segmentation and "deny by default" firewall rules to block unnecessary internal traffic and limit the impact of SSRF.
-    - ** Application level defense:** At the application level, validate and sanitize user inputs, allow only trusted URLs (positive allow list for URL schemas, port, destination), and disable HTTP redirections.
-    - ** Other security measures:**  Avoid placing security-critical services on exposed/front systems and use encryption for sensitive internal traffic.
+    - **Application level defense:** At the application level, validate and sanitize user inputs, allow only trusted URLs (positive allow list for URL schemas, port, destination), and disable HTTP redirections.
+    - **Other security measures:**  Avoid placing security-critical services on exposed/front systems and use encryption for sensitive internal traffic.
 
 
 ## PortSwigger Academy: 
