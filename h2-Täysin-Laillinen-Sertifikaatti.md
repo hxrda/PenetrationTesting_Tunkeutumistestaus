@@ -35,10 +35,29 @@
 ## PortSwigger Academy: 
 
 [Insecure direct object references (IDOR)](https://portswigger.net/web-security/access-control/idor)
--
+
+- A type of access control vulnerability 
+- Occurs when a web application directly accesses data, resources, or functions based on user-supplied input.
+- Without proper access controls, attackers can exploit this vulnerability by altering user-controlled input/ parameter values to access or modify unauthorized information. Changing URL parameters is a common use case
+- Impact: Can lead to horizontal or vertical privilege escalation  
+- Examples:
+    - **Direct references to database objects:** e.g. if a URL uses `…?customer_number=132355` for retrieving account details, the customer number can be changed to access other customers’ data.
+    - **Direct references to static files:** e.g. if files are stored with predictable names (e.g., `/12144.txt`), the filename in the URL can be modified to access sensitive information.
+
 
 [Path traversal](https://portswigger.net/web-security/file-path-traversal)
--
+
+- A type of access control vulnerability.
+- Allows attackers to access (read or sometimes write) arbitrary files on a server beyond their intended access permissions. These files include e.g., application data, credentials, and system files.
+- Exploited by manipulating URL file paths using valid directory traversal sequences (e.g., `../`) to access files at unintended locations. The sequence `../` is valid within a file path and moves up one level in the directory structure.  
+    - Example: A URL request like `?filename=../../../etc/passwd` can retrieve files from the server’s root directory.
+
+- Common prevention measures: Avoiding using user input in file paths, validating input against a whitelist or permitted content, ensuring the resolved file path remains within the intended directory.
+- While many applications implement defenses against path traversal attacks, but various techniques exist to bypass them
+- Valid directory traversal sequences:
+    - `../` Works for both Unix-based & Windows systems
+    - `..\` Windows systems only
+
 
 [Server-side request forgery (SSRF)](https://portswigger.net/web-security/ssrf)
 -
