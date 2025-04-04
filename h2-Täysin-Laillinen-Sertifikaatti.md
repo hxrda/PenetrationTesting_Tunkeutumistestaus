@@ -32,3 +32,4 @@
 
 
 # Tehtävänanto:
+- Karvinen 2025 - Tunkeutumistestaus at https://terokarvinen.com/tunkeutumistestaus/
