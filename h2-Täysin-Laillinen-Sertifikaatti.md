@@ -119,7 +119,7 @@
 
 ## References/ Lähteet: 
 
-#K) Asenna pencode ja muunna sillä jokin merkkijono (encode a string).
+# K) Asenna pencode ja muunna sillä jokin merkkijono (encode a string).
 
 ## References/ Lähteet:
 
