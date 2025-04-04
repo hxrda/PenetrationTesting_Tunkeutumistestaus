@@ -82,7 +82,21 @@
 
 
 [Server-side template injection (SSTI)](https://portswigger.net/web-security/server-side-template-injection)
--
+
+- Occurs when an attacker injects malicious code into a server-side template using native template syntax, which is then executed by the server.
+- Template engines combine fixed templates with dynamic data. If user input is improperly concatenated into the template (instead of being passed as data), attackers can manipulate the template engine to execute arbitrary code.
+  
+- Potential impact:
+    - Remote code execution (RCE), full control over the server or access to sensitive data.
+
+- Detecting SSTI vulnerabilities:
+    - SSTI vulnerabilities often go unnoticed because they aren’t immediately obvious unless specifically searched for.
+    - An initial detection method includes fuzzing the template by injecting special characters commonly used in template expressions, e.g. `${{<%[%'"}}%\`. If the server raises an exception, it suggests that the server may be interpreting the input as template syntax which may be an indicator of an SSTI vulnerability. 
+    - In addition to fuzzing, SSTI vulnerabilities can be detected with context-specific approaches (plaintext & code context)
+
+- Prevention:
+    - Restricting template modifications or submission of new templates by users, using logic-less template engines (separates logic from presentation, leveraging sandboxing or containerization to isolate the template in a locked-down environment.
+
 
 ## References/ Lähteet:
 - A01:2021 - Broken Access Control at https://owasp.org/Top10/A01_2021-Broken_Access_Control/
