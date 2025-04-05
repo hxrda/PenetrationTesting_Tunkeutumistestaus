@@ -125,24 +125,24 @@
 <ins>Lisää CA-sertifikaatti selaimeen (Firefox): </ins>
 - Settings -> Navigoi kohtaan “Privacy & Security” tai hae hakusanalla ”Certificates” -> View Certificates -> Import (valitse sertifikaatti oikeasta kohdehakemistosta) -> Hyväksy ”Trust this CA to identify websites”
   
-  ![VM](images/h2-images/a0.png)
+  ![ZAP](images/h2-images/a0.png)
 
 <ins>Laita ZAP proxyksi selaimeen (Firefox, Foxyproxy): </ins>
 - Asenna FoxyProxy -lisäke selaimeen (proxyhallintaohjelma)
     - Add-ons & Themes -> FoxyProxy Standard
       
-    ![VM](images/h2-images/a1.png)
+    ![ZAP](images/h2-images/a1.png)
 
 - Lisää uusi proxy käyttämällä FoxyProksya:
     - Valitse FoxyProxy -> Options -> Proxies -välilehti -> Add
     - Hostname: 127.0.0.1 (tai localhost), Port: 8080
     - Tallenna proxy
       
-      ![VM](images/h2-images/a2.png)
+      ![ZAP](images/h2-images/a2.png)
   
     - Zap näkyy myös proxy listassa (Foxyproxy):
       
-      ![VM](images/h2-images/a22.png)
+      ![ZAP](images/h2-images/a22.png)
 
 <ins>Ota käyttöön kuvien sieppaus ZAP:issa</ins>
 - Laita ZAP sieppaamaan myös kuvat
@@ -154,7 +154,7 @@
     - Siirry, jollekin verkkosivulle esim. ”https://terokarvinen.com/tunkeutumistestaus/” tai ”http://127.0.0.1”.
     - Hakupyynnöt näkyvät ZAP:n käyttöliittymässä eli ohjautuvat ZAP:iin
       
-    ![VM](images/h2-images/a33.png)
+    ![ZAP](images/h2-images/a33.png)
 
 
 ## References/ Lähteet:
@@ -172,11 +172,11 @@ Ota FoxyProxyn ”Patterns” -toiminto käyttöön, jotta vain valitut verkkosi
 
 - Valitut verkkosivut/verkko-osoitteet:  Portswiggerille (includes lab-tehtävä osoitteet) ja Localhostille, ks.kuva.
   
-    ![VM](images/h2-images/b1.png)
+    ![ZAP](images/h2-images/b1.png)
 
 - Valitse “Proxy by patterns”
   
-    ![VM](images/h2-images/b2_proxybypatterns.png)
+    ![ZAP](images/h2-images/b2_proxybypatterns.png)
 
 - Nyt vain Portswiggerin ja localhostin liikenne ohjautuu ZAP:in kautta.
 - Huom:
@@ -187,11 +187,11 @@ Ota FoxyProxyn ”Patterns” -toiminto käyttöön, jotta vain valitut verkkosi
     - Tässä tapauksessa kuitenkin kaikki muu liikenne taas ohjautuu ZAP:in kautta 
     - Eli jos localhost-liikennettä tarvitaan näkyviin ZAP:n historiassa, näitiä asetuksia pitänee säätää päälle ja pois Firefox selaimessa. 
 
-    ![VM](images/h2-images/b3.png)  
+    ![ZAP](images/h2-images/b3.png)  
 
-    ![VM](images/h2-images/b4.png)  
+    ![ZAP](images/h2-images/b4.png)  
 
-    ![VM](images/h2-images/b5.png)
+    ![ZAP](images/h2-images/b5.png)
 
 
 ## References/ Lähteet: 
