@@ -121,6 +121,7 @@
 <ins>Luo CA-sertifikaatti (ZAP:issa): </ins>
 - Tools -> Options -> Network -> Server Certificate
 - Luo (generate) uusi “Root CA Certificate”ja tallenna valittuun hakemistoon (minulla mycertificates  -kansio kotikansion sisällä). Tallentaa tiedoston ”zap_root_ca.cer”.
+  
 <ins>Lisää CA-sertifikaatti selaimeen (Firefox): </ins>
 - Settings -> Navigoi kohtaan “Privacy & Security” tai hae hakusanalla ”Certificates” -> View Certificates -> Import (valitse sertifikaatti oikeasta kohdehakemistosta) -> Hyväksy ”Trust this CA to identify websites” 
 ![VM](images/h2-images/a0.png)
