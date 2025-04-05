@@ -203,6 +203,16 @@ Ota FoxyProxyn ”Patterns” -toiminto käyttöön, jotta vain valitut verkkosi
 
 # C-J) PortSwigger Labs. Ratkaise tehtävät. Selitä ratkaisusi: mitä palvelimella tapahtuu, mitä eri osat tekevät, miten hyökkäys löytyi, mistä vika johtuu.
 
+### C) Reflected XSS into HTML context with nothing encoded
+-
+### Lähteet:
+- Tehtävä: https://portswigger.net/web-security/cross-site-scripting/reflected/lab-html-context-nothing-encoded
+
+### D) Stored XSS into HTML context with nothing encoded
+-
+### Lähteet:
+
+
 ## References/ Lähteet: 
 
 # K) Asenna pencode ja muunna sillä jokin merkkijono (encode a string).
