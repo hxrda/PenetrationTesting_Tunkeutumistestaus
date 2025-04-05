@@ -208,7 +208,7 @@ Ota FoxyProxyn ”Patterns” -toiminto käyttöön, jotta vain valitut verkkosi
 ### Lähteet:
 - Tehtävä: https://portswigger.net/web-security/cross-site-scripting/reflected/lab-html-context-nothing-encoded
 
-### D) Stored XSS into HTML context with nothing encoded
+D) Stored XSS into HTML context with nothing encoded
 -
 ### Lähteet:
 
