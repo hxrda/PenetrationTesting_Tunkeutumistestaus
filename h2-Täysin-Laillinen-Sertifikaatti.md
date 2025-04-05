@@ -138,7 +138,7 @@
     - Hostname: 127.0.0.1 (tai localhost), Port: 8080
     - Tallenna proxy
       
-    ![VM](images/h2-images/a2.png)
+      ![VM](images/h2-images/a2.png)
   
     - Zap näkyy myös proxy listassa (Foxyproxy):
       
