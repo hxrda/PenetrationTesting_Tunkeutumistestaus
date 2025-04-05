@@ -138,7 +138,7 @@
     ![VM](images/h2-images/a2.png)
     - Zap näkyy myös proxy listassa (Foxyproxy):
       
-    ![VM](images/h2-images/a22.png)
+      ![VM](images/h2-images/a22.png)
 
 <ins>Ota käyttöön kuvien sieppaus ZAP:issa</ins>
 - Laita ZAP sieppaamaan myös kuvat
