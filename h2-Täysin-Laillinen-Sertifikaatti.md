@@ -124,12 +124,12 @@
   
 <ins>Lisää CA-sertifikaatti selaimeen (Firefox): </ins>
 - Settings -> Navigoi kohtaan “Privacy & Security” tai hae hakusanalla ”Certificates” -> View Certificates -> Import (valitse sertifikaatti oikeasta kohdehakemistosta) -> Hyväksy ”Trust this CA to identify websites” 
-![VM](images/h2-images/a0.png)
+  ![VM](images/h2-images/a0.png)
 
 <ins>Laita ZAP proxyksi selaimeen (Firefox, Foxyproxy): </ins>
 - Asenna FoxyProxy -lisäke selaimeen (proxyhallintaohjelma)
     - Add-ons & Themes -> FoxyProxy Standard
-![VM](images/h2-images/a1.png)
+    ![VM](images/h2-images/a1.png)
 
 - Lisää uusi proxy käyttämällä FoxyProksya:
     - Valitse FoxyProxy -> Options -> Proxies -välilehti -> Add
@@ -149,7 +149,7 @@
     - FoxyProxy-addonin kuvake -> valitse "ZAP"
     - Siirry, jollekin verkkosivulle esim. ”https://terokarvinen.com/tunkeutumistestaus/” tai ”http://127.0.0.1”.
     - Hakupyynnöt näkyvät ZAP:n käyttöliittymässä eli ohjautuvat ZAP:iin
-![VM](images/h2-images/a33.png)
+    ![VM](images/h2-images/a33.png)
 
 
 ## References/ Lähteet:
@@ -166,10 +166,10 @@ Ota FoxyProxyn ”Patterns” -toiminto käyttöön, jotta vain valitut verkkosi
 - Valitse aiemmin luotu Zap-niminen proxy & valitse `+` alhaalla Pattern kohdan vierestä
 
 - Valitut verkkosivut/verkko-osoitteet:  Portswiggerille (includes lab-tehtävä osoitteet) ja Localhostille, ks.kuva.
-![VM](images/h2-images/b1.png)
+    ![VM](images/h2-images/b1.png)
 
 - Valitse “Proxy by patterns”
-![VM](images/h2-images/b2_proxybypatterns.png)
+    ![VM](images/h2-images/b2_proxybypatterns.png)
 
 - Nyt vain Portswiggerin ja localhostin liikenne ohjautuu ZAP:in kautta.
 - Huom:
@@ -180,11 +180,11 @@ Ota FoxyProxyn ”Patterns” -toiminto käyttöön, jotta vain valitut verkkosi
     - Tässä tapauksessa kuitenkin kaikki muu liikenne taas ohjautuu ZAP:in kautta 
     - Eli jos localhost-liikennettä tarvitaan näkyviin ZAP:n historiassa, näitiä asetuksia pitänee säätää päälle ja pois Firefox selaimessa. 
 
-![VM](images/h2-images/b3.png)  
+    ![VM](images/h2-images/b3.png)  
 
-![VM](images/h2-images/b4.png)  
+    ![VM](images/h2-images/b4.png)  
 
-![VM](images/h2-images/b5.png)
+    ![VM](images/h2-images/b5.png)
 
 
 ## References/ Lähteet: 
