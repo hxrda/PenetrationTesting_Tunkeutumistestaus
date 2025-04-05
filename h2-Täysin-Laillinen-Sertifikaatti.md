@@ -109,11 +109,82 @@
 
 # A) Totally Legit Sertificate. Asenna OWASP ZAP, generoi CA-sertifikaatti, ja asenna se selaimeesi. Laita ZAP proxyksi selaimeesi. Laita ZAP sieppaamaan myös kuvat, niitä tarvitaan tämän kerran kotitehtävissä. Osoita, että hakupyynnöt ilmestyvät ZAP:n käyttöliittymään.
 
+<ins>ZAP:in asennus:</ins>
+- `sudo apt-get update`
+- `sudo apt-get install zaproxy`
+- Valitse asetuksista 127.0.0.1/localhost ja portti 8080, jos ne eivät ole oletusasetuksina
+  
+<ins>ZAP:in käynnistys: </ins>
+- `zaproxy`
+- Valitse: ”Yes, I want to persist this session with name based on the current timestamp”
+
+<ins>Luo CA-sertifikaatti (ZAP:issa): </ins>
+- Tools -> Options -> Network -> Server Certificate
+- Luo (generate) uusi “Root CA Certificate”ja tallenna valittuun hakemistoon (minulla mycertificates  -kansio kotikansion sisällä). Tallentaa tiedoston ”zap_root_ca.cer”.
+<ins>Lisää CA-sertifikaatti selaimeen (Firefox): </ins>
+- Settings -> Navigoi kohtaan “Privacy & Security” tai hae hakusanalla ”Certificates” -> View Certificates -> Import (valitse sertifikaatti oikeasta kohdehakemistosta) -> Hyväksy ”Trust this CA to identify websites” 
+![VM](images/h2-images/a0.png)
+
+<ins>Laita ZAP proxyksi selaimeen (Firefox, Foxyproxy): </ins>
+- Asenna FoxyProxy -lisäke selaimeen (proxyhallintaohjelma)
+    - Add-ons & Themes -> FoxyProxy Standard
+![VM](images/h2-images/a1.png)
+
+- Lisää uusi proxy käyttämällä FoxyProksya:
+    - Valitse FoxyProxy -> Options -> Proxies -välilehti -> Add
+    - Hostname: 127.0.0.1 (tai localhost), Port: 8080
+    - Tallenna proxy
+    ![VM](images/h2-images/a2.png)
+    - Zap näkyy myös proxy listassa (Foxyproxy):
+    ![VM](images/h2-images/a22.png)
+
+<ins>Ota käyttöön kuvien sieppaus ZAP:issa</ins>
+- Laita ZAP sieppaamaan myös kuvat
+- Tools -> Options -> Display -> Process images in HTTP requests/responses
+
+<ins>Hakupyyntöjen näkyminen ZAP:in käyttöliittymään</ins>
+- Varmista, että verkkoliikenne kulkee ZAP:n kautta.
+    - FoxyProxy-addonin kuvake -> valitse "ZAP"
+    - Siirry, jollekin verkkosivulle esim. ”https://terokarvinen.com/tunkeutumistestaus/” tai ”http://127.0.0.1”.
+    - Hakupyynnöt näkyvät ZAP:n käyttöliittymässä eli ohjautuvat ZAP:iin
+![VM](images/h2-images/a33.png)
+
+
 ## References/ Lähteet:
+- Karvinen 2025 - Tunkeutumistestaus at https://terokarvinen.com/tunkeutumistestaus/#h2-taysin-laillinen-sertifikaatti
+- Thedutchhacker. (2021). Configure OWASP Zap with Firefox - The Dutch Hacker. The Dutch Hacker. Available at: https://thedutchhacker.com/configure-owasp-zap-with-firefox/.
+
 
 # B) Kettumaista. Asenna "FoxyProxy Standard" Firefox Addon, ja lisää ZAP proxyksi siihen. Käytä FoxyProxyn "Patterns" -toimintoa, niin että vain valitsemasi weppisivut ohjataan Proxyyn.
 
+FoxyProxy -addonin asennus & ZAP proxyn lisäys on jo tehty tehtävässä A).
+
+Ota FoxyProxyn ”Patterns” -toiminto käyttöön, jotta vain valitut verkkosivut ohjataan proxyyn. 
+
+- Valitse aiemmin luotu Zap-niminen proxy & valitse `+` alhaalla Pattern kohdan vierestä
+
+- Valitut verkkosivut/verkko-osoitteet:  Portswiggerille (includes lab-tehtävä osoitteet) ja Localhostille, ks.kuva.
+![VM](images/h2-images/b1.png)
+
+- Valitse “Proxy by patterns”
+![VM](images/h2-images/b2_proxybypatterns.png)
+
+- Nyt vain Portswiggerin ja localhostin liikenne ohjautuu ZAP:in kautta.
+- Huom:
+    - Firefox (>= versio 67) ei oletuksena ohjaa loopback-osoitteiden liikennettä (mikä sisältää localhostin). Localhostin kohdalla näyttää siltä, ettei liikenne ohjaudu ZAP:in kautta (tai ainakaan näy historiatiedoissa), ellei localhost:8080 aseteta proxyksi suoraan Firefoxissa ja about:config -asetuksissa ole asetettu “network.proxy.allow_hijacking_localhost = true”. Tässä tapauksessa kuitenkin kaikki muu liikenne taas ohjautuu ZAP:in kautta (jmakr0, 2019; Zaproxy Docs, 2025; Zaproxy FAQ, 2025)
+    - Eli jos localhost-liikennettä tarvitaan näkyviin ZAP:n historiassa, näitiä asetuksia pitänee säätää päälle ja pois Firefox selaimessa. 
+
+![VM](images/h2-images/b3.png)
+![VM](images/h2-images/b44.png)
+![VM](images/h2-images/b5.png)
+
+
 ## References/ Lähteet: 
+- Getfoxyproxy. (2022). URL Patterns. Available at: https://help.getfoxyproxy.org/index.php/knowledge-base/url-patterns/ 
+- Zaproxy FAQ. (2025). ZAP – How do you configure ZAP to test an application on localhost? Available at: https://www.zaproxy.org/faq/how-do-you-configure-zap-to-test-an-application-on-localhost/
+- Zaproxy Docs. (2025). ZAP – Configuring Proxies. Available at: https://www.zaproxy.org/docs/desktop/start/proxies/.
+- jmakr0 (2019). Update FAQ entry for showing localhost traffic from Firefox in history · Issue #5593 · zaproxy/zaproxy. GitHub. Available at: https://github.com/zaproxy/zaproxy/issues/5593 
+
 
 # C-J) PortSwigger Labs. Ratkaise tehtävät. Selitä ratkaisusi: mitä palvelimella tapahtuu, mitä eri osat tekevät, miten hyökkäys löytyi, mistä vika johtuu.
 
