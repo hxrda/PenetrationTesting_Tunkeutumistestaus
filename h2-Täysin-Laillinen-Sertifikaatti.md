@@ -203,7 +203,9 @@ Ota FoxyProxyn ”Patterns” -toiminto käyttöön, jotta vain valitut verkkosi
 
 # C-J) PortSwigger Labs. Ratkaise tehtävät. Selitä ratkaisusi: mitä palvelimella tapahtuu, mitä eri osat tekevät, miten hyökkäys löytyi, mistä vika johtuu.
 
-### C) Reflected XSS into HTML context with nothing encoded
+
+## Cross Site Scripting (XSS)
+C) Reflected XSS into HTML context with nothing encoded
 -
 ### Lähteet:
 - Tehtävä: https://portswigger.net/web-security/cross-site-scripting/reflected/lab-html-context-nothing-encoded
@@ -211,6 +213,48 @@ Ota FoxyProxyn ”Patterns” -toiminto käyttöön, jotta vain valitut verkkosi
 D) Stored XSS into HTML context with nothing encoded
 -
 ### Lähteet:
+- Tehtävä: https://portswigger.net/web-security/cross-site-scripting/stored/lab-html-context-nothing-encoded
+## Path traversal
+
+E) File path traversal, simple case. Laita tarvittaessa Zapissa kuvien sieppaus päälle.
+-
+### Lähteet:
+- Tehtävä: https://portswigger.net/web-security/file-path-traversal/lab-simple
+  
+F) File path traversal, traversal sequences blocked with absolute path bypass
+-
+### Lähteet:
+- Tehtävä: https://portswigger.net/web-security/file-path-traversal/lab-absolute-path-bypass
+  
+G) File path traversal, traversal sequences stripped non-recursively
+-
+### Lähteet:
+- Tehtävä: https://portswigger.net/web-security/file-path-traversal/lab-sequences-stripped-non-recursively
+
+## Insecure Direct Object Reference (IDOR)
+
+H) Insecure direct object references
+-
+
+### Lähteet:
+- Tehtävä: https://portswigger.net/web-security/access-control/lab-insecure-direct-object-references
+
+## Server Side Request Forgery (SSRF)
+
+I) Basic SSRF against the local server
+-
+
+### Lähteet:
+- Tehtävä: https://portswigger.net/web-security/ssrf/lab-basic-ssrf-against-localhost
+
+## Server Side Template Injection (SSTI)
+
+J) VAPAAEHTOINEN, hieman haastava: Server-side template injection with information disclosure via user-supplied objects
+-
+
+### Lähteet:
+- Tehtävä: https://portswigger.net/web-security/server-side-template-injection/exploiting/lab-server-side-template-injection-with-information-disclosure-via-user-supplied-objects
+
 
 
 ## References/ Lähteet: 
