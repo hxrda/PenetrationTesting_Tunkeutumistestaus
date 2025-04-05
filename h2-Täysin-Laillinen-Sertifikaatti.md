@@ -175,7 +175,7 @@ Ota FoxyProxyn ”Patterns” -toiminto käyttöön, jotta vain valitut verkkosi
 - Huom:
     - Firefox (>= versio 67) ei oletuksena ohjaa loopback-osoitteiden liikennettä (mikä sisältää localhostin). Localhostin kohdalla näyttää siltä, ettei liikenne ohjaudu ZAP:in kautta (tai ainakaan näy historiatiedoissa), ellei:
         - A) localhost:8080 aseteta proxyksi suoraan Firefoxissa (settings -> proxy settings -> manual configuration) ... ja
-        - B) about:config -asetuksissa ole asetettu “network.proxy.allow_hijacking_localhost = true”.
+        - B) about:config -asetuksissa ole asetettu “network.proxy.allow_hijacking_localhost = true”.  
           (jmakr0, 2019; Zaproxy Docs, 2025; Zaproxy FAQ, 2025)
     - Tässä tapauksessa kuitenkin kaikki muu liikenne taas ohjautuu ZAP:in kautta 
     - Eli jos localhost-liikennettä tarvitaan näkyviin ZAP:n historiassa, näitiä asetuksia pitänee säätää päälle ja pois Firefox selaimessa. 
