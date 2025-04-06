@@ -394,7 +394,46 @@ Eksploittiprosessi:
 ## Server Side Request Forgery (SSRF)
 
 ### I) Basic SSRF against the local server
--
+
+Haavoittuvuus:
+- Sovellus sisältää SSRF-haavoittuvuuden tuotteen ” stock check” toiminnossa. Ominaisuus lähettää palvelinpuolella HTTP-pyynnön sisäiseen järjestelmään käyttäen stockApi-parametria.
+- Parametri hyväksyy koko URL-osoitteen, eikä sen sisältöä ole rajoitettu riittävästi. Tämän parametrin arvoa pystyy muokkaamaan ja serveri ohjata tekemään pyyntöjä ”mihin tahansa” sisäiseen resurssiin.
+
+Tavoite:
+- stockApi-parametrin muuttaminen URL:issa niin, että käsiksi päästään sisäiseen admin-paneeliin sekä käyttäjän carlos deletointi.
+
+Exploittiprosessi:
+- Siirry minkä tahansa tuotteen sivulle ja klikkaa "Check stock".
+  
+  ![SSRF](images/h2-images/I0.png)
+
+- Tarkastele vastaavaa HTTP-pyyntöä ZAPissa. Normaalisti responsissa näkyy tuotteen varastosaldo.
+  
+  ![SSRF](images/h2-images/I1.png)
+  
+- POST-pyynnössä näkyy stockApi-parametri, joka sisältää URL-osoitteen varastotietojärjestelmään. URL:in voi halutessaan myös purkaa (oikea hiirinäppäin ja decode)
+  
+  ![SSRF](images/h2-images/I2.png)
+
+- Muuta requestin stockApi-parametrin arvo: `http://localhost/`. Onnistunut responssi kertoo, että sovellus juoksee paikallisesti, ja saattaa olla haavoittuvainen SSRF:lle. 
+- Edellisestä responssista selviää myös, että admin-paneeli on käytettävissä. Tämä kertoo, että palvelin olettaa käyttäjän olevan jo tunnistautunut, jos pyyntö tulee paikallisesti. Sovellus ja sen käyttämä sisäinen palvelin luottavat toisiinsa, minkä vuoksi admin-paneeliin pääsee ilman kirjautumista. Ota huomioon vastauksessa polku `/admin`.
+  
+  ![SSRF](images/h2-images/I3.png)
+
+- Muuta stockApi-parametriin URL:ksi `http://localhost/admin`näkyykö responssissa admin käyttöliittymä (HTML, jossa paljastettuna admin-toimintoja). Mikäli kyllä, toiminto/ominaisuus on haavoittuvainen SSRF:lle.
+  
+  ![SSRF](images/h2-images/I4.png)
+
+- Responssin HTML:stä löytyy linkki käyttäjän poistamiseen. Muuta stockApi-parametri: `http://localhost/admin/delete?username=carlos`. Pyynnön lähettäminen kyseisellä URL:illa poistaa käyttäjän carlos.
+  
+  ![SSRF](images/h2-images/I55.png)
+
+- Jos carlos ei esim. enää näy admin-käyttöliittymässä (HTML:ssö), poisto onnistui. Käyttäjä on poistettu tietokannasta.
+
+Tekninen selitys:
+- Sovellus hakee tuotteiden varastosaldon tekemällä http pyynnön määriteltyyn URL:iin StockApi parametrissä. Koska parametrin arvoa ei ole rajoitettu kunnolla, pyynnön voi ohjata johonkin sisäiseen/paikalliseen palveluun (kuten localhost) muokkaamalla URL:ia.
+-Koska sovellusta pyörittävä serveri luottaa omiin sisäisiin pyyntöihinsä, muokatut pyynnöt ohittavat normaalit pääsynvalvonnat (access controls), ja mahollistaa pääsyn käsiksi sisäisiin resursseihin/käyttöliittymiin/toimintoihin, joita ei tavallisesti voi tavoittaa ulkoapäin.
+
 
 ### Lähteet:
 - Tehtävä & malliratkaisut: https://portswigger.net/web-security/ssrf/lab-basic-ssrf-against-localhost
