@@ -131,7 +131,7 @@
 - Asenna FoxyProxy -lisäke selaimeen (proxyhallintaohjelma)
     - Add-ons & Themes -> FoxyProxy Standard
       
-    ![ZAP](images/h2-images/a1.png)
+   ![ZAP](images/h2-images/a1.png)
 
 - Lisää uusi proxy käyttämällä FoxyProksya:
     - Valitse FoxyProxy -> Options -> Proxies -välilehti -> Add
