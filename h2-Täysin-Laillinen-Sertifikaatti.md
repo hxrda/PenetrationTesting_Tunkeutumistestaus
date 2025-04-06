@@ -343,7 +343,7 @@ Eksploittiprosessi:
 - Lähetä muokattu pyyntö. Responssi näyttää jälleen /etc/passwd-tiedoston sisällön.
   
   ![XSS](images/h2-images/g1.png)
-  ![XSS](images/h2-images/g3.png)
+  ![XSS](images/h2-images/g3png.png)
 
 Tekninen selitys:
 - Sovellus poistaa path traversal -sekvenssejä (kuten ../) syötteestä/filename-parametrista ennen sen käsittelyä. 
