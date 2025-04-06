@@ -107,7 +107,7 @@
 - Cross-site scripting (XSS) at https://portswigger.net/web-security/cross-site-scripting
 - Server-side template injection (SSTI) at https://portswigger.net/web-security/server-side-template-injection
 
-# A) Totally Legit Sertificate. Asenna OWASP ZAP, generoi CA-sertifikaatti, ja asenna se selaimeesi. Laita ZAP proxyksi selaimeesi. Laita ZAP sieppaamaan myös kuvat, niitä tarvitaan tämän kerran kotitehtävissä. Osoita, että hakupyynnöt ilmestyvät ZAP:n käyttöliittymään.
+# A) Totally Legit Sertificate. Asenna OWASP ZAP, generoi CA-sertifikaatti, ja asenna se selaimeesi. Laita ZAP proxyksi selaimeesi. Laita ZAP sieppaamaan myös kuvat. Osoita, että hakupyynnöt ilmestyvät ZAP:n käyttöliittymään.
 
 <ins>ZAP:in asennus:</ins>
 - `sudo apt-get update`
