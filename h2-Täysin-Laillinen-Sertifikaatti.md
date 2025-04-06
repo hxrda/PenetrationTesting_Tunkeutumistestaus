@@ -208,63 +208,78 @@ Ota FoxyProxyn ”Patterns” -toiminto käyttöön, jotta vain valitut verkkosi
 
 ### C) Reflected XSS into HTML context with nothing encoded
 
-test text
-- test
+Haavoittuvuus:
+- Sovellus sisältää reflected cross-site scripting (XSS) -haavoittuvuuden search -toiminnossa. Haavoittuvuus on hakukentässä.
+- Kun käyttäjä lähettää hakukyselyn (search query), syöte lisätään suoraan HTML-responssiin ilman minkäänlaista suodatusta/sanitaatiota. Seurauksena JavaScript-koodia voidaan injektoida hakukentän kautta, joka suoritetaan uhrin selaimessa.
 
-test 2
+Tavoite:
+- XSS-hyökkäyksen suoritus injektoimalla JavaScript-koodi, joka näyttää ponnahdusikkunan (alert) uhrin selaimessa. Ponnahdusikkuna indikoi, että injektoitu skripti suoritettiin onnistuneesti.
+
+Exploittiprosessi:
+- Lisää payload hakukenttään: `<script>alert("XSS vulnerability exploited!")</script>`
+- Klikkaa Search-painiketta.
+- Sivusto latautuu uudelleen ja syöte suoritetaan osana koodia. Ponnahdusikkunan ilmestyminen osoittaa, että skripti ajettiin onnistuneesti.
+
+![XSS](images/h2-images/c1.png)
+![XSS](images/h2-images/c2.png)
+![XSS](images/h2-images/c3.png)
+
+Tekninen selitys:
+-  Syöte lähetetään osana URL-osoitteen kyselyparametria. Palvelin liittää syötteen takaisin HTML-vastaukseen, ja sijoittaa sen osaksi HTML-kontekstia (esim. <div>-elementin sisään).
+-  Serveripuolella sovellus rakentaa HTML-sivun sijoittamalla syötteen suoraan responssin sisältöön.
+-  Kun selain vastaanottaa vastauksen, injektoitu skripti suoritetaan välittömästi.
 
 
 ### Lähteet:
-- Tehtävä: https://portswigger.net/web-security/cross-site-scripting/reflected/lab-html-context-nothing-encoded
+- Tehtävä & malliratkaisut: https://portswigger.net/web-security/cross-site-scripting/reflected/lab-html-context-nothing-encoded
+- Cross-site (XSS) scripting at https://portswigger.net/web-security/cross-site-scripting
 
-D) Stored XSS into HTML context with nothing encoded
+### D) Stored XSS into HTML context with nothing encoded
 -
 ### Lähteet:
-- Tehtävä: https://portswigger.net/web-security/cross-site-scripting/stored/lab-html-context-nothing-encoded
+- Tehtävä & malliratkaisut: https://portswigger.net/web-security/cross-site-scripting/stored/lab-html-context-nothing-encoded
 ## Path traversal
 
-E) File path traversal, simple case. Laita tarvittaessa Zapissa kuvien sieppaus päälle.
+### E) File path traversal, simple case. Laita tarvittaessa Zapissa kuvien sieppaus päälle.
 -
 ### Lähteet:
-- Tehtävä: https://portswigger.net/web-security/file-path-traversal/lab-simple
+- Tehtävä & malliratkaisut: https://portswigger.net/web-security/file-path-traversal/lab-simple
   
-F) File path traversal, traversal sequences blocked with absolute path bypass
+### F) File path traversal, traversal sequences blocked with absolute path bypass
 -
 ### Lähteet:
-- Tehtävä: https://portswigger.net/web-security/file-path-traversal/lab-absolute-path-bypass
+- Tehtävä & malliratkaisut: https://portswigger.net/web-security/file-path-traversal/lab-absolute-path-bypass
   
-G) File path traversal, traversal sequences stripped non-recursively
+### G) File path traversal, traversal sequences stripped non-recursively
 -
 ### Lähteet:
-- Tehtävä: https://portswigger.net/web-security/file-path-traversal/lab-sequences-stripped-non-recursively
+- Tehtävä & malliratkaisut: https://portswigger.net/web-security/file-path-traversal/lab-sequences-stripped-non-recursively
 
 ## Insecure Direct Object Reference (IDOR)
 
-H) Insecure direct object references
+### H) Insecure direct object references
 -
 
 ### Lähteet:
-- Tehtävä: https://portswigger.net/web-security/access-control/lab-insecure-direct-object-references
+- Tehtävä & malliratkaisut: https://portswigger.net/web-security/access-control/lab-insecure-direct-object-references
 
 ## Server Side Request Forgery (SSRF)
 
-I) Basic SSRF against the local server
+### I) Basic SSRF against the local server
 -
 
 ### Lähteet:
-- Tehtävä: https://portswigger.net/web-security/ssrf/lab-basic-ssrf-against-localhost
+- Tehtävä & malliratkaisut: https://portswigger.net/web-security/ssrf/lab-basic-ssrf-against-localhost
 
 ## Server Side Template Injection (SSTI)
 
-J) VAPAAEHTOINEN, hieman haastava: Server-side template injection with information disclosure via user-supplied objects
+### J) VAPAAEHTOINEN, hieman haastava: Server-side template injection with information disclosure via user-supplied objects
 -
 
 ### Lähteet:
-- Tehtävä: https://portswigger.net/web-security/server-side-template-injection/exploiting/lab-server-side-template-injection-with-information-disclosure-via-user-supplied-objects
+- Tehtävä & malliratkaisut: https://portswigger.net/web-security/server-side-template-injection/exploiting/lab-server-side-template-injection-with-information-disclosure-via-user-supplied-objects
 
 
-
-## References/ Lähteet: 
 
 # K) Asenna pencode ja muunna sillä jokin merkkijono (encode a string).
 
