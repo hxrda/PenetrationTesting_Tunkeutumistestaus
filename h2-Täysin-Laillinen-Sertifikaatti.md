@@ -264,7 +264,35 @@ Tekninen selitys:
 ## Path traversal
 
 ### E) File path traversal, simple case.
--
+
+Haavoittuvuus:
+- Sovellus sisältää path traversal -haavoittuvuus, joka liittyy siihen kuinka tuotekuvien näyttöpyyntöjä (requests) käsitellään. 
+- Haavoittuvuus ilmenee, koska sovellus ei validoi/sanitoi filename-parametria kuvapyynnöissä. Seurauksena URL:ien tiedostopolkuja voidaan manipuloida niin, että päästään käsiksi arkaluontoisiin tiedostoihin serverillä.
+
+Tavoite:
+- /etc/passwd-tiedoston sisällön hakeminen. Tiedosto sisältää järjestelmän käyttäjätiedot.
+
+Eksploitti prosessi:
+
+- Avaa sovellussivu (tai klikkaa mitä tahansa tiettyä tuotekuvaa), ja tarkkaile ZAP-proxyssa kuvia koskevia pyyntöjä
+- Napsauta hiiren oikealla GET-pyyntöä jollekin kuvatiedostolle ja avaa se Requester-välilehdellä (Ctrl + W).
+  
+  ![XSS](images/h2-images/e01.png)
+  ![XSS](images/h2-images/e1.png)
+
+- Etsi alkuperäisen requestin filename-parametri ja muokkaa sitä: `../../../etc/passwd`
+- Lähetä muokattu pyyntö (klikkaa Send). Responssissa näkyy /etc/passwd-tiedoston sisältö:
+  
+  ![XSS](images/h2-images/e3.png)
+  ![XSS](images/h2-images/e4.png)
+
+Tekninen selitys:
+
+- Sovellus liittää kuvapyynnön filename-parametrin perushakemiston perään (esim. /var/www/images/) hakeakseen pyydetyn kuvan.
+- Haavoittuvuus ilmenee, koska sovellus ei tarkista filename-parametria vaan luottaa täysin sen sisältöön (ei validaatiota/sanitaatiota yms.). Esimerkiksi hakemistojen ”traversal sequences” (../) läsnäoloa ei tarkisteta.
+- Ilman sanitaatiota filename-parametriä voidaan manipuloida niin, että päästään kulkeutumaan ulos alkuperäisestä kohdehakemistosta. Esim. liittämällä relative path sekvenssejä (../) päästään siirtymään hakemistorakenteessa ylöspäin/juurta kohti. Tämä mahdollistaa käsiksi pääsyn arkaluontoisiin tiedostoihin, jotka eivät tavallisesti ole käyttäjän saatavilla.  
+
+
 ### Lähteet:
 - Tehtävä & malliratkaisut: https://portswigger.net/web-security/file-path-traversal/lab-simple
 - Path traversal at https://portswigger.net/web-security/file-path-traversal
