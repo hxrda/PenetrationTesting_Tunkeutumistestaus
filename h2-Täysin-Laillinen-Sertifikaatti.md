@@ -104,7 +104,7 @@
 - Insecure direct object reference (IDOR) at https://portswigger.net/web-security/access-control/idor
 - Path traversal at https://portswigger.net/web-security/file-path-traversal
 - Server-side request forgery (SSRF) at https://portswigger.net/web-security/ssrf
-- Cross-site scripting at https://portswigger.net/web-security/cross-site-scripting
+- Cross-site scripting (XSS) at https://portswigger.net/web-security/cross-site-scripting
 - Server-side template injection (SSTI) at https://portswigger.net/web-security/server-side-template-injection
 
 # A) Totally Legit Sertificate. Asenna OWASP ZAP, generoi CA-sertifikaatti, ja asenna se selaimeesi. Laita ZAP proxyksi selaimeesi. Laita ZAP sieppaamaan myös kuvat, niitä tarvitaan tämän kerran kotitehtävissä. Osoita, että hakupyynnöt ilmestyvät ZAP:n käyttöliittymään.
@@ -238,22 +238,26 @@ Tekninen selitys:
 -
 ### Lähteet:
 - Tehtävä & malliratkaisut: https://portswigger.net/web-security/cross-site-scripting/stored/lab-html-context-nothing-encoded
+- Cross-site scripting (XSS) at https://portswigger.net/web-security/cross-site-scripting
 ## Path traversal
 
 ### E) File path traversal, simple case. Laita tarvittaessa Zapissa kuvien sieppaus päälle.
 -
 ### Lähteet:
 - Tehtävä & malliratkaisut: https://portswigger.net/web-security/file-path-traversal/lab-simple
+- Path traversal at https://portswigger.net/web-security/file-path-traversal
   
 ### F) File path traversal, traversal sequences blocked with absolute path bypass
 -
 ### Lähteet:
 - Tehtävä & malliratkaisut: https://portswigger.net/web-security/file-path-traversal/lab-absolute-path-bypass
+- Path traversal at https://portswigger.net/web-security/file-path-traversal
   
 ### G) File path traversal, traversal sequences stripped non-recursively
 -
 ### Lähteet:
 - Tehtävä & malliratkaisut: https://portswigger.net/web-security/file-path-traversal/lab-sequences-stripped-non-recursively
+- Path traversal at https://portswigger.net/web-security/file-path-traversal
 
 ## Insecure Direct Object Reference (IDOR)
 
@@ -262,6 +266,7 @@ Tekninen selitys:
 
 ### Lähteet:
 - Tehtävä & malliratkaisut: https://portswigger.net/web-security/access-control/lab-insecure-direct-object-references
+- Insecure direct object reference (IDOR) at https://portswigger.net/web-security/access-control/idor
 
 ## Server Side Request Forgery (SSRF)
 
@@ -270,14 +275,16 @@ Tekninen selitys:
 
 ### Lähteet:
 - Tehtävä & malliratkaisut: https://portswigger.net/web-security/ssrf/lab-basic-ssrf-against-localhost
+- Server-side request forgery (SSRF) at https://portswigger.net/web-security/ssrf
 
 ## Server Side Template Injection (SSTI)
 
-### J) VAPAAEHTOINEN, hieman haastava: Server-side template injection with information disclosure via user-supplied objects
+### J) Server-side template injection with information disclosure via user-supplied objects
 -
 
 ### Lähteet:
 - Tehtävä & malliratkaisut: https://portswigger.net/web-security/server-side-template-injection/exploiting/lab-server-side-template-injection-with-information-disclosure-via-user-supplied-objects
+- Server-side template injection (SSTI) at https://portswigger.net/web-security/server-side-template-injection
 
 
 
