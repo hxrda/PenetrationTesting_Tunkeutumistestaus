@@ -124,14 +124,14 @@
   
 <ins>Lisää CA-sertifikaatti selaimeen (Firefox): </ins>
 - Settings -> Navigoi kohtaan “Privacy & Security” tai hae hakusanalla ”Certificates” -> View Certificates -> Import (valitse sertifikaatti oikeasta kohdehakemistosta) -> Hyväksy ”Trust this CA to identify websites”  
-.  
-        ![ZAP](images/h2-images/a0.png)
+
+    ![ZAP](images/h2-images/a0.png)
 
 <ins>Laita ZAP proxyksi selaimeen (Firefox, Foxyproxy): </ins>
 - Asenna FoxyProxy -lisäke selaimeen (proxyhallintaohjelma)
     - Add-ons & Themes -> FoxyProxy Standard
       
-      ![ZAP](images/h2-images/a1.png)
+    ![ZAP](images/h2-images/a1.png)
 
 - Lisää uusi proxy käyttämällä FoxyProksya:
     - Valitse FoxyProxy -> Options -> Proxies -välilehti -> Add
@@ -430,6 +430,8 @@ Exploittiprosessi:
 
 - Jos carlos ei esim. enää näy admin-käyttöliittymässä (HTML:ssö), poisto onnistui. Käyttäjä on poistettu tietokannasta.
 
+  ![XSS](images/h2-images/I6.png)
+
 Tekninen selitys:
 - Sovellus hakee tuotteiden varastosaldon tekemällä http pyynnön määriteltyyn URL:iin StockApi parametrissä. Koska parametrin arvoa ei ole rajoitettu kunnolla, pyynnön voi ohjata johonkin sisäiseen/paikalliseen palveluun (kuten localhost) muokkaamalla URL:ia.
 -Koska sovellusta pyörittävä serveri luottaa omiin sisäisiin pyyntöihinsä, muokatut pyynnöt ohittavat normaalit pääsynvalvonnat (access controls), ja mahollistaa pääsyn käsiksi sisäisiin resursseihin/käyttöliittymiin/toimintoihin, joita ei tavallisesti voi tavoittaa ulkoapäin.
@@ -456,22 +458,23 @@ content-manager:C0nt3ntM4n4g3r
 - Valitse ja muokkaa jonkin tuotteen templaattia (käyttäjän kontrolloima syöte)
 - Kirjoita kenttään virheellinen template expression, esim. fuzz string `${{<%[%'"}}%\`tai yksinkertainen laskutoimitus {{7*7}}. Tämä aiheuttaa palvelinvirheilmoituksen, joka paljastaa Django-templating enginen olevan käytössä, ja indikoi että sovellus on haavoittuva SSTI:lle.
   
-![SSTI](images/h2-images/J1.png)
+  ![SSTI](images/h2-images/J1.png)
 
 - Rakenna hyökkäys templating-engine tyypin mukaisesti (s.dokumentaatio). Syötä templaattiin Djangon sisäänrakennettu debug-tagi: `{% debug %}`.
-  
-![SSTI](images/h2-images/J2.png)
-![SSTI](images/h2-images/J3.png)
+    
+    ![SSTI](images/h2-images/J2.png)
+    ![SSTI](images/h2-images/J3.png)
 
 - Debug-tuloste sisältää listan objekteista ja ominaisuuksista (properties), joihin mallipohjassa on pääsy. Näihin kuuluu myös settings-objekti. Djangon settings-dokumentaatio kertoo objektin sisältävän mm. SECRET_KEY-ominaisuuden.
 - Korvaa debug ekspressiolla: `{{settings.SECRET_KEY}}`
 - Tallenna templaatti. SECRET_KEY näkyy suoraan tuotesivulla.
   
-![SSTI](images/h2-images/J5.png)
-![SSTI](images/h2-images/J55.png)
+  ![SSTI](images/h2-images/J5.png)
+  ![SSTI](images/h2-images/J55.png)
 
 - Avain palautetaan tehtävän ratkaisemiseksi:
-![SSTI](images/h2-images/J7.png)
+  
+  ![SSTI](images/h2-images/J7.png)
 
 Tekninen selitys:
 - Hyökkäys perustuu templaatin dynaamiseen renderöindiin palvelimella käyttäjän kontrolloiman syötteen pohjalta (ilman riittävää syötteen suodatusta). Mikäli syötteen sallitaan liittyä suoraan templattiin, hyökkääjä voi injektoida template-lausekkeita suoritettavaksi palvelimella. 
