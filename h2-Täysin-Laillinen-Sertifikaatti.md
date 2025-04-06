@@ -235,7 +235,29 @@ Tekninen selitys:
 - Cross-site (XSS) scripting at https://portswigger.net/web-security/cross-site-scripting
 
 ### D) Stored XSS into HTML context with nothing encoded
--
+
+Haavoittuvuus:
+- Sovellus sisältää stored cross-site scripting (XSS) haavoittuvuuden blogipostausten kommenttitoiminnossa / kommenttikentässä.
+- Kun käyttäjä lähettää kommentin, syöte tallennetaan sanitoimatta sovelluksen tietokantaan. Tämä mahdollistaa haitallisen skriptin pitkäaikaisen tallentamisen. Skripti voidaan suorittaa myöhemmin muiden käyttäjien selaimissa heidän tarkastellessaan blogipostausta
+
+Tavoite:
+- Juokse haitallinen skripti (esim. alert ponnahdusikkuna), kun käyttäjä tarkastelee blogi-sivuston kommentteja.
+
+Eksploittiprosessi:
+- Valitse mikä tahansa blogipostaus sivustolta ja kirjoita kommenttikenttään payload: `<script>alert("Tallennettu XSS-haavoittuvuus hyödynnetty!")</script>`
+- Täytä muut vaaditut kentät: nimi, s-postiosoite, verkkosivu ja postaa kommentti
+- Avaa sama blogipostaus uudelleen, jolloin selain automaattisesti laukaisee alert-ikkunan eli ”haitallisen skriptin”.
+
+![XSS](images/h2-images/d11.png)
+![XSS](images/h2-images/d22.png)
+![XSS](images/h2-images/d3.png)
+
+Tekninen selitys:
+- Kun kommentti lähetetään, haitallinen skripti siirtyy palvelimelle HTTP POST -pyynnössä ja tallentuu tietokantaan. 
+- Palvelin ei validoi/sanitisoi syötettä. Kun blogipostaus myöhemmin ladataan selaimeen, palvelin hakee kommentin tietokannasta ja sijoittaa sen suoraan responssin HTML:ään  (esim. <div> sisään). Selain suorittaa HTML:ään upotetun JavaScriptin.
+- Kyseinen XSS-tyyppi voi olla erityisen haitallinen, koska koodi säilyy serverillä ja suoritetaan automaattisesti jokaisen blogi-postauksen avanneen käyttäjän selaimella.
+
+
 ### Lähteet:
 - Tehtävä & malliratkaisut: https://portswigger.net/web-security/cross-site-scripting/stored/lab-html-context-nothing-encoded
 - Cross-site scripting (XSS) at https://portswigger.net/web-security/cross-site-scripting
