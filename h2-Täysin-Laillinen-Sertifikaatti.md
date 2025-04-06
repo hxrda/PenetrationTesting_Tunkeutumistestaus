@@ -325,7 +325,31 @@ Tekninen selitys:
 - Path traversal at https://portswigger.net/web-security/file-path-traversal
   
 ### G) File path traversal, traversal sequences stripped non-recursively
--
+
+Haavoittuvuus:
+- Sovellus sisältää path traversal -haavoittuvuuden, joka liittyy siihen kuinka tuotekuvien näyttöpyyntöjä (requests) käsitellään. 
+- Haavoittuvuus ilmenee, vaikka sovellus poistaa ”relative path traversal” -sekvenssejä (esim. ../) syötteestä/filename-parametrista ennen pyynnön käsittelyä. Sovellus poistaa nämä merkkijonot vain kerran, mutta ei tarkista syötteen jäljelle jääviä merkkejä. 
+- Tämä mahdollistaa suojauksen kiertämisen esimerkiksi toistamalla ”relative path traversal” merkkijonoja syötteessä useaan kertaan (rekursiivisesti)
+
+Tavoite:
+- /etc/passwd-tiedoston sisällön hakeminen tilanteessa, jossa sovellus poistaa path traversal -sekvenssejä ennen syötteen käsittelyä
+
+Eksploittiprosessi:
+-  Prosessi samankaltainen edellisten path traversal lab tehtävien kanssa, mutta tässä tapauksessa käytetään rekursiivisia path traversal -sekvenssejä suojauksen ohittamiseksi.
+  
+  ![XSS](images/h2-images/g0.png)
+
+- Muokkaa tiedostonimi-parametria: `….//….//….//etc/passwd`
+- Lähetä muokattu pyyntö. Responssi näyttää jälleen /etc/passwd-tiedoston sisällön.
+  
+  ![XSS](images/h2-images/g1.png)
+  ![XSS](images/h2-images/g3.png)
+
+Tekninen selitys:
+- Sovellus poistaa path traversal -sekvenssejä (kuten ../) syötteestä/filename-parametrista ennen sen käsittelyä. 
+- Poisto ei kuitenkaan tapahdu rekursiivistesti. Sovellus poistaa vain ensimmäisen tunnistetun` ../-osion`, muttei tarkista jäljelle jääviä osia. Tästä johtuen, suojaus voidaan ohittaa toistamalla path traversal -sekvenssien elementtejä `….//` tapaan.
+
+
 ### Lähteet:
 - Tehtävä & malliratkaisut: https://portswigger.net/web-security/file-path-traversal/lab-sequences-stripped-non-recursively
 - Path traversal at https://portswigger.net/web-security/file-path-traversal
