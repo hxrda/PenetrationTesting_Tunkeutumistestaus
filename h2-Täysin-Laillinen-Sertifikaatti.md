@@ -442,23 +442,66 @@ Tekninen selitys:
 ## Server Side Template Injection (SSTI)
 
 ### J) Server-side template injection with information disclosure via user-supplied objects
--
+
+Haavoittuvuus:
+- Sovellus sisältää SSTI haavoittuvuuden, sillä se välittää objekteja suoraan templattiin (mallipohjaan) ilman riittävää syötteen suodatusta. Haavoittuvuutta voidaan hyödyntää arkaluontoisen tiedon saamiseksi.
+- Hyökkääjä voi suorittaa mielivaltaisia template-lausekkeita (expressions) ja päästä käsiksi arkaluontoiseen tietoon mikäli mallipohja sallii syötteen lisäämisen suoraan templaattiin serveripuolella.  
+
+Tavoite:
+- Django-frameworkin (kehyksen) SECRET_KEY löytäminen ja kaappaaminen.
+
+Exploittiprosessi:
+- Kirjaudu sisään sovellukseen annetuilla tunnuksilla:
+content-manager:C0nt3ntM4n4g3r
+- Valitse ja muokkaa jonkin tuotteen templaattia (käyttäjän kontrolloima syöte)
+- Kirjoita kenttään virheellinen template expression, esim. fuzz string `${{<%[%'"}}%\`tai yksinkertainen laskutoimitus {{7*7}}. Tämä aiheuttaa palvelinvirheilmoituksen, joka paljastaa Django-templating enginen olevan käytössä, ja indikoi että sovellus on haavoittuva SSTI:lle.
+  
+![SSTI](images/h2-images/J1.png)
+
+- Rakenna hyökkäys templating-engine tyypin mukaisesti (s.dokumentaatio). Syötä templaattiin Djangon sisäänrakennettu debug-tagi: `{% debug %}`.
+  
+![SSTI](images/h2-images/J2.png)
+![SSTI](images/h2-images/J3.png)
+
+- Debug-tuloste sisältää listan objekteista ja ominaisuuksista (properties), joihin mallipohjassa on pääsy. Näihin kuuluu myös settings-objekti. Djangon settings-dokumentaatio kertoo objektin sisältävän mm. SECRET_KEY-ominaisuuden.
+- Korvaa debug ekspressiolla: `{{settings.SECRET_KEY}}`
+- Tallenna templaatti. SECRET_KEY näkyy suoraan tuotesivulla.
+  
+![SSTI](images/h2-images/J5.png)
+![SSTI](images/h2-images/J55.png)
+
+- Avain palautetaan tehtävän ratkaisemiseksi:
+![SSTI](images/h2-images/J7.png)
+
+Tekninen selitys:
+- Hyökkäys perustuu templaatin dynaamiseen renderöindiin palvelimella käyttäjän kontrolloiman syötteen pohjalta (ilman riittävää syötteen suodatusta). Mikäli syötteen sallitaan liittyä suoraan templattiin, hyökkääjä voi injektoida template-lausekkeita suoritettavaksi palvelimella. 
+- Tietyt template-lausekkeet voivat tulostaa/dumpata serveripuolen sisäisiä objekteja, konfiguraatioarvoja yms., jotka tavallisesti pysyvät salattuina serverillä.  
+- Secret keyta käytetään mm. kryptograafiseen allekirjoitukseen (signing) ja istuntojen salaamiseen. Sen paljastuminen voi johtaa esim. allekirjoitetun datan manipulointiin tai istuntoevästeiden väärentämiseen.
+
 
 ### Lähteet:
 - Tehtävä & malliratkaisut: https://portswigger.net/web-security/server-side-template-injection/exploiting/lab-server-side-template-injection-with-information-disclosure-via-user-supplied-objects
 - Server-side template injection (SSTI) at https://portswigger.net/web-security/server-side-template-injection
+- Django Project. (2025). Django documentation | Django documentation. Available at: https://docs.djangoproject.com/en/5.2/
+- Django Project. (2025). Settings | Django documentation. Available at: https://docs.djangoproject.com/en/5.2/ref/settings/  
 
 
 
 # K) Asenna pencode ja muunna sillä jokin merkkijono (encode a string).
 
+TBA?
+
 ## References/ Lähteet:
 
 # I) Mitmproxy. Asenna MitmProxy. Esittele sitä terminaalissa (TUI). Ota TLS-purku käyttöön. Poimi historiasta hakupyyntö, muokkaa sitä ja lähetä uudelleen.
 
+TBA? 
+
 ## References/ Lähteet:
 
-# M) Ratkaise lisää PortSwigger Labs -tehtäviä. Kannattaa tehdä helpoimmat "Apprentice" -tason tehtävät ensin.
+# M) Ratkaise lisää PortSwigger Labs -tehtäviä. 
+
+TBA?
 
 ## References/ Lähteet:
 
