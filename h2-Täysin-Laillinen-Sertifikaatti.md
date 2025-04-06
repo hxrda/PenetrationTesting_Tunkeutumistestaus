@@ -266,13 +266,13 @@ Tekninen selitys:
 ### E) File path traversal, simple case.
 
 Haavoittuvuus:
-- Sovellus sisältää path traversal -haavoittuvuus, joka liittyy siihen kuinka tuotekuvien näyttöpyyntöjä (requests) käsitellään. 
+- Sovellus sisältää path traversal -haavoittuvuuden, joka liittyy siihen kuinka tuotekuvien näyttöpyyntöjä (requests) käsitellään. 
 - Haavoittuvuus ilmenee, koska sovellus ei validoi/sanitoi filename-parametria kuvapyynnöissä. Seurauksena URL:ien tiedostopolkuja voidaan manipuloida niin, että päästään käsiksi arkaluontoisiin tiedostoihin serverillä.
 
 Tavoite:
 - /etc/passwd-tiedoston sisällön hakeminen. Tiedosto sisältää järjestelmän käyttäjätiedot.
 
-Eksploitti prosessi:
+Eksploittiprosessi:
 
 - Avaa sovellussivu (tai klikkaa mitä tahansa tiettyä tuotekuvaa), ja tarkkaile ZAP-proxyssa kuvia koskevia pyyntöjä
 - Napsauta hiiren oikealla GET-pyyntöä jollekin kuvatiedostolle ja avaa se Requester-välilehdellä (Ctrl + W).
@@ -298,7 +298,28 @@ Tekninen selitys:
 - Path traversal at https://portswigger.net/web-security/file-path-traversal
   
 ### F) File path traversal, traversal sequences blocked with absolute path bypass
--
+
+Haavoittuvuus:
+- Sovellus sisältää path traversal -haavoittuvuuden, joka liittyy siihen kuinka tuotekuvien näyttöpyyntöjä (requests) käsitellään. 
+- Haavoittuvuus ilmenee, vaikka sovellus estää/suodattaa ” relative traversal” sevkenssit (esim. ../), koska se käsittelee tiedostonimen suhteellisena oletushakemistoon. Tämä mahdollistaa suodattimen ohittamisen absoluuttisilla tiedostopoluilla.
+
+Tavoite:
+- /etc/passwd-tiedoston sisällön hakeminen tilanteessa, jossa suhteelliset polut on estetty/suodatettu
+
+Eksploittiprosessi:
+- Prosessi samankaltainen edellisen lab tehtävän kanssa. Erona on absoluuttisten polkujen käyttö suhteellisten polkujen suodattimen ohittamiseen. 
+- Muokkaa filename-parametria: `/etc/passwd`
+- Lähetä muokattu pyyntö. Responssi näyttää jälleen /etc/passwd-tiedoston sisällön.
+  
+  ![XSS](images/h2-images/f0.png)
+  ![XSS](images/h2-images/f1.png)
+  ![XSS](images/h2-images/f3.png)
+
+Tekninen selitys:
+- Sovellus estää ” relative traversal sequences” estääkseen pääsyn kohdehakemiston ulkopuolelle. Absoluuttisia polkuja ei ole kuitenkaan estetty, mikä mahdollistaa täyden polun käytön juuresta alkaen. 
+- Toisin sanoen palvelin ei validoi/sanitoi/suodata filename-parametria absoluuttisten polkujen käyttöä vastaan.
+
+
 ### Lähteet:
 - Tehtävä & malliratkaisut: https://portswigger.net/web-security/file-path-traversal/lab-absolute-path-bypass
 - Path traversal at https://portswigger.net/web-security/file-path-traversal
