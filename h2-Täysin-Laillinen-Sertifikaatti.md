@@ -125,7 +125,7 @@
 <ins>Lisää CA-sertifikaatti selaimeen (Firefox): </ins>
 - Settings -> Navigoi kohtaan “Privacy & Security” tai hae hakusanalla ”Certificates” -> View Certificates -> Import (valitse sertifikaatti oikeasta kohdehakemistosta) -> Hyväksy ”Trust this CA to identify websites”
   
-  ![ZAP](images/h2-images/a0.png)
+    ![ZAP](images/h2-images/a0.png)
 
 <ins>Laita ZAP proxyksi selaimeen (Firefox, Foxyproxy): </ins>
 - Asenna FoxyProxy -lisäke selaimeen (proxyhallintaohjelma)
@@ -154,7 +154,7 @@
     - Siirry, jollekin verkkosivulle esim. ”https://terokarvinen.com/tunkeutumistestaus/” tai ”http://127.0.0.1”.
     - Hakupyynnöt näkyvät ZAP:n käyttöliittymässä eli ohjautuvat ZAP:iin
       
-    ![ZAP](images/h2-images/a33.png)
+      ![ZAP](images/h2-images/a33.png)
 
 
 ## References/ Lähteet:
@@ -201,7 +201,7 @@ Ota FoxyProxyn ”Patterns” -toiminto käyttöön, jotta vain valitut verkkosi
 - jmakr0 (2019). Update FAQ entry for showing localhost traffic from Firefox in history · Issue #5593 · zaproxy/zaproxy. GitHub. Available at: https://github.com/zaproxy/zaproxy/issues/5593 
 
 
-# C-J) PortSwigger Labs. Ratkaise tehtävät. Selitä ratkaisusi: mitä palvelimella tapahtuu, mitä eri osat tekevät, miten hyökkäys löytyi, mistä vika johtuu.
+# C-J) PortSwigger Labs. Ratkaise tehtävät & selitä ratkaisusi.
 
 
 ## Cross Site Scripting (XSS)
@@ -219,10 +219,10 @@ Exploittiprosessi:
 - Lisää payload hakukenttään: `<script>alert("XSS vulnerability exploited!")</script>`
 - Klikkaa Search-painiketta.
 - Sivusto latautuu uudelleen ja syöte suoritetaan osana koodia. Ponnahdusikkunan ilmestyminen osoittaa, että skripti ajettiin onnistuneesti.
-
-![XSS](images/h2-images/c1.png)
-![XSS](images/h2-images/c2.png)
-![XSS](images/h2-images/c3.png)
+  
+  ![XSS](images/h2-images/c1.png)
+  ![XSS](images/h2-images/c2.png)
+  ![XSS](images/h2-images/c3.png)
 
 Tekninen selitys:
 -  Syöte lähetetään osana URL-osoitteen kyselyparametria. Palvelin liittää syötteen takaisin HTML-vastaukseen, ja sijoittaa sen osaksi HTML-kontekstia (esim. <div>-elementin sisään).
@@ -247,10 +247,10 @@ Eksploittiprosessi:
 - Valitse mikä tahansa blogipostaus sivustolta ja kirjoita kommenttikenttään payload: `<script>alert("Tallennettu XSS-haavoittuvuus hyödynnetty!")</script>`
 - Täytä muut vaaditut kentät: nimi, s-postiosoite, verkkosivu ja postaa kommentti
 - Avaa sama blogipostaus uudelleen, jolloin selain automaattisesti laukaisee alert-ikkunan eli ”haitallisen skriptin”.
-
-![XSS](images/h2-images/d11.png)
-![XSS](images/h2-images/d22.png)
-![XSS](images/h2-images/d3.png)
+  
+  ![XSS](images/h2-images/d11.png)
+  ![XSS](images/h2-images/d22.png)
+  ![XSS](images/h2-images/d3.png)
 
 Tekninen selitys:
 - Kun kommentti lähetetään, haitallinen skripti siirtyy palvelimelle HTTP POST -pyynnössä ja tallentuu tietokantaan. 
@@ -263,7 +263,7 @@ Tekninen selitys:
 - Cross-site scripting (XSS) at https://portswigger.net/web-security/cross-site-scripting
 ## Path traversal
 
-### E) File path traversal, simple case. Laita tarvittaessa Zapissa kuvien sieppaus päälle.
+### E) File path traversal, simple case.
 -
 ### Lähteet:
 - Tehtävä & malliratkaisut: https://portswigger.net/web-security/file-path-traversal/lab-simple
