@@ -124,8 +124,8 @@
   
 <ins>Lisää CA-sertifikaatti selaimeen (Firefox): </ins>
 - Settings -> Navigoi kohtaan “Privacy & Security” tai hae hakusanalla ”Certificates” -> View Certificates -> Import (valitse sertifikaatti oikeasta kohdehakemistosta) -> Hyväksy ”Trust this CA to identify websites”  
-.
-      ![ZAP](images/h2-images/a0.png)
+.  
+        ![ZAP](images/h2-images/a0.png)
 
 <ins>Laita ZAP proxyksi selaimeen (Firefox, Foxyproxy): </ins>
 - Asenna FoxyProxy -lisäke selaimeen (proxyhallintaohjelma)
