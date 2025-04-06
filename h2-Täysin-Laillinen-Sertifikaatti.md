@@ -123,15 +123,14 @@
 - Luo (generate) uusi “Root CA Certificate”ja tallenna valittuun hakemistoon (minulla mycertificates  -kansio kotikansion sisällä). Tallentaa tiedoston ”zap_root_ca.cer”.
   
 <ins>Lisää CA-sertifikaatti selaimeen (Firefox): </ins>
-- Settings -> Navigoi kohtaan “Privacy & Security” tai hae hakusanalla ”Certificates” -> View Certificates -> Import (valitse sertifikaatti oikeasta kohdehakemistosta) -> Hyväksy ”Trust this CA to identify websites”
-  
-    ![ZAP](images/h2-images/a0.png)
+- Settings -> Navigoi kohtaan “Privacy & Security” tai hae hakusanalla ”Certificates” -> View Certificates -> Import (valitse sertifikaatti oikeasta kohdehakemistosta) -> Hyväksy ”Trust this CA to identify websites”  
+      ![ZAP](images/h2-images/a0.png)
 
 <ins>Laita ZAP proxyksi selaimeen (Firefox, Foxyproxy): </ins>
 - Asenna FoxyProxy -lisäke selaimeen (proxyhallintaohjelma)
     - Add-ons & Themes -> FoxyProxy Standard
       
-    ![ZAP](images/h2-images/a1.png)
+      ![ZAP](images/h2-images/a1.png)
 
 - Lisää uusi proxy käyttämällä FoxyProksya:
     - Valitse FoxyProxy -> Options -> Proxies -välilehti -> Add
