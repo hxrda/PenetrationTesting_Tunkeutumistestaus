@@ -277,14 +277,14 @@ Eksploittiprosessi:
 - Avaa sovellussivu (tai klikkaa mitä tahansa tiettyä tuotekuvaa), ja tarkkaile ZAP-proxyssa kuvia koskevia pyyntöjä
 - Napsauta hiiren oikealla GET-pyyntöä jollekin kuvatiedostolle ja avaa se Requester-välilehdellä (Ctrl + W).
   
-  ![XSS](images/h2-images/e01.png)
-  ![XSS](images/h2-images/e1.png)
+  ![PATH](images/h2-images/e01.png)
+  ![PATH](images/h2-images/e1.png)
 
 - Etsi alkuperäisen requestin filename-parametri ja muokkaa sitä: `../../../etc/passwd`
 - Lähetä muokattu pyyntö (klikkaa Send). Responssissa näkyy /etc/passwd-tiedoston sisältö:
   
-  ![XSS](images/h2-images/e3.png)
-  ![XSS](images/h2-images/e4.png)
+  ![PATH](images/h2-images/e3.png)
+  ![PATH](images/h2-images/e4.png)
 
 Tekninen selitys:
 
@@ -311,9 +311,9 @@ Eksploittiprosessi:
 - Muokkaa filename-parametria: `/etc/passwd`
 - Lähetä muokattu pyyntö. Responssi näyttää jälleen /etc/passwd-tiedoston sisällön.
   
-  ![XSS](images/h2-images/f0.png)
-  ![XSS](images/h2-images/f1.png)
-  ![XSS](images/h2-images/f3.png)
+  ![PATH](images/h2-images/f0.png)
+  ![PATH](images/h2-images/f1.png)
+  ![PATH](images/h2-images/f3.png)
 
 Tekninen selitys:
 - Sovellus estää ” relative traversal sequences” estääkseen pääsyn kohdehakemiston ulkopuolelle. Absoluuttisia polkuja ei ole kuitenkaan estetty, mikä mahdollistaa täyden polun käytön juuresta alkaen. 
@@ -337,13 +337,13 @@ Tavoite:
 Eksploittiprosessi:
 -  Prosessi samankaltainen edellisten path traversal lab tehtävien kanssa, mutta tässä tapauksessa käytetään rekursiivisia path traversal -sekvenssejä suojauksen ohittamiseksi.
   
-  ![XSS](images/h2-images/g0.png)
+  ![PATH](images/h2-images/g0.png)
 
 - Muokkaa tiedostonimi-parametria: `….//….//….//etc/passwd`
 - Lähetä muokattu pyyntö. Responssi näyttää jälleen /etc/passwd-tiedoston sisällön.
   
-  ![XSS](images/h2-images/g1.png)
-  ![XSS](images/h2-images/g3png.png)
+  ![PATH](images/h2-images/g1.png)
+  ![PATH](images/h2-images/g3png.png)
 
 Tekninen selitys:
 - Sovellus poistaa path traversal -sekvenssejä (kuten ../) syötteestä/filename-parametrista ennen sen käsittelyä. 
@@ -357,7 +357,35 @@ Tekninen selitys:
 ## Insecure Direct Object Reference (IDOR)
 
 ### H) Insecure direct object references
--
+
+Haavoittuvuus:
+- Sovellus sisältää IDOR-haavoittuvuuden. Haavoittuvuus tallentaa käyttäjien chatlogit suoraan serverin tiedostojärjestelmään ja hakee ne staattisilla URL-osoitteilla.
+- Chatlogeihin (server-puolen resurssi) pääsee käsiksi muokkaamalla tiedostonimeä URL-osoitteessa, sillä sovellus ei tarkista, onko käyttäjällä oikeutta kyseisen tiedoston katseluun.
+
+Tavoite:
+- Löydä carlos -käyttäjän salasana käyttäjien chatlogien kautta. Kirjaudu sisään carloksen tunnuksilla.
+
+Eksploittiprosessi:
+- Valitse Live chat -välilehti. Lähetä viesti ja valitse View transcript nähdäksesi oman keskustelulokin. Tämä käynnistää pyynnön, joka lataa .txt-muotoisen keskustelulokin.
+  
+  ![IDOR](images/h2-images/h0.png)
+  ![IDOR](images/h2-images/h1.png)
+
+-Tarkastele pyyntöä ZAPissa, jolla tiedosto ladattiin. URL-osoitteen pääte on muotoa `/download-transcript/2.txt`
+
+  ![IDOR](images/h2-images/h22.png)
+
+- Tiedostonimestä ja toistamalla transcriptin latauspyyntöjä voi huomata, että tiedostonumerointi etenee juoksevasti (esim. 1.txt, 2.txt, 3.txt…). Tämä indikoinee, että muiden käyttäjien chatlog -tiedostojen arvaaminen on mahdollista.
+- Muuta Requester-välilehdellä pyynnön tiedostonimeksi 1.txt ja lähetä pyyntö.
+- Pyyntö onnistuu, ja palvelin palauttaa toisen käyttäjän chatlogin. Tässä tapauksessa loki sisältä carloksen salasanan.
+  
+  ![IDOR](images/h2-images/h3.png)
+
+- Siirry My account -sivulle ja kirjaudu sisään varastetuilla tunnuksilla.
+  
+  ![IDOR](images/h2-images/h4.png)
+  ![IDOR](images/h2-images/h5.png)
+
 
 ### Lähteet:
 - Tehtävä & malliratkaisut: https://portswigger.net/web-security/access-control/lab-insecure-direct-object-references
