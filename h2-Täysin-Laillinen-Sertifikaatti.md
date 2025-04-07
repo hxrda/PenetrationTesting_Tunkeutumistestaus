@@ -509,6 +509,8 @@ Tarkista asennuksen onnistuminen & poista tarpallo:
 
 Aja pencode binääri:
 
+- Putkita (pipe) merkkijono encoder -ketjuun
+
   ![pencode](images/h2-images/k3.png)
 
 
