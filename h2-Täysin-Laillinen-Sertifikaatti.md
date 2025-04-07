@@ -517,17 +517,13 @@ Aja pencode binääri:
 - Karvinen 2025 - Tunkeutumistestaus at https://terokarvinen.com/tunkeutumistestaus/#h2-taysin-laillinen-sertifikaatti
 
 
-# I) Mitmproxy. Asenna MitmProxy. Esittele sitä terminaalissa (TUI). Ota TLS-purku käyttöön. Poimi historiasta hakupyyntö, muokkaa sitä ja lähetä uudelleen.
+# I) Asenna MitmProxy. Esittele sitä terminaalissa (TUI). Ota TLS-purku käyttöön. Poimi historiasta hakupyyntö, muokkaa sitä ja lähetä uudelleen.
 
 TBA? 
-
-## References/ Lähteet:
 
 # M) Ratkaise lisää PortSwigger Labs -tehtäviä. 
 
 TBA?
-
-## References/ Lähteet:
 
 
 # Tehtävänanto:
