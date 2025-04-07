@@ -492,9 +492,30 @@ Tekninen selitys:
 
 # K) Asenna pencode ja muunna sillä jokin merkkijono (encode a string).
 
-TBA?
+Asenna pencode & pura paketti:
+- `wget https://github.com/ffuf/pencode/releases/download/v0.4/pencode_0.4_linux_amd64.tar.gz`
+- `tar -xf pencode_0.4_linux_amd64.tar.gz`
+
+  ![pencode](images/h2-images/k1.png)
+
+Kopioi binääri sijaintiin /usr/local/bin:
+- `sudo cp pencode /usr/local/bin/`
+
+Tarkista asennuksen onnistuminen & poista tarpallo:
+- `pencode --version`
+- `rm pencode_0.4_linux_amd64.tar.gz`
+
+  ![pencode](images/h2-images/k2.png)
+
+Aja pencode binääri:
+
+  ![pencode](images/h2-images/k3.png)
+
 
 ## References/ Lähteet:
+- Hoikkala, J. (2025) GitHub – fuff/pencode: Complex payload encoder. GitHub. Available at: https://github.com/ffuf/pencode
+- Karvinen 2025 - Tunkeutumistestaus at https://terokarvinen.com/tunkeutumistestaus/#h2-taysin-laillinen-sertifikaatti
+
 
 # I) Mitmproxy. Asenna MitmProxy. Esittele sitä terminaalissa (TUI). Ota TLS-purku käyttöön. Poimi historiasta hakupyyntö, muokkaa sitä ja lähetä uudelleen.
 
