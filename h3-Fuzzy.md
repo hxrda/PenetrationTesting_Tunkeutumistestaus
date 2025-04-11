@@ -88,6 +88,7 @@
 
 ## References / Lähteet:
 - Karvinen 2023: Find Hidden Web Directories - Fuzz URLs with ffuf at https://terokarvinen.com/2023/fuzz-urls-find-hidden-directories/
+- Hoikkala 2023: ffuf README.md at https://github.com/ffuf/ffuf/blob/master/README.md
 
 # B) Fuff me. Asenna FuffMe-harjoitusmaali. Karvinen 2023: Fuffme - Install Web Fuzzing Target on Debian
 -
