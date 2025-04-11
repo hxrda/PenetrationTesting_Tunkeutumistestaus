@@ -38,7 +38,7 @@
   - `FUZZ` The main placeholder used in ffuf. Wherever the FUZZ -keyword is placed, the tool will substitute it with values from a wordlist. Can be used anywhere in the URL (`-u`), headers (`-h`) or POST data (`-d`)
     
 - Options:
-  - The readme.md and the help page (`ffuf -h)`) provide a comprehensive list of options to use with ffuf
+  - The readme.md and the help page (`ffuf -h`) provide a comprehensive list of options to use with ffuf
   - Includes options for HTTP, matchers, filters, inputs, outputs and other general options.  
 
 **<ins>Advanced usage & detailed documentation:</ins>**
@@ -62,13 +62,13 @@
   - Stop entire process (global):`ffuf -w /path/to/wordlist -u https://target/FUZZ -maxtime 60`
   - Stop current job, continue with next one: `ffuf -w /path/to/wordlist -u https://target/FUZZ -maxtime-job 60 -recursion -recursion-depth 2`
     
-- **6. Using external mutator (script or program)**, instead of generating values internally, to modify or mutate the input data before sending it to the target.
+- **6. Using external mutator (script or program)** to modify or mutate the input data before sending it to the target, instead of generating values internally.
 
 
 **<ins>Configurations:</ins>**
 
 - The ffuf -tool checks for a default configuration file `ffufrc` which defines how  fuzzing should behave. The default config path is: `$XDG_CONFIG_HOME/ffuf/ffufrc`
-- Configuration options provided on the CLI override the ones loaded from the default ffufrc file (except those allowing multiple values, like -H). 
+- Configuration options provided on the CLI override the ones loaded from the default ffufrc file (except those allowing multiple values, like `-H`). 
 
 **<ins>Interactive mode:</ins>**
 
