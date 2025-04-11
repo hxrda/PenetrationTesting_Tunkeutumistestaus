@@ -1,7 +1,28 @@
 # X) Summaries / Tiivistelmät
 
 ## Find Hidden Web Directories - Fuzz URLs with ffuf
--
+
+- Ffuf is a fast, full featured web fuzzer tool that automates fuzzing.
+- Ffuf can be used to find hidden paths on web servers: directories or files (e.g /secret, /.svn /admin). Ffuf can also fuzz: request headers, POST parameters, query strings etc.
+- Ffuf uses wordlists/dictionaries in the discovery process by replacing a placeholder (FUZZ) in the target URL with each word from the list. It systematically tries every word in place of FUZZ to identify valid endpoints or params.
+- Ffuf utilizes wordlists in the discovery process. It inserts each word from the wordlist (FUZZ = placeholder where each word goes) tries all the words from the list in place of FUZZ, like: into the target that’s being tested.
+
+- **How to use ffuff:**
+    - Note: detailed installation in task A)
+    1.	Set up a target that mimics a web server with hidden paths/directories. (A  downloadable practice target is provided in the materials.)
+    2.	Install ffuf
+    3.	Download & use a wordlist/dictionary. 
+    4.	Run ffuf on the target using a wordlist/dictionary. E.g. basic command for directory discovery: `ffuf -w <wordlist> -u <target-url>/FUZZ`
+    5.	Results can be verified with browser or CURL
+       
+- **Filtering noise: unwanted HTTP responses:**
+    - The target may respond with HTTP 200 OK for everything (including non-existent pages: “Nothing, nil, null, nada”), creating false positives. 
+    - The solution is to filter out the unwanted responses based on common characteristics.
+    - Filter options, e.g.:
+        - `-fc`: filter by HTTP response status code
+        - `-fs`: filter by HTTP response size (in bytes)
+        - `-fw `: filter by number of words in the response
+        - `-fl`: filter by number of lines
 
 
 ## ffuf README.md
