@@ -165,7 +165,47 @@ The hidden directories have been fuzzed succesfully.
 - Karvinen 2023: Find Hidden Web Directories - Fuzz URLs with ffuf at https://terokarvinen.com/2023/fuzz-urls-find-hidden-directories/
 
 # B) Fuff me. Asenna FuffMe-harjoitusmaali. Karvinen 2023: Fuffme - Install Web Fuzzing Target on Debian
--
+
+**<ins>Install prerequisites for the FfufMe target:</ins>**  
+
+- `sudo apt-get update`
+- `sudo apt-get install docker.io git` 
+  - Installs Docker and Git. Reference materials include “ffuf” in the installation, but that is excluded here as it has already been installed in task A.
+    
+- If docker service isn’t automatically started: ` sudo systemctl start docker `
+
+**<ins>Build practice target Docker container: </ins>**
+
+  - `git clone https://github.com/adamtlangley/ffufme`
+  - `cd ffufme/`
+  - `sudo docker build -t ffufme .`
+
+**<ins>Run the FuffMe - local practice target: </ins>**
+
+- `sudo docker run -d -p 80:80 ffufme`
+
+**<ins>Verify successful installation / that the target works: </ins>**
+
+- Browser: `http://localhost`
+- CURL: `curl localhost` or `curl -si localhost|grep title`
+  
+  ![FUFF](images/h3-images/b_1.png)
+  ![FUFF](images/h3-images/b_2.png)
+  ![FUFF](images/h3-images/b_3.png)
+  
+- **Note:** ZAP prozy needs to be disabled in FoxyProxy. Otherwise the browser gives the error: “The proxy server is refusing connections. Firefox is configured to use a prozxy server that is refusing connections”.
+  
+**<ins> Install wordlists/dictionaries : </ins>**
+  
+The dictionaries will be installed inside a new directory within the home directory:
+
+    - mkdir $HOME/wordlists
+    - cd $HOME/wordlists
+    - wget http://ffuf.me/wordlist/common.txt
+    - wget http://ffuf.me/wordlist/parameters.txt
+    - wget http://ffuf.me/wordlist/subdomains.txt
+    - cd -
+
 
 ## References / Lähteet:
 -Karvinen 2023: Fuffme - Install Web Fuzzing Target on Debian at https://terokarvinen.com/2023/fuffme-web-fuzzing-target-debian/ 
