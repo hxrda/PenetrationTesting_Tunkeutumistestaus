@@ -199,12 +199,12 @@ The hidden directories have been fuzzed succesfully.
   
 The dictionaries will be installed inside a new directory within the home directory:
 
-    - mkdir $HOME/wordlists
-    - cd $HOME/wordlists
-    - wget http://ffuf.me/wordlist/common.txt
-    - wget http://ffuf.me/wordlist/parameters.txt
-    - wget http://ffuf.me/wordlist/subdomains.txt
-    - cd -
+    mkdir $HOME/wordlists
+    cd $HOME/wordlists
+    wget http://ffuf.me/wordlist/common.txt
+    wget http://ffuf.me/wordlist/parameters.txt
+    wget http://ffuf.me/wordlist/subdomains.txt
+    cd -
 
 
 ## References / Lähteet:
