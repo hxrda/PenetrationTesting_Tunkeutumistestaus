@@ -87,7 +87,7 @@
 **<ins>1. Set up a target:</ins>**
 
 Download & run a local dummy server (dirfuzt-1) that mimics a web server with hidden directories:
--`wget https://terokarvinen.com/2023/fuzz-urls-find-hidden-directories/dirfuzt-1`
+- `wget https://terokarvinen.com/2023/fuzz-urls-find-hidden-directories/dirfuzt-1`
 - `chmod 744 dirfuzt-1`  change permissions
 - `./dirfuzt-1` run the server
   
@@ -106,7 +106,7 @@ Download and extract a release of ffuf:
 -  `wget https://github.com/ffuf/ffuf/releases/download/v2.1.0/ffuf_2.1.0_linux_amd64.tar.gz` (latest release)
 - `tar -xf ffuf_2.1.0_linux_amd64.tar.gz`
   
-  ![FUFF](images/h3-images/a_2.png)        
+  ![FUFF](images/h3-images/a_3.png)        
 
 Run the ffuf tool to test that it works:
 - `./ffuf` (from current directory)
