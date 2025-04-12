@@ -164,7 +164,7 @@ The hidden directories have been fuzzed succesfully.
 ## References / Lähteet:
 - Karvinen 2023: Find Hidden Web Directories - Fuzz URLs with ffuf at https://terokarvinen.com/2023/fuzz-urls-find-hidden-directories/
 
-# B) Fuff me. Asenna FuffMe-harjoitusmaali. Karvinen 2023: Fuffme - Install Web Fuzzing Target on Debian
+# B) Fuff me. Asenna FuffMe-harjoitusmaali. 
 
 **<ins>Install prerequisites for the FfufMe target:</ins>**  
 
