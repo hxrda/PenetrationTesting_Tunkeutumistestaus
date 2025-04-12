@@ -84,7 +84,7 @@
 
 # A) Fuzzzz. Ratkaise dirfuz-1 artikkelista Karvinen 2023: Find Hidden Web Directories - Fuzz URLs with ffuf.
 
-<ins>1. Set up a target:</ins>
+**<ins>1. Set up a target:</ins>**
 
 Download & run a local dummy server (dirfuzt-1) that mimics a web server with hidden directories:
 -`wget https://terokarvinen.com/2023/fuzz-urls-find-hidden-directories/dirfuzt-1`
@@ -100,7 +100,7 @@ Access the dummy locally from the browser & verify that the test environment wor
   
   ![FUFF](images/h3-images/a_2.png)        
 
-<ins>2. Install ffuf</ins>
+**<ins>2. Install ffuf</ins>**
 
 Download and extract a release of ffuf:
 -  `wget https://github.com/ffuf/ffuf/releases/download/v2.1.0/ffuf_2.1.0_linux_amd64.tar.gz` (latest release)
@@ -113,7 +113,7 @@ Run the ffuf tool to test that it works:
 
   ![FUFF](images/h3-images/a_4.png)        
 
-<ins>3. Download & use a wordlist/dictionary. </ins>
+**<ins>3. Download & use a wordlist/dictionary. </ins>**
 
 - Selected dictionary: Seclists
 - `wget https://raw.githubusercontent.com/danielmiessler/SecLists/master/Discovery/Web-Content/common.txt`
@@ -122,7 +122,7 @@ Run the ffuf tool to test that it works:
   
   ![FUFF](images/h3-images/a_5.png)        
 
-<ins>4. Run Ffuf on the target </ins>
+**<ins>4. Run Ffuf on the target </ins>**
 
 Disconnect the internet (to avoid leaking packets to the Internet)
 
@@ -130,7 +130,7 @@ Check ffuf parameters:
 - `./ffuf` 
 - `./ffuf |& less` Paginates the output
   
-Run Ffuf on the target.
+Run Ffuf on the target:
 - `./ffuf -w common.txt -u http://127.0.0.2:8000/FUZZ`
   - The command replaces `FUZZ`placeholder with each word in the common.txt dictionary and sends requests to the specified target.
   - `w` Refers to the wordlist to be used
@@ -138,13 +138,13 @@ Run Ffuf on the target.
   
   ![FUFF](images/h3-images/a_6.png)      
 
-Filter out noise/false positives
+Filter out noise/false positives:
 - The target returns a long list of results including false positives (non-existent pages giving HTTP status 200 OK). The false positives will be filtered out from the results based on common qualities, in this case the HTTP response size which is 154 bytes (other commonalities incl. words and lines). 
 - ` ./ffuf -w common.txt -u http://127.0.0.2:8000/FUZZ -fs 154 `
   
   ![FUFF](images/h3-images/a_7.png)    
  
-<ins>5. Verify results with browser or CURL</ins>
+**<ins>5. Verify results with browser or CURL</ins>**
 
 - Admin page: 
   - Browser - `http://127.0.0.2:8000/wp-admin`
