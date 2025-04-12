@@ -82,7 +82,7 @@
 
 
 
-# A) Fuzzzz. Ratkaise dirfuz-1 artikkelista Karvinen 2023: Find Hidden Web Directories - Fuzz URLs with ffuf.
+# A) Fuzzzz. Ratkaise dirfuz-1 artikkelista Find Hidden Web Directories - Fuzz URLs with ffuf.
 
 **<ins>1. Set up a target:</ins>**
 
