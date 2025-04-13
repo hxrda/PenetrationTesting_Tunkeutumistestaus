@@ -213,18 +213,162 @@ The dictionaries will be installed inside a new directory within the home direct
 
 # C-I) Ratkaise FuffMe harjoitukset
 
--
-### C) Basic Content Discovery
+## C) Basic Content Discovery
+
+**Command:**
+- `ffuf -w $HOME/wordlists/common.txt -u http://localhost/cd/basic/FUZZ`
+  
+- **Note**: This task was partially covered in the provided materials for setting up the Ffufme target. The only difference from the example materials is to change the domain part (ffuf.me in http://ffuf.me/cd/basic/FUZZ) to localhost since the former results in an error.
+  
+**Results:**
+- Paths discovered: `class` & `development.log`
+
+  ![FUFF](images/h3-images/c_1.png)
+  
+  ![FUFF](images/h3-images/c_2.png)
+
+**Verifying in browser or with curl:**
+
+  ![FUFF](images/h3-images/c_3.png)
+  
+  ![FUFF](images/h3-images/c_4.png)
+
 ## D) Content Discovery With Recursion
+
+**Command:**
+- `ffuf -w ~/wordlists/common.txt -recursion -u http://localhost/cd/recursion/FUZZ `
+
+- Performs recursive content discovery.
+- The `-recursion` flag enables ffuf to automatically scan inside the directories it discovers. I.e., if a directory is found, ffuf will continue to fuzz inside it and further inside any subdirectories until no new results/subdirectories/paths are found.
+
+**Results:**
+- Discovered paths (within a nested directory structure): `/admin`, `/admin/users` and `/admin/users/96`
+  
+  ![FUFF](images/h3-images/d_1.png)
+
+**Verifying in browser or with curl:**
+
+  ![FUFF](images/h3-images/d_2.png)
+
+
 ## E) Content Discovery With File Extensions
+
+**Command:**
+- `ffuf -w ~/wordlists/common.txt -e .log -u http://localhost/cd/ext/logs/FUZZ `
+  
+- Discovers files with specific extensions (e.g. .log).
+- The `-e` flag appends the specified file extension(s) to each word in the wordlist. In this case, `.log` is added to every entry in common.txt, so ffuf will look for paths like /logs/debug.log, /logs/error.log, etc.
+
+**Results:**
+- Discovered one matching file:`/logs/users.log`
+  
+  ![FUFF](images/h3-images/e_1.png)
+
+**Verifying in browser or with curl:**
+  
+  ![FUFF](images/h3-images/e_2.png)
+
 ## F) No 404 Status
+
+**Command:**
+- **Basic ffuf scan:** `ffuf -w ~/wordlists/common.txt -u http://localhost/cd/no404/FUZZ`
+- **Filtered ffuf scan:** `ffuf -w ~/wordlists/common.txt -u http://localhost/cd/no404/FUZZ -fs 669`
+  
+- Some web servers return a `200 OK` status along with a "Page Not Found" message for non-existent pages, instead of a HTTP `404 Not Found` status. This results in false positives in fuzzing.
+  
+  ![FUFF](images/h3-images/f_1.png)
+  …
+  
+  ![FUFF](images/h3-images/f_11.png)
+  …
+  
+  ![FUFF](images/h3-images/f_12.png)
+
+- The false positives can be filtered out based on common characteristics, in this case the response size of of 669 bytes.
+- The `-fs` flag excludes/filters out results of the specified byte size.
+
+**Results:**
+- Discovered one matching result: `/secret`
+  
+  ![FUFF](images/h3-images/f_3.png)
+
+**Verifying in browser or with curl:**
+
+  ![FUFF](images/h3-images/f_4.png)
+
+
 ## G) Param Mining
+
+**Command:**
+- The URL  `http://localhost/cd/param/data` returns an HTTP status code 400 Bad Request, with a message "Required parameter missing". This suggests the server is expecting a GET parameter which is missing from the initial URL.
+
+  ![FUFF](images/h3-images/g_1.png)
+
+- **GET parameter fuzzing:** `ffuf -w ~/wordlists/parameters.txt -u http://localhost/cd/param/data?FUZZ=1
+- GET parameter fuzzing is similar to directory fuzzing, but targets URL parameters/parameter name instead (`-u https://target-url?FUZZ=test_value`). The FUZZ keyword is placed where the parameter name would go, while 1 is a test value.
+- If the correct parameter is found, the server should return a HTTP 200 OK response and no more show the "missing parameter" message.
+  
+**Results:**
+- Parameter found: `debug`
+  
+  ![FUFF](images/h3-images/g_2.png)
+
+**Verifying in browser or with curl:**
+
+  ![FUFF](images/h3-images/g_3.png)
+
+
 ## H) Rate Limited
+
+**Command:**
+- **Initial fuzzing:** `ffuf -w ~/wordlists/common.txt -u http://localhost/cd/rate/FUZZ -mc 200,429`
+  
+  ![FUFF](images/h3-images/h_1.png)
+
+- **Rate limited fuzzing:** `ffuf -w ~/wordlists/common.txt -t 5 -p 0.1 -u http://localhost/cd/rate/FUZZ -mc 200,429`
+  
+- Some services are rate limited, meaning only certain amount of requests per second are allowed. In this case, the server limits the number of requests to 50 per second, exceeding that will result in 429 errors.
+- The `-p 0.1` flag adds a 0.1 second delay between each request per thread and the `-t 5` flag runs 5 threads in parallel (default: 40). Combined, the total number of requests is kept around 50/s.
+- The `mc 200,429` flag tells ffuf to only display HTTP 200 OK and 429 Too Many Requests responses.
+
+**Results:**
+- Discovered directory: `/oracle`
+- The scan is much slower due to the rate limit.
+  
+  ![FUFF](images/h3-images/h_2.png)
+
+**Verifying in browser or with curl:**
+
+  ![FUFF](images/h3-images/h_3.png)
+
+
 ## I) Subdomains - Virtual Host Enumeration
+
+**Command:**
+- **Basic virtual host discovery:** `ffuf -w ~/wordlists/subdomains.txt -H "Host: FUZZ.ffuf.me" -u http://localhost `
+- **Filtered virtual host discovery:** `ffuf -w ~/wordlists/subdomains.txt -H "Host: FUZZ.ffuf.me" -u http://localhost -fs 1495 `
+  
+- In this case, the fuzzing targets virtual host-based subdomains. The wordlist is injected into the Host header as the subdomain (e.g. Host: redhat.ffuf.me).
+- `H "Host: FUZZ.ffuf.me"` inserts each entry in the wordlist as a subdomain.
+- Irrelevant responses (size of 1495 bytes) are filtered out with the `-fs` flag.
+  
+**Results:**
+- Discovered valid subdomain: `redhat` (`redhat.ffuf.me`)
+  
+  ![FUFF](images/h3-images/i_1.png)
+  
+  ![FUFF](images/h3-images/i_2.png)
+
+**Verifying in browser or with curl:**
+
+  ![FUFF](images/h3-images/i_3.png)
+
 
 ## References / Lähteet:
 - Karvinen 2023: Fuffme - Install Web Fuzzing Target on Debian at https://terokarvinen.com/2023/fuffme-web-fuzzing-target-debian/ 
-
+- Hoikkala 2023: ffuf README.md at https://github.com/ffuf/ffuf/blob/master/README.md
+- Langley, A. (2025). FFUF.me - Target practice for ffuf.  Available at: http://ffuf.me/
+  
 
 # Tehtävänanto:
 - Karvinen 2025 - Tunkeutumistestaus at https://terokarvinen.com/tunkeutumistestaus/#h3-fuzzy
