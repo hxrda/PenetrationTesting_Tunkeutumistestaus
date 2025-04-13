@@ -228,9 +228,10 @@ The dictionaries will be installed inside a new directory within the home direct
   ![FUFF](images/h3-images/c_2.png)
 
 **Verifying in browser or with curl:**
-    ![FUFF](images/h3-images/c_3.png)
+   
+   ![FUFF](images/h3-images/c_3.png)
     
-    ![FUFF](images/h3-images/c_4.png)
+   ![FUFF](images/h3-images/c_4.png)
 
 ## D) Content Discovery With Recursion
 
