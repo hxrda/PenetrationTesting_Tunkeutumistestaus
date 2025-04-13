@@ -219,19 +219,18 @@ The dictionaries will be installed inside a new directory within the home direct
 - `ffuf -w $HOME/wordlists/common.txt -u http://localhost/cd/basic/FUZZ`
   
 - **Note**: This task was partially covered in the provided materials for setting up the Ffufme target. The only difference from the example materials is to change the domain part (ffuf.me in http://ffuf.me/cd/basic/FUZZ) to localhost since the former results in an error.
+
+  ![FUFF](images/h3-images/c_1.png)
   
 **Results:**
 - Paths discovered: `class` & `development.log`
-
-  ![FUFF](images/h3-images/c_1.png)
   
   ![FUFF](images/h3-images/c_2.png)
 
 **Verifying in browser or with curl:**
-
-  ![FUFF](images/h3-images/c_3.png)
-  
-  ![FUFF](images/h3-images/c_4.png)
+    ![FUFF](images/h3-images/c_3.png)
+    
+    ![FUFF](images/h3-images/c_4.png)
 
 ## D) Content Discovery With Recursion
 
