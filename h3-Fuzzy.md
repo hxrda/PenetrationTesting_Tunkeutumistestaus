@@ -360,6 +360,7 @@ The dictionaries will be installed inside a new directory within the home direct
   ![FUFF](images/h3-images/i_2.png)
 
 **Verifying in browser or with curl:**
+-
 
   ![FUFF](images/h3-images/i_3.png)
 
