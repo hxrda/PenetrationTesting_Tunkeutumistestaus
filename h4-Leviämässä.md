@@ -1,7 +1,18 @@
 # X) Summaries / Tiivistelmät
 
 ## Cracking Passwords with Hashcat
--
+
+- Passwords are stored as hashes 
+- **Hashing** is the process of converting data (e.g. a password) into a hash (fixed-length string), using an algorithm, such as MD5. It's a one-way function, meaning it's easy to compute a hash, but nearly impossible to reverse it back to the original data
+- Although a password can’t be directly computed from its hash, it’s possible to guess it using a wordlist (list of passwords). This involves 1. Hashing each word in the list using the same algorithm, 2. Comparing the result hashes to the target hash, 3. If a match is found, the original password has been cracked.  
+- **Hashcat** is a tool that uses wordlists/dictionaries to crack (password) hashes. The hash algorithm should be identified before attempting to crack a hash.
+  - Command syntax: `hashcat -m [mode] '[hash]' [wordlist.txt] -o [output_file]`
+
+- **Hashid** is a tool for identifying the hash type/algorithm (e.g. MD5). The tool shows the algorithm and the corresponding Hashcat mode number to be used with `-m`
+  - Command syntax: `hashid -m [hash]`
+
+- Note: setup & installation are detailed in task A)
+  
 ## Crack File Password With John
 -
 ## Security Penetration Testing - The Art of Hacking Series LiveLessons: Lesson 6: Hacking User Credentials
