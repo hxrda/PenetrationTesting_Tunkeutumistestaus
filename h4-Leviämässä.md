@@ -47,10 +47,6 @@
 
 ## References / Lähteet:
 
-# D) Fuffme. Asenna Ffufme harjoitusmaali paikallisesti omalle koneellesi. Ratkaise tehtävät (kaikki paitsi ei "Content Discovery - Pipes")
-- Completed in h3-Fuzzy.md
-
-## References / Lähteet:
 
 # E) Tiedosto. Tee itse tai etsi verkosta jokin salakirjoitettu tiedosto, jonka saat auki. Murra sen salaus. (Jokin muu formaatti kuin aiemmissa alakohdissa kokeilemasi).
 - Jokin muu formaatti kuin aiemmissa alakohdissa kokeilemasi
