@@ -55,4 +55,4 @@
 
 
 # Tehtävänanto:
-- Karvinen 2025 - Tunkeutumistestaus at https://terokarvinen.com/tunkeutumistestaus/#h4-huhtikuu2025
+- Karvinen 2025 - Tunkeutumistestaus at https://terokarvinen.com/tunkeutumistestaus/#h4-leviamassa
