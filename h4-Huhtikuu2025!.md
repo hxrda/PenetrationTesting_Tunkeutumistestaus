@@ -18,10 +18,23 @@
 
 # A) Asenna Hashcat ja testaa sen toiminta murtamalla esimerkkisalasana.
 -
+## References / Lähteet:
+
+
 # C) Asenna John the Ripper ja testaa sen toiminta murtamalla jonkin esimerkkitiedoston salasana.
 -
+
+## References / Lähteet:
+
 # D) Fuffme. Asenna Ffufme harjoitusmaali paikallisesti omalle koneellesi. Ratkaise tehtävät (kaikki paitsi ei "Content Discovery - Pipes")
 - Completed in h3-Fuzzy.md
+
+## References / Lähteet:
+
+# G) Tee msfvenom-työkalulla haittaohjelma, joka soittaa kotiin (reverse shell). Ota yhteys vastaan metasploitin multi/handler -työkalulla.
+- 
+
+## References / Lähteet:
 
 
 # Tehtävänanto:
