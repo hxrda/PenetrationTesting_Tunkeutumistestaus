@@ -14,7 +14,11 @@
 - Note: setup & installation are detailed in task A)
   
 ## Crack File Password With John
--
+
+- A range of files of different formats can be locked with a password to protect the contents.
+- **John the Ripper** is a password-cracking tool that uses techniques like dictionary attacks to crack/recover passwords. It can be used against password protected files and supports a wide variety of file formats.
+
+
 ## Security Penetration Testing - The Art of Hacking Series LiveLessons: Lesson 6: Hacking User Credentials
 -
 
