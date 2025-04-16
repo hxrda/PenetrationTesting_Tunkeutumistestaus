@@ -42,6 +42,42 @@
         - Salting helps by making identical passwords result in different hashes. Linux systems typically use salted passwords. 
 
 
+**<ins>Common password/credential attacks:</ins>**
+
+- Generic attack process: Enumerate users (discover valid usernames) -> Crack passwords 
+
+- Exploiting common weaknesses:
+    - Default, reused, simple or common passwords
+    - Compromised admin accounts
+      
+2. Network-based attacks:
+    - Sniffing network traffic over unsecured networks (e.g. public wifi)
+    -  Man-in-the-middle (MITM) attacks against clear text protocols, encryption (ciphered protocols) or relay attacks. 
+    - Compromised network devices (routers, switches, wireless APs) can leak credentials
+    - Brute-force attacks with tools using dictionaries/ credential tables. Variety of tools include: Medusa, THC-Hydra, Brutus, auxiliary Metasploit modules etc.
+
+**<ins>Password cracking tools:</ins>**
+- John the ripper: 
+    - Popular, multi-platform
+    - Supports multiple modes of cracking: dictionary, rule-based, and brute-force attacks.
+    - Can pause and resume cracking.
+    - Can automutate wordlists (adds numbers, changes cases, etc.)
+- Hashcat:
+    - Very fast, has GPU support
+    - Supports over 2000+ hashing algorithms.
+    - Ideal for large-scale cracking with more powerful hardware setups.
+
+**<ins>Defending against password attacks / Improving password security:</ins>**
+- Both storage and transmission of passwords over a network should be secured.
+    - Storage side defense: OS-level protection, limit access based on necessity, intrusion detection, endpoint protection, auditing
+    - Transmission defense: Encryption (TLS/SSL).
+      
+- Use strong hashing algorithms with salts.
+- Support/Use longer and stronger passwords (length > complexity).
+- Enable MFA (Multi-Factor Authentication)
+- Use certificate-based authentication (e.g. public-key systems).
+- Don’t reuse passwords, avoid dictionary words and obvious patterns.
+
 
 ## Metasploit: File-Format Exploits
 -
