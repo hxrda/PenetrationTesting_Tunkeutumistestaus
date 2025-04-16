@@ -32,7 +32,7 @@
     - One-way hashing
         - Hash functions turn cleartext → fixed hash value (e.g., MD5, SHA-256).
         - Not reversible and not encryption.
-        - The purpose of hashing is to veriyfy the integrity of the clear text provided (e.g. email integrity validation).
+        - The purpose of hashing is to verify the integrity of the clear text provided 
         - Salting should be used to avoid identical hashes for identical cleartext (passwords) and to make password cracking harder.
         - Example command for generating hashes on Linux: ` echo "example" | sha256sum`
 
@@ -50,7 +50,7 @@
     - Default, reused, simple or common passwords
     - Compromised admin accounts
       
-2. Network-based attacks:
+- Network-based attacks:
     - Sniffing network traffic over unsecured networks (e.g. public wifi)
     -  Man-in-the-middle (MITM) attacks against clear text protocols, encryption (ciphered protocols) or relay attacks. 
     - Compromised network devices (routers, switches, wireless APs) can leak credentials
