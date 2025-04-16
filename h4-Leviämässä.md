@@ -49,7 +49,7 @@
 ## References / Lähteet:
 
 
-# E) Tiedosto. Tee itse tai etsi verkosta jokin salakirjoitettu tiedosto, jonka saat auki. Murra sen salaus. (Jokin muu formaatti kuin aiemmissa alakohdissa kokeilemasi).
+# E) Tiedosto. Tee itse tai etsi verkosta jokin salakirjoitettu tiedosto, jonka saat auki. Murra sen salaus.
 - Jokin muu formaatti kuin aiemmissa alakohdissa kokeilemasi
 
 ## References / Lähteet:
