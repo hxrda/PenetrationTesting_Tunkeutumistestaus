@@ -21,7 +21,27 @@
 - Note: setup & installation are detailed in task B)
   
 ## Security Penetration Testing - The Art of Hacking Series LiveLessons: Lesson 6: Hacking User Credentials
--
+
+- All systems store passwords in some form, some more securely than others. 
+- Credentials are key targets for attackers to gain access to systems, and move laterally in networks after establishing initial foothold.
+- **Key**: tools, techniques, and attack methods used to steal or crack credentials.
+
+**<ins>Password storage:</ins>**
+- Most systems store user credentials in a database or a text file.
+- Storage mechanisms:
+    - One-way hashing
+        - Hash functions turn cleartext → fixed hash value (e.g., MD5, SHA-256).
+        - Not reversible and not encryption.
+        - The purpose of hashing is to veriyfy the integrity of the clear text provided (e.g. email integrity validation).
+        - Salting should be used to avoid identical hashes for identical cleartext (passwords) and to make password cracking harder.
+        - Example command for generating hashes on Linux: ` echo "example" | sha256sum`
+
+- Storage vulnerabilities:
+    - Password attacks are now easier due to better computing power and freely available tools.:
+        - Unencrypted storage, faster GPUs and distributed computing, Weak hash algorithms, highly available dictionaries (e.g. rainbow tables)
+        - Salting helps by making identical passwords result in different hashes. Linux systems typically use salted passwords. 
+
+
 
 ## Metasploit: File-Format Exploits
 -
