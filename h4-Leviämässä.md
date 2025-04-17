@@ -232,7 +232,7 @@
 4. Check the contents of the dictionary.
     - `wc -l rockyou.txt`,  `head rockyou.txt`, `less rockyou.txt`
     
-    ![hashcat](images/h4-images/a_0.png)
+      ![hashcat](images/h4-images/a_0.png)
 
 ### <ins>Crack with a sample hash: 6b1628b016dff46e6fa35684be6acc96</ins>   
 1. Identifying the hash type with hashid (required by hashcat):
