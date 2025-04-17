@@ -136,7 +136,73 @@
 
 
 ## The Ultimate Kali Linux Book: Understanding Active Directory
--
+
+- An ** Active directory (AD)** is directory service within Microsoft Windows Server. 
+- ADs are used for central management of users, groups, devices and policies within a network/domain/organization. AD is common in enterprise environments.
+- Understanding trust relationships and domain authentication is key to exploiting AD systems.
+
+**Benefits of ADs:**
+- Simplifies management of large organizations
+- Enables centralized control using a domain controller. A **domain controller** is a Windows server with AD installed & configured, and is the central authority for network management within a windows domain environment.
+    - Replaces the need for setting up local user accounts on each device separately
+    - Supports centralized management for:
+        - User profile management of clients & servers in the domain
+        - Network information & configuration management
+        - Group Policy Objects (GPOs)** to apply security settings/policies across users, groups and devices on the domain
+        - Clients’ registry configurations and policies
+    - Enables user login across different computers that are members of the domain (with domain user account rather than a local user account of a device).
+
+**Key Components of an AD**
+- <ins>Logical structure components</ins>
+    - Define how objects are grouped/organized/managed and how trust and security boundaries are set up in the directory
+      
+    1. Domain
+      - A collection of/ a container for a set of objects(OUs)
+      - The smallest unit where policies and security settings apply centrally.
+      - Acts as a security boundary within the network
+      
+    2. Tree
+      - A set of domains in a forest arranged in a hierarchical structure / with a hierarchical relationship
+      - Domains within a tree share a contiguous namespace.
+      - Used to create logical security boundaries between each domain within the same forest.
+      
+    3. Forest
+      - Highest-level/Top-level structure in AD. Represents the entire AD infrastructure.
+      - Contains trees and domains that share a common configuration, schema, and global catalog
+      - Defines administrative, security & trust boundaries for managing objects of an entire organization/directory infrastructure.
+
+- <ins>Object components (stored in the AD database) </ins>
+    - Active Directory stores information about ”objects” on the network
+    - **Objects** are things that AD directly manages and interacts with (e.g. to assign policies)
+    - **Supported objects**: Users, Groups, OUs, Computers, Printers, Shared folders 
+        - Organizational Units (OUs)
+            - Used to organize objects (that share a common factor) as units within the AD. 
+            - Often used to group by e.g. department or role.
+        - Groups
+            - Used to apply policies or permissions to multiple users at once (e.g. with GPOs)
+
+** Trust Relationships in AD **
+- Trusts allows users in one domain or forest to access resources in another domain or forest. 
+- A variety of domain and forest configurations are possible, allowing for different types of trust relationships/models within Active Directory.
+  
+- Trust types/models include:
+    - **One-way trust**: Only one domain can access the other but not the other way around 
+    - **Two-way trust**: Both domains can access each other 
+    - **Transitive trust**: Trust can pass through/extend to connected domains within the same forest. 
+    - **Non-transitive trust**: Trust does not extend to other domains. 
+    - **Forest trust**: Trust between different forests.
+      
+- AD trust relationships can be exploited to compromise a Windows domain without exploiting security vulnerabilities within the OS. 
+
+**Local vs. Domain Login**
+- **Local login**: 
+    - Credentials stored in the device's SAM file (located in the directory C:\Windows\System32\config). Username is in plaintext, password in NTLM v1 hash
+
+- **Domain login**:
+    - By default, uses an unsecure LDAP protocol to check entered credentials with the domain controller. The password is sent as NTLM v2 hash.
+    - The domain controller verifies credentials and applies security policies accordingly.
+    - The trust between domain clients and the domain controller using LDAP can be exploited
+
 
 ## References / Lähteet:
 - Karvinen 2022: Cracking Passwords with Hashcat at https://terokarvinen.com/2022/cracking-passwords-with-hashcat/ 
