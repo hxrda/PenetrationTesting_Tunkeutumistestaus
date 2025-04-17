@@ -298,10 +298,9 @@
   
 **2. Downloading & Compiling John the Ripper from source:**
   - Download John the Ripper (Jumbo version): 
-    -`git clone --depth=1 https://github.com/openwall/john.git`
-  - The Command:
-    - `git clone` copies the whole project 
-    - `--depth=1` restricts copy only to latest file versions, reducing download size and duration
+    - `git clone --depth=1 https://github.com/openwall/john.git`
+      - `git clone` copies the whole project 
+      - `--depth=1` restricts copy only to latest file versions, reducing download size and duration
 
        ![john](images/h4-images/b_1.png)
 
@@ -311,7 +310,7 @@
     - `make -s clean && make -sj3` Compiles jusing 3 threads. The correct make command is printed at the end of './configure' output as shown in the picture (e.g. -sj3 in my case vs. -sj4 in course materials). 
 
         ![john](images/h4-images/b_2.png)           
-        ![john](images/h4-images/b_4.png)
+        ![john](images/h4-images/b_3.png)
 
 
     - Once John is compiled, the binaries/executables and scripts appear in run/.
@@ -320,14 +319,12 @@
         
         ![john](images/h4-images/b_4.png)
       
-      .
-      - `cd`
-
 **3. Run the John-tool & verify it works:**
+- `cd`
 - `$HOME/john/run/john`
 - Output shows version information, installation successful.
   
-  ![john](images/h4-images/b_5.png)
+     ![john](images/h4-images/b_5.png)
 
 
 ### <ins>Crack a password protected ZIP file</ins>   
@@ -337,7 +334,7 @@
   - `unzip tero.zip`
   - The file contents are encrypted and cannot be accessed without a password. The output will only include empty directories.
   
-  ![john](images/h4-images/b_6.png)
+     ![john](images/h4-images/b_6.png)
 
 **2. Cracking the ZIP password:**
 - Cracking a ZIP password is a two step process.
@@ -346,14 +343,15 @@ A) Extract the hash from ZIP File into a new file:
   - `$HOME/john/run/zip2john tero.zip >tero.zip.hash` This file contains the hash needed to crack the password.
   - `cat tero.zip.hash`  Check the extracted hash
 
-  ![john](images/h4-images/b_7.png)
+     ![john](images/h4-images/b_7.png)
 
         
  
 B) Perform a dictionary attack against the hash:
   - `$HOME/john/run/john tero.zip.hash `
-  - Key line in the output: `butterfly (tero.zip/secretFiles/SECRET.md)`.   
-  ![john](images/h4-images/b_8.png)
+  - Key line in the output: `butterfly (tero.zip/secretFiles/SECRET.md)`.
+    
+     ![john](images/h4-images/b_8.png)
 
 
 
@@ -361,7 +359,7 @@ B) Perform a dictionary attack against the hash:
   - `unzip tero.zip ` & enter the password “butterfly”
   - `cat secretFiles/SECRET.md` Check the file contents
 
-    ![john](images/h4-images/b_10.png)
+     ![john](images/h4-images/b_10.png)
 
 ## References / Lähteet:
 - Karvinen 2023: Crack File Password With John at https://terokarvinen.com/2023/crack-file-password-with-john/ 
