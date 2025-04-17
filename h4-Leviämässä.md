@@ -269,7 +269,7 @@
     - `cat solved`
     - (Alternative: If no output file was specified, the results can be directly displayed with `hashcat -m 0 6b1628b016dff46e6fa35684be6acc96 rockyou.txt --show` )
 
-    ![hashcat](images/h4-images/a_5.png)
+      ![hashcat](images/h4-images/a_5.png)
 
 
 ## References / Lähteet:
