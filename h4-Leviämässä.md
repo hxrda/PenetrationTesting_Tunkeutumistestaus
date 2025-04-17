@@ -217,59 +217,59 @@
 
 ### <ins>Setup and installation</ins>   
 1. Install the apps & create a separate directory for the task:
-  - `sudo apt-get update`
-  - `sudo apt-get -y install hashid hashcat wget`
-  - `mkdir hashed`
-  - `cd hashed`
+    - `sudo apt-get update`
+    - `sudo apt-get -y install hashid hashcat wget`
+    - `mkdir hashed`
+    - `cd hashed`
   
 2. Download a (large) dictionary /wordlist from the web:
-  - `wget https://github.com/danielmiessler/SecLists/raw/master/Passwords/Leaked-Databases/rockyou.txt.tar.gz`
+    - `wget https://github.com/danielmiessler/SecLists/raw/master/Passwords/Leaked-Databases/rockyou.txt.tar.gz`
   
 3. Uncompress and extract the contents of the dictionary. Delete the compressed file.
-  - `tar -xf rockyou.txt.tar.gz`
-  - `rm rockyou.txt.tar.gz`
-    
+    - `tar -xf rockyou.txt.tar.gz`
+    - `rm rockyou.txt.tar.gz`
+      
 4. Check the contents of the dictionary.
-  - `wc -l rockyou.txt`,  `head rockyou.txt, `less rockyou.txt `
-  
-  ![hashcat](images/h4-images/a_0.png)
+    - `wc -l rockyou.txt`,  `head rockyou.txt, `less rockyou.txt `
+    
+    ![hashcat](images/h4-images/a_0.png)
 
 ### <ins>Crack with a sample hash: 6b1628b016dff46e6fa35684be6acc96</ins>   
 1. Identifying the hash type with hashid (required by hashcat):
-  - `hashid -m 6b1628b016dff46e6fa35684be6acc96`
-  - The command:
-    - `hashid` tool used to identify the type of a specified hash
-    - `-m` Includes  the corresponding hashcat mode in output. Used to help identify the correct mode to use with hashcat.
-    - `6b1628b016dff46e6fa35684be6acc96`the hash to be cracked
+    - `hashid -m 6b1628b016dff46e6fa35684be6acc96`
+    - The command:
+      - `hashid` tool used to identify the type of a specified hash
+      - `-m` Includes  the corresponding hashcat mode in output. Used to help identify the correct mode to use with hashcat.
+      - `6b1628b016dff46e6fa35684be6acc96`the hash to be cracked
 
-  - Since MD5 (mode 0) is the most common hash, it’s selected for the next steps.
-  
-  ![hashcat](images/h4-images/a_1.png)
+    - Since MD5 (mode 0) is the most common hash, it’s selected for the next steps.
+    
+    ![hashcat](images/h4-images/a_1.png)
 
 2. Cracking the hash
-  - `hashcat -m 0 '6b1628b016dff46e6fa35684be6acc96' rockyou.txt -o solved`
-  - The command:
-    - `hashcat` the program used for cracking the hash
-    - `-m 0` type of the hash, retrieved with either 'hashid' or 'hashcat --example-hashes'
-    - `6b1628b016dff46e6fa35684be6acc96`the hash to be cracked
-    - `rockyou.txt ` The wordlist used for the attack
-    - `-o solved` saves the solution as a new plain text file "solved" inside the working directory.
+    - `hashcat -m 0 '6b1628b016dff46e6fa35684be6acc96' rockyou.txt -o solved`
+    - The command:
+      - `hashcat` the program used for cracking the hash
+      - `-m 0` type of the hash, retrieved with either 'hashid' or 'hashcat --example-hashes'
+      - `6b1628b016dff46e6fa35684be6acc96`the hash to be cracked
+      - `rockyou.txt ` The wordlist used for the attack
+      - `-o solved` saves the solution as a new plain text file "solved" inside the working directory.
+      
+    - Output:
     
-- Output:
-  
-  ![hashcat](images/h4-images/a_2.png)
-  
-  ![hashcat](images/h4-images/a_3.png)
+      ![hashcat](images/h4-images/a_2.png)
+      
+      ![hashcat](images/h4-images/a_3.png)
 
-- Results interpretation:
-  - `Status: Cracked` indicates that hashcat found a matching password in the dictionary and the cracked password was saved in the “solved” -file.
-  - `Status: Exhausted` indicates that the tool failed to find a matching password in the dictionary.
+    - Results interpretation:
+      - `Status: Cracked` indicates that hashcat found a matching password in the dictionary and the cracked password was saved in the “solved” -file.
+      - `Status: Exhausted` indicates that the tool failed to find a matching password in the dictionary.
     
 3. Check the solution:
-  - `cat solved`
-  - (Alternative: If no output file was specified, the results can be directly displayed with `hashcat -m 0 6b1628b016dff46e6fa35684be6acc96 rockyou.txt --show` )
+    - `cat solved`
+    - (Alternative: If no output file was specified, the results can be directly displayed with `hashcat -m 0 6b1628b016dff46e6fa35684be6acc96 rockyou.txt --show` )
 
-  ![hashcat](images/h4-images/a_5.png)
+    ![hashcat](images/h4-images/a_5.png)
 
 
 ## References / Lähteet:
