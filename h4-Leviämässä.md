@@ -232,7 +232,7 @@
 4. Check the contents of the dictionary.
   - `wc -l rockyou.txt`,  `head rockyou.txt, `less rockyou.txt `
   
-![hashcat](h4-images/a_0.png)
+  ![hashcat](images/h4-images/a_0.png)
 
 ### <ins>Crack with a sample hash: 6b1628b016dff46e6fa35684be6acc96</ins>   
 1. Identifying the hash type with hashid (required by hashcat):
@@ -244,7 +244,7 @@
 
   - Since MD5 (mode 0) is the most common hash, it’s selected for the next steps.
   
-![hashcat](h4-images/a_1.png)
+  ![hashcat](images/h4-images/a_1.png)
 
 2. Cracking the hash
   - `hashcat -m 0 '6b1628b016dff46e6fa35684be6acc96' rockyou.txt -o solved`
@@ -257,9 +257,9 @@
     
 - Output:
   
-![hashcat](h4-images/a_2.png)
-
-![hashcat](h4-images/a_3.png)
+  ![hashcat](images/h4-images/a_2.png)
+  
+  ![hashcat](images/h4-images/a_3.png)
 
 - Results interpretation:
   - `Status: Cracked` indicates that hashcat found a matching password in the dictionary and the cracked password was saved in the “solved” -file.
@@ -269,7 +269,7 @@
   - `cat solved`
   - (Alternative: If no output file was specified, the results can be directly displayed with `hashcat -m 0 6b1628b016dff46e6fa35684be6acc96 rockyou.txt --show` )
 
-![hashcat](h4-images/a_5.png)
+  ![hashcat](images/h4-images/a_5.png)
 
 
 ## References / Lähteet:
