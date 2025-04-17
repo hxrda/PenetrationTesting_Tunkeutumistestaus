@@ -181,7 +181,7 @@
         - Groups
             - Used to apply policies or permissions to multiple users at once (e.g. with GPOs)
 
-** Trust Relationships in AD **
+**Trust Relationships in AD**
 - Trusts allows users in one domain or forest to access resources in another domain or forest. 
 - A variety of domain and forest configurations are possible, allowing for different types of trust relationships/models within Active Directory.
   
