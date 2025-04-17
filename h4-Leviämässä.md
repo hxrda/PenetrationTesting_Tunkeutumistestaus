@@ -244,7 +244,7 @@
 
     - Since MD5 (mode 0) is the most common hash, it’s selected for the next steps.
     
-    ![hashcat](images/h4-images/a_1.png)
+      ![hashcat](images/h4-images/a_1.png)
 
 2. Cracking the hash
     - `hashcat -m 0 '6b1628b016dff46e6fa35684be6acc96' rockyou.txt -o solved`
