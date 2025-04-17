@@ -230,7 +230,7 @@
     - `rm rockyou.txt.tar.gz`
       
 4. Check the contents of the dictionary.
-    - `wc -l rockyou.txt`,  `head rockyou.txt, `less rockyou.txt `
+    - `wc -l rockyou.txt`,  `head rockyou.txt`, `less rockyou.txt`
     
     ![hashcat](images/h4-images/a_0.png)
 
