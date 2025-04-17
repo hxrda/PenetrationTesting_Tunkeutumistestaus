@@ -280,34 +280,35 @@
 ### <ins>Setup and installation</ins>   
 
 **1. Installing prerequisites:**
-    - `sudo apt-get update`
-    - `sudo apt-get -y install micro bash-completion git build-essential libssl-dev zlib1g zlib1g-dev libbz2-1.0 libbz2-dev atool zip wget`
-    - Installed packages:
-        - `micro` text editor
-        - `bash-completion ` for auto-completing commands & filenames in the terminal with tab
-        - `git` for cloning git repositories / source code
-        - `build-essential` tools for compiling software (C compiler and related tools)
-        - `libssl-dev ` for JtK requirements, SSL support (used in encryption/decryption).
-        - `zlib1g zlib1g-dev` for ZIP format support with John
-        - `libbz2-1.0 libbz2-dev` for 7zip support with John
-        - `atool zip` compression tools, 'aunpack foo.zip', 'unzip foo.zip'
-        - `wget` web downloader for command line
+  - `sudo apt-get update`
+  - `sudo apt-get -y install micro bash-completion git build-essential libssl-dev zlib1g zlib1g-dev libbz2-1.0 libbz2-dev atool zip wget` 
+  
+  - Installed packages:
+      - `micro` text editor
+      - `bash-completion ` for auto-completing commands & filenames in the terminal with tab
+      - `git` for cloning git repositories / source code
+      - `build-essential` tools for compiling software (C compiler and related tools)
+      - `libssl-dev ` for JtK requirements, SSL support (used in encryption/decryption).
+      - `zlib1g zlib1g-dev` for ZIP format support with John
+      - `libbz2-1.0 libbz2-dev` for 7zip support with John
+      - `atool zip` compression tools, 'aunpack foo.zip', 'unzip foo.zip'
+      - `wget` web downloader for command line
 
-    - Note: `zlib-gst` omitted from the package list due to the error - E: unable to locate package zlib-gst.
+  - Note: `zlib-gst` omitted from the package list due to the error - E: unable to locate package zlib-gst.
   
 **2. Downloading & Compiling John the Ripper from source:**
-    - Download John the Ripper (Jumbo version): 
-        -`git clone --depth=1 https://github.com/openwall/john.git`
-    - The Command:
-        - `git clone` copies the whole project 
-        - `--depth=1` restricts copy only to latest file versions, reducing download size and duration
-.
-        ![john](images/h4-images/b_1.png)
-.
-    - Compile John the Ripper from source:
-        - `cd john/src/` 
-        - `./configure`Detects the environment & creates a makefile for make “make” command. Many C & C++ programs on linux are compiled with a variation of './configure && make'. Note: if additional dependencies are installed in the future, ./configure should be run again. **
-        - `make -s clean && make -sj3` Compiles jusing 3 threads. The correct make command is printed at the end of './configure' output as shown in the picture (e.g. -sj3 in my case vs. -sj4 in course materials). 
+  - Download John the Ripper (Jumbo version): 
+      -`git clone --depth=1 https://github.com/openwall/john.git`
+  - The Command:
+      - `git clone` copies the whole project 
+      - `--depth=1` restricts copy only to latest file versions, reducing download size and duration
+
+       ![john](images/h4-images/b_1.png)
+
+  - Compile John the Ripper from source:
+      - `cd john/src/` 
+      - `./configure`Detects the environment & creates a makefile for make “make” command. Many C & C++ programs on linux are compiled with a variation of './configure && make'. Note: if additional dependencies are installed in the future, ./configure should be run again. **
+      - `make -s clean && make -sj3` Compiles jusing 3 threads. The correct make command is printed at the end of './configure' output as shown in the picture (e.g. -sj3 in my case vs. -sj4 in course materials). 
 .
         ![john](images/h4-images/b_2.png)           
         ![john](images/h4-images/b_4.png)
