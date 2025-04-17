@@ -156,17 +156,17 @@
 - <ins>Logical structure components</ins>
     - Define how objects are grouped/organized/managed and how trust and security boundaries are set up in the directory
       
-    1. Domain
+    - **Domain**
       - A collection of/ a container for a set of objects(OUs)
       - The smallest unit where policies and security settings apply centrally.
       - Acts as a security boundary within the network
       
-    2. Tree
+    - **Tree**
       - A set of domains in a forest arranged in a hierarchical structure / with a hierarchical relationship
       - Domains within a tree share a contiguous namespace.
       - Used to create logical security boundaries between each domain within the same forest.
       
-    3. Forest
+    - **Forest**
       - Highest-level/Top-level structure in AD. Represents the entire AD infrastructure.
       - Contains trees and domains that share a common configuration, schema, and global catalog
       - Defines administrative, security & trust boundaries for managing objects of an entire organization/directory infrastructure.
