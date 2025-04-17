@@ -336,8 +336,7 @@
   
      ![john](images/h4-images/b_6.png)
 
-**2. Cracking the ZIP password:**
-- Cracking a ZIP password is a two step process.
+**2. Cracking the ZIP password (two-step process):**
   
 A) Extract the hash from ZIP File into a new file:
   - `$HOME/john/run/zip2john tero.zip >tero.zip.hash` This file contains the hash needed to crack the password.
@@ -352,7 +351,6 @@ B) Perform a dictionary attack against the hash:
   - Key line in the output: `butterfly (tero.zip/secretFiles/SECRET.md)`.
     
      ![john](images/h4-images/b_8.png)
-
 
 
 **3. Unzip the File Using the Cracked Password:**
