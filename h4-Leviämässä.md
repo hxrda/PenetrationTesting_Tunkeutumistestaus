@@ -380,13 +380,13 @@ B) Perform a dictionary attack against the hash:
 **<ins>3. Download a sample PDF file:</ins>**
 - `wget https://pdfobject.com/pdf/sample.pdf ` (Not password protected)
 
-  ![file](images/h4-images/e1.png)
+  ![file](images/h4-images/e_1.png)
 
 **<ins>4. Protect the PDF file with a password:</ins>**
 -  Protect the file with a password: `pdftk sample.pdf output protected.pdf user_pw abcd1234`
   - Creates an output file from the input file and sets a user password to it. The new pdf file will require the password to open.
 
-  ![file](images/h4-images/e2.png)
+  ![file](images/h4-images/e_2.png)
 
 - Remove the original file: `rm sample.pdf`     
 - Verify password protection by trying to open the file directly:`xdg-open protected.pdf `
