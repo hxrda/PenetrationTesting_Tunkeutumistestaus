@@ -502,8 +502,8 @@ B) Perform a dictionary attack against the hash:
   - **Metasploitable 2**: `eth0 - 192.168.56.4`
 
 - **Verifying the connection between the VMs & that they are on the same network:**  
-  - `ping 192.168.56.4` (from Kali)
-  - `nmap -sn 192.168.56.0/24`  (scan the subnet to discover all active hosts, from Kali)
+  - `ping 192.168.56.4` (from Kali VM)
+  - `nmap -sn 192.168.56.0/24`  (scan the subnet to discover all active hosts)
     
   ![metasploit](images/h4-images/g_3.png)
     
