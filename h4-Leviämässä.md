@@ -386,7 +386,7 @@ B) Perform a dictionary attack against the hash:
 -  Protect the file with a password: `pdftk sample.pdf output protected.pdf user_pw abcd1234`
   - Creates an output file from the input file and sets a user password to it. The new pdf file will require the password to open.
 
-  ![file](images/h4-images/e_2.png)
+    ![file](images/h4-images/e_2.png)
 
 - Remove the original file: `rm sample.pdf`     
 - Verify password protection by trying to open the file directly:`xdg-open protected.pdf `
@@ -401,7 +401,7 @@ B) Perform a dictionary attack against the hash:
 
   ![file](images/h4-images/e_4.png)
 
-**B) Perform a dictionary attack against the hash: **
+**B) Perform a dictionary attack against the hash:**
 - `$HOME/john/run/john protected.pdf.hash`
 
   ![file](images/h4-images/e_5.png)
