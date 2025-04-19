@@ -363,14 +363,115 @@ B) Perform a dictionary attack against the hash:
 - Karvinen 2023: Crack File Password With John at https://terokarvinen.com/2023/crack-file-password-with-john/ 
 
 # E) Tiedosto. Tee itse tai etsi verkosta jokin salakirjoitettu tiedosto, jonka saat auki. Murra sen salaus.
-- Jokin muu formaatti kuin aiemmissa alakohdissa kokeilemasi
+
+**<ins>1. Find a suitable tool from the John library:</ins>**
+- Check the binaries/executables/scripts in the `/john/run` library: `cd john/run`, ` ls -1 `
+- Select `pdf2john`  which is a script for extracting password hash data from encrypted PDF files
+
+  ![file](images/h4-images/e_0.png)
+
+**<ins>2. Install prerequisites:</ins>**
+- PDFTK is a command-line tool for manipulating PDF files. It’s used for e.g. encrypting and decrypting PDF files (adding/removing passwords). 
+- `sudo apt-get update`
+- `sudo apt-get install pdftk-java`
+
+  ![file](images/h4-images/e_00.png)
+
+**<ins>3. Download a sample PDF file:</ins>**
+- `wget https://pdfobject.com/pdf/sample.pdf ` (Not password protected)
+
+  ![file](images/h4-images/e1.png)
+
+**<ins>4. Protect the PDF file with a password:</ins>**
+-  Protect the file with a password: `pdftk sample.pdf output protected.pdf user_pw abcd1234`
+  - Creates an output file from the input file and sets a user password to it. The new pdf file will require the password to open.
+
+  ![file](images/h4-images/e2.png)
+
+- Remove the original file: `rm sample.pdf`     
+- Verify password protection by trying to open the file directly:`xdg-open protected.pdf `
+
+  ![file](images/h4-images/e_3.png)
+
+**<ins>5. Crack the password protected file:</ins>**
+
+**A) Extract the hash from the file into a new file:**
+- `$HOME/john/run/pdf2john.pl protected.pdf > protected.pdf.hash `
+- Check the extracted hash: `cat protected.pdf.hash`
+
+  ![file](images/h4-images/e_4.png)
+
+**B) Perform a dictionary attack against the hash: **
+- `$HOME/john/run/john protected.pdf.hash`
+
+  ![file](images/h4-images/e_5.png)
+
+**<ins>6. Open the file with the cracked password:</ins>**
+- `xdg-open protected.pdf` & enter the password “abcd1234”
+  
+  ![file](images/h4-images/e_6.png)
+    
+  ![file](images/h4-images/e_7.png)
+
 
 ## References / Lähteet:
+- Karvinen 2023: Crack File Password With John at https://terokarvinen.com/2023/crack-file-password-with-john/
+- CybrZone (2024). Cracking a password protected PDF document! Available at: https://www.youtube.com/watch?v=-AnQ2GAbFUY 
+- Ali, H. (2024). How to Install PDFtk on Linux. Available at: https://www.baeldung.com/linux/install-pdftk
 
+‌
 # F) Tiiviste. Tee itse tai etsi verkosta salasanan tiiviste, jonka saat auki. Murra sen salaus.
-- Jokin muu formaatti kuin aiemmissa alakohdissa kokeilemasi. Voit esim. tehdä käyttäjän Linuxiin ja murtaa sen salasanan.
+
+**<ins>1. Generating / finding a hash to be cracked:</ins>**
+
+**Case 1 - Select a password from a dictionary & create a hash from the selected word**
+- `less rockyou.txt`, 
+- Selected word: `coolcat`
+  
+- Generate a SHA-256 hash of the selected word: `echo -n coolcat | sha256sum`
+  - Calculates the hash for the echo output string, `-n` flag prevents a newline (\n) from being appended to the string
+ 
+- Copy the generated hash: `ddd9ab3e81e06b4c405d4cc401d6651de4ec99513fe314ab7f69d66db026a1b6`
+  
+  ![hash2](images/h4-images/f_1.png)
+
+**Case 2 - Find a ready-made hash from the web**
+- Example hash `b89eaac7e61417341b710b727768294d0e6a277b ` fetched from [hashcat wiki](https://hashcat.net/wiki/doku.php?id=example_hashes)
+- Hash algorithm is known to be SHA-1 beforehand.
+
+**<ins>2. Identifying the hash type with hashid):</ins>**
+- **Case 1**: `hashid -m ddd9ab3e81e06b4c405d4cc401d6651de4ec99513fe314ab7f69d66db026a1b6 `
+  - Selected type: SHA-256 (mode 1400)
+    
+- **Case 2**: `hashid -m b89eaac7e61417341b710b727768294d0e6a277b`
+  - Selected type: SHA-1 (mode 100)
+
+  ![hash2](images/h4-images/f_2.png)
+
+**<ins>3. Cracking the hash:</ins>**
+
+- **Case 1**: `hashcat -m 1400 ' ddd9ab3e81e06b4c405d4cc401d6651de4ec99513fe314ab7f69d66db026a1b6' rockyou.txt -o solved_2`
+  - Check the solution: `cat solved_2`
+  
+  ![hash2](images/h4-images/f_3.png)
+
+- **Case 2**: `hashcat -m 100 ' b89eaac7e61417341b710b727768294d0e6a277b ' rockyou.txt -o solved_2`
+  - `Status: Exhausted`Indicates there was no matching password in the dictionary.
+  - To confirm the result: `grep -x "hashcat" rockyou.txt` (the matching plaintext was solved with an online hash cracking tool). 
+  
+  ![hash2](images/h4-images/f_4.png)
+
+  ![hash2](images/h4-images/f_5.png)
+
+- In conclusion, to crack the case 2 hash, another wordlist should be used. However, since case 1 hash was already cracked successfully, case 2 will be left as “unsolved”.
+
 
 ## References / Lähteet:
+- Karvinen 2022: Cracking Passwords with Hashcat at https://terokarvinen.com/2022/cracking-passwords-with-hashcat/ 
+- Karvinen 2025 - Information security at https://terokarvinen.com/information-security/
+- https://hashcat.net/wiki/doku.php?id=example_hashes
+- Hashcat. (2025). example_hashes. hashcat wiki. Available at: https://hashcat.net/wiki/doku.php?id=example_hashes. 
+
 
 
 # G) Tee msfvenom-työkalulla haittaohjelma, joka soittaa kotiin (reverse shell). Ota yhteys vastaan metasploitin multi/handler -työkalulla.
