@@ -16,11 +16,6 @@
 ## References / Lähteet:
 
 
-# A) HTB Dancing. Ratkaise HackTheBox.com: Starting Point: Tier 0: Dancing.
--
-## References / Lähteet:
-
-
 # B) HTB Responder. Ratkaise HackTheBox.com: Starting Point: Tier 1: Responder.
 -
 ## References / Lähteet:
