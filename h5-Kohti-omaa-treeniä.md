@@ -19,7 +19,7 @@
 
 ## References / Lähteet:
 - Karvinen 2025: Start Your Research with a Review Article at https://terokarvinen.com/review-article/ 
-- TBA
+- Alazmi, S. and De Leon, D.C., 2022. A systematic literature review on the characteristics and effectiveness of web application vulnerability scanners. IEEe Access, 10, pp.33200-33219.
 
 
 # A) HTB Dancing. Ratkaise HackTheBox.com: Starting Point: Tier 0: Dancing.
@@ -43,4 +43,4 @@
 
 # Tehtävänanto:
 - Karvinen 2025 - Tunkeutumistestaus at https://terokarvinen.com/tunkeutumistestaus/#h5-kohti-omaa-treenia
-- Alazmi, S. and De Leon, D.C., 2022. A systematic literature review on the characteristics and effectiveness of web application vulnerability scanners. IEEe Access, 10, pp.33200-33219.
+
