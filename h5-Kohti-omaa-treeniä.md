@@ -18,7 +18,7 @@
 
 JUFO Classification: Level 1 (Published in IEEE Access)
 
-The summary is based on a surface-level review of the article rather than an in-depth study of its contents. (Article length: 20 pages)
+The summary is based on a surface-level review of the article rather than an in-depth study of its contents (Article length: 20 pages)
 
 **Purpose and scope:**
 - A systematic literature review of Web Application Vulnerability Scanners (WVSs), which are currently the primary tools used to detect vulnerabilities in web applications.
