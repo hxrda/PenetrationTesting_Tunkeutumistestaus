@@ -14,8 +14,35 @@
 	- **[JUFO portal](https://jfp.csc.fi/jufoportal)**: A classification system for checking the quality/ reputation of publication channels. Journals rated JUFO 1, 2, or 3 are considered good-quality publications. 
 
 
-## Review. Etsi vapaavalintainen review eli katsausartikkeli, joka liittyy kurssin aiheisiin.
--
+## A Systematic Literature Review on the Characteristics and Effectiveness of Web Application Vulnerability Scanners 
+
+JUFO Classification: Level 1 (Published in IEEE Access)
+The summary is based on a surface-level review of the article rather than an in-depth study of its contents. (Article length: 20 pages)
+
+**Purpose and scope:**
+- A systematic literature review of Web Application Vulnerability Scanners (WVSs), which are currently the primary tools used to detect vulnerabilities in web applications.
+- Focus on:
+	- Identifying the most researched/cited WVSs.
+		- 30 scanners identified across 90 academic research papers.
+	- Examining technical characteristics of these scanners.
+	- Evaluating the effectiveness of these scanners in detecting common web vulnerabilities, especially those listed in the OWASP Top 10.
+
+**Key findings:**
+- Very few academic studies evaluate WVS features and detection capabilities in depth. Only 12 out of the 30 identified scanners were assessed for performance, and technical characteristics were often not included in academic sources.
+- Most performance evaluations tested for only two OWASP Top 10 vulnerability types: SQL Injection (SQLi) and Cross-Site Scripting (XSS). Only one study evaluated a scanner against six OWASP vulnerability types.
+- Reported vulnerability detection rates across WVSs varied significantly between studies:
+	- SQLi: 0%–100%
+	- XSS: 6%–100%
+
+- The inconsistent results may be partially explained by the absence of standard benchmark web applications in evaluations. Most studies used non-standard applications, which makes replication difficult. Additionally, a lack of standardized terminology limits comparability.
+- Due to large discrepancies in reported results, the WVSs cannot be reliably compared, and their effectiveness in detecting vulnerabilities remains questionable.
+- As it stands in academic literature, no published evaluations exist that assess the usability or quality-of-use of WVSs.
+
+**Recommendations for future research:**
+- Developent of standard benchmark web applications to evaluate WVSs against all OWASP Top 10 vulnerabilities.
+- Standardized evaluations using common vulnerability categories (e.g., OWASP) and consistent terminology/nomenclature.
+- Inclusion of usability and quality-of-use assessments for WVS’s.
+
 
 ## References / Lähteet:
 - Karvinen 2025: Start Your Research with a Review Article at https://terokarvinen.com/review-article/ 
