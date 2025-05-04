@@ -53,7 +53,8 @@ The summary is based on a surface-level review of the article rather than an in-
 # Establishing a VPN Connection to HackTheBox
 
 **1. Download the OpenVPN configuration file from the HackTheBox website**
-	![openvpn](images/h5-images/o_1.png)     
+
+   ![openvpn](images/h5-images/o_1.png)     
 
 **2. Start the OpenVPN connection & wait for the initialization sequence to complete**
 
