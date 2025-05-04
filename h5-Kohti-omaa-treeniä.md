@@ -148,7 +148,7 @@ The summary is based on a surface-level review of the article rather than an in-
 		- `-T4` Option to speed up scans while maintaining relatively good accuracy
 	- Open port at 445/TCP running the microsoft-ds service indicates the presence of an SMB server
    
-	![HTB](images/h5-images/ a_1.png)
+	![HTB](images/h5-images/a_1.png)
 
 - Enumeration of available SMB shares on the target
 	- `smbclient -L {target_IP}`  OR  `smbclient -L //{target_IP}`
@@ -156,7 +156,7 @@ The summary is based on a surface-level review of the article rather than an in-
  
 - Since the server supports anonymous/guest login, these shares are visible without the need to provide valid credentials.
 
-	![HTB](images/h5-images/ a_2.png)
+	![HTB](images/h5-images/a_2.png)
 
 **B) Initial Access and Exploration**
 
@@ -164,24 +164,24 @@ The summary is based on a surface-level review of the article rather than an in-
 - One of the discovered shares allows anonymous/guest access (no credentials required to access or browse the contents of the share)
 - An interactive shell is used to navigate the share’s directories and contents `smb: \>`.`help` Can be used to display commands available within the shell.
 
-	![HTB](images/h5-images/ a_202.png)     
+	![HTB](images/h5-images/a_202.png)     
 
 **C) Data Extraction**
 - The flag file, found within one of the share’s directories, can be retrieved using the file transfer command `get` in the SMB shell.
   
-	![HTB](images/h5-images/ a_2222.png)
+	![HTB](images/h5-images/a_2222.png)
 
 - The downloaded file’s contents can be read locally with `cat` to extract the flag
 
-	![HTB](images/h5-images/ a_44.png)   
+	![HTB](images/h5-images/a_44.png)   
 
 **<ins>5. Completion of the Dancing machine</ins>**  
 
-![HTB](images/h5-images/ a_6.png)     
+![HTB](images/h5-images/a_6.png)     
 
-![HTB](images/h5-images/ a_5.png)     
+![HTB](images/h5-images/a_5.png)     
 
-![HTB](images/h5-images/ a_13.png)     
+![HTB](images/h5-images/a_13.png)     
 
 
 ## References / Lähteet:
