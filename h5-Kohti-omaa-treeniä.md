@@ -154,13 +154,12 @@ The summary is based on a surface-level review of the article rather than an in-
 	- `smbclient -L {target_IP}`  OR  `smbclient -L //{target_IP}`
  		- `-L` List available shares
  
-- Since the server supports anonymous/guest login, these shares are visible without the need to provide valid credentials.
+- Since the server supports anonymous/guest login, the shares are visible without the need to provide valid credentials.
 
-	![HTB](images/h5-images/a_2.png)
 
 **B) Initial Access and Exploration**
 
-- Connect to a share: `smbclient \\\\{target_IP}\\{share_name}`  OR `smbclient //{target_IP}/{share_name}
+- Connect to a share: `smbclient \\\\{target_IP}\\{share_name}`  OR `smbclient //{target_IP}/{share_name}`
 - One of the discovered shares allows anonymous/guest access (no credentials required to access or browse the contents of the share)
 - An interactive shell is used to navigate the share’s directories and contents `smb: \>`.`help` Can be used to display commands available within the shell.
 
