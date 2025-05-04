@@ -67,6 +67,7 @@ The summary is based on a surface-level review of the article rather than an in-
 
 - Ping the HTB VPN gateway to confirm connection to the vpn server
 	- `ping 10.10.16.1`
+   
 	![openvpn](images/h5-images/o_4.png)     
 
 **4. Route/force all traffic through VPN only (pevent packet leaks)**
