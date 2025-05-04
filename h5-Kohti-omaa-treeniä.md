@@ -50,6 +50,64 @@ The summary is based on a surface-level review of the article rather than an in-
 - Alazmi, S. and De Leon, D.C., 2022. A systematic literature review on the characteristics and effectiveness of web application vulnerability scanners. IEEe Access, 10, pp.33200-33219.
 
 
+# Establishing a VPN Connection to HackTheBox
+
+**1. Download the OpenVPN configuration file from the HackTheBox website**
+	![openvpn](images/h5-images/o_1.png)     
+
+**2. Start the OpenVPN connection & wait for the initialization sequence to complete**
+
+- `sudo openvpn ~/Downloads/starting_point_RH2025.ovpn`
+
+**3. Verify VPN Connection**
+- Check IP interfaces with `ifconfig` or `ip a`. A new interface `tun0` should be added.
+
+	![openvpn](images/h5-images/o_3.png)
+
+- Ping the HTB VPN gateway to confirm connection to the vpn server
+	- `ping 10.10.16.1`
+	![openvpn](images/h5-images/o_4.png)     
+
+**4. Route/force all traffic through VPN only (pevent packet leaks)**
+
+**Note:** These instructions for steps 4, 5, 7 were generated using ChatGPT 
+
+- Add an iptables rule to block non-VPN traffic:
+	- `sudo iptables -I OUTPUT ! -o tun0 -m conntrack --ctstate NEW -j DROP`
+		- `-I OUTPUT` Inserts the rule into the OUTPUT chain, which controls outgoing traffic
+		- `! -o tun0 `Applies/matches to traffic not going out through the `tun0` VPN interface.
+		- `-m conntrack --ctstate NEW ` Matches new outbound connections (not ongoing/established ones)
+		- `-j DROP` Drops/blocks any traffic that matches the above.
+    
+- This should ensure no traffic escapes outside the VPN tunnel.
+
+**5. Confirm that all traffic is routed through the VPN (check for leaks)**
+
+- Run ping tests - ping the internet and target network (HTB VPN Gateway):
+	![openvpn](images/h5-images/o_6.png)
+    
+	![openvpn](images/h5-images/o_10.png)
+ 
+	![openvpn](images/h5-images/o_8.png)     
+
+**6. Confirm connection to the target machine**
+
+- Ping the IP of the spawned HTB machine before proceeding with the associated tasks: `ping {target_IP}`
+
+	![openvpn](images/h5-images/a_0.png) 
+	
+	![openvpn](images/h5-images/b_0.png)     
+
+**7. Optional: revert iptables rule (undo VPN traffic restriction)**
+
+- By default, iptables rules are stored in memory and won’t persist over system reboots.
+- Reference for manual removal of the rule:
+	- `sudo iptables -D OUTPUT ! -o tun0 -m conntrack --ctstate NEW -j DROP`
+
+## References / Lähteet:
+- Gordon, J. (2025). Introduction to Starting Point | Hack The Box Help Center. Available at: https://help.hackthebox.com/en/articles/6007919-introduction-to-starting-point#h_519931c2d4
+- OpenAI (2025) ChatGPT response to user prompt on how to route/force all traffic through a VPN tunnel only to prevent packet leaks.
+
 # A) HTB Dancing. Ratkaise HackTheBox.com: Starting Point: Tier 0: Dancing.
 -
 ## References / Lähteet:
