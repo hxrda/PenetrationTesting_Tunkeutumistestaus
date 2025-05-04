@@ -109,20 +109,91 @@ The summary is based on a surface-level review of the article rather than an in-
 - OpenAI (2025) ChatGPT response to user prompt on how to route/force all traffic through a VPN tunnel only to prevent packet leaks.
 
 # A) HTB Dancing. Ratkaise HackTheBox.com: Starting Point: Tier 0: Dancing.
--
+
+**Note:** To comply with Hack The Box’s Terms of Service (TOS), this report does not include a detailed step-by-step walkthrough  of the solution.
+
+**<ins>1. Overall Objective</ins>**
+
+- Exploiting a network file-sharing service, SMB (Server Message Block), hosted on a Windows-based target system.
+- Identifying publicly accessible SMB shares on the target that are misconfigured to allow access without valid authentication credentials and retrieving a “hidden” flag file. 
+
+**<ins>2. Terminology</ins>**
+
+- **SMB (Server Message Block)**
+	- A network communication/file sharing protocol used to provide shared access to files, printers, and other resources across computers in a network. It allows computers to read, write, modify or remove files and supports file transfers.  
+	- Operates over TCP/IP, typically using port 445.
+	- Primarily used on Windows networks
+   
+- **smbclient**
+	- A Linux command-line utility that acts as an SMB client. It allows connecting to SMB shares and provides an interactive shell for navigating share contents, listing directories and transferring files.
+ 	- SMB clients may be required to authenticate with a username and password, depending on the server's/share’s configuration. 
+   
+- **microsoft-ds**
+	- Refers to Microsoft Directory Services. Identifies the service running SMB over TCP/IP on port 445.
+
+
+**<ins>3. Required installations </ins>**
+
+- **smbclient**:  `sudo apt-get install smbclient`
+
+**<ins>4.Exploitation process</ins>**  
+
+**A)  Reconnaissance and Enumeration**
+- Identification of open ports and active services on the target with port scanning: 
+	- `sudo nmap -T4 -sV {target_IP}`    
+		- `nmap` Scans target host for open ports
+		- `-sV` Detects service versions 
+		- `-p-` Scans all 65,535 TCP ports, instead of the default top 1,000.
+		- `-T4` Option to speed up scans while maintaining relatively good accuracy
+	- Open port at 445/TCP running the microsoft-ds service indicates the presence of an SMB server
+   
+	![HTB](images/h5-images/ a_1.png)
+
+- Enumeration of available SMB shares on the target
+	- `smbclient -L {target_IP}`  OR  `smbclient -L //{target_IP}`
+ 		- `-L` List available shares
+ 
+- Since the server supports anonymous/guest login, these shares are visible without the need to provide valid credentials.
+
+	![HTB](images/h5-images/ a_2.png)
+
+**B) Initial Access and Exploration**
+
+- Connect to a share: `smbclient \\\\{target_IP}\\{share_name}`  OR `smbclient //{target_IP}/{share_name}
+- One of the discovered shares allows anonymous/guest access (no credentials required to access or browse the contents of the share)
+- An interactive shell is used to navigate the share’s directories and contents `smb: \>`.`help` Can be used to display commands available within the shell.
+
+	![HTB](images/h5-images/ a_202.png)     
+
+**C) Data Extraction**
+- The flag file, found within one of the share’s directories, can be retrieved using the file transfer command `get` in the SMB shell.
+  
+	![HTB](images/h5-images/ a_2222.png)
+
+- The downloaded file’s contents can be read locally with `cat` to extract the flag
+
+	![HTB](images/h5-images/ a_44.png)   
+
+**<ins>5. Completion of the Dancing machine</ins>**  
+
+![HTB](images/h5-images/ a_6.png)     
+
+![HTB](images/h5-images/ a_5.png)     
+
+![HTB](images/h5-images/ a_13.png)     
+
+
 ## References / Lähteet:
+- Hack The Box (2025) Starting Point: Dancer & Official Write-up (PDF). Available at: https://app.hackthebox.com/starting-point
+- Zero To Mastery. The Best Nmap Cheat Sheet. Available at: https://zerotomastery.io/cheatsheets/nmap-cheat-sheet/  
+- Canonical (2019). Ubuntu Manpage: smbclient - ftp-like client to access SMB/CIFS resources on servers. [online] Ubuntu.com. Available at: https://manpages.ubuntu.com/manpages/trusty/man1/smbclient.1.html  
+- Hack The Box. (2025). Website Terms. Available at: https://www.hackthebox.com/tos 
+- Hack The box.com. (2025). Streaming / Writeups / Walkthrough Guidelines | Hack The Box Help Center.  Available at: https://help.hackthebox.com/en/articles/5188925-streaming-writeups-walkthrough-guidelines 
 
 
 # B) HTB Responder. Ratkaise HackTheBox.com: Starting Point: Tier 1: Responder.
 -
 ## References / Lähteet:
--
-
-# C) Vapaaehtoinen (TBA?)
--
-# D) Vapaaehtoinen (TBA?)
--
-# E) Vapaaehtoinen (TBA?)
 -
 
 
