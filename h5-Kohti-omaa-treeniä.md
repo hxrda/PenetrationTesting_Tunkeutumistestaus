@@ -72,7 +72,7 @@ The summary is based on a surface-level review of the article rather than an in-
 
 **4. Route/force all traffic through VPN only (pevent packet leaks)**
 
-**Note:** These instructions for steps 4, 5, 7 were generated using ChatGPT 
+**Note:** The commands for steps 4,7 were generated using ChatGPT 
 
 - Add an iptables rule to block non-VPN traffic:
 	- `sudo iptables -I OUTPUT ! -o tun0 -m conntrack --ctstate NEW -j DROP`
@@ -89,12 +89,11 @@ The summary is based on a surface-level review of the article rather than an in-
 	![openvpn](images/h5-images/o_6.png)
     
 	![openvpn](images/h5-images/o_10.png)
- 
-	![openvpn](images/h5-images/o_8.png)     
+  
 
 **6. Confirm connection to the target machine**
 
-- Ping the IP of the spawned HTB machine before proceeding with the associated tasks: `ping {target_IP}`
+- Ping the IP of the spawned HTB machines before proceeding with the associated tasks: `ping {target_IP}`
 
 	![openvpn](images/h5-images/a_0.png) 
 	
