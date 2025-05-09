@@ -45,9 +45,36 @@
 
 
 # A) Lippuvalmistelu. Valmistele kone ensi viikon lipunryöstöön.
--
-## References / Lähteet:
--
+
+**Device Used for Capture the Flag (CTF):**
+- The CTF exercise will be conducted on a Kali Linux VM running on a Windows 10 host PC.
+
+**Device Specifications:**
+- Host Device
+  - Operating System: Windows 10 (64-bit)
+  - System Architecture: x64-based processor (amd64)
+    
+- Virtual Machine
+  - Operating System: Kali Linux (Debian-based, 64-bit)
+  - System Architecture: amd64
+
+**Network Configuration:**
+- The Kali VM can be connected or disconnected from the internet as needed from virtual network adapter settings (e.g. toggling the network cable in VirtualBox/VMware).
+
+**VM File Transparency:**
+- The Kali VM contains only course-related files used for homework tasks.
+- No sensitive, personal, or confidential data is stored on the VM.
+
+**Programs and Tools:**
+- Only tools and software necessary for completing the course assignments have been installed on the Kali VM.
+- No additional or unrelated programs have been installed on the machine.
+  
+**Notes:**
+- It is currently undecided whether personal notes / reference materials will be used to support the completion of the CTF exercise.
+
+**Local AI Usage:**
+- No local AI tools have been installed on either the host machine or the virtual machine.
+
 
 # B) Oma korkki. Demonstroi tunkeutumista itse valitsemallasi luvallisella maalilla.
 -
