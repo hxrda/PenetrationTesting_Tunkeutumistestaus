@@ -1,10 +1,12 @@
 
 # X) Summaries / Tiivistelmät
 
-## Title
+## I'll Let Myself In: Tactics & War Stories of Physical Pen Testing (Wild West Hackin' Fest)
 -
 ## References / Lähteet:
 - https://deviating.net/lockpicking/
+- https://deviating.net/lockpicking/presentations.html
+- 27.10.2017, Deviant Ollam
 
 # A) 
 -
