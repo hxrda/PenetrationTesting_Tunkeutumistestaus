@@ -10,30 +10,30 @@
 
 **<ins>Tactics & Techniques used in Physical Penetration Testing</ins>**
 
-  **Lock manipulation:**
-  - Tools such as lockpicks and shims are used to bypass functional locks.
-  - Latch slipping tools exploit poorly maintained or misaligned locks.
-    
-  **Mechanical door bypass techniques:**
-  - Common attack surfaces include door edge gaps, hinges or improperly installed hardware.
-  - Tools include e.g., under-door tools, hinge pin removal tools, door latch bypass tools.
-  
-  **Request-to-Exit (REX) sensors:**
-  - Exploitation of exposed REX sensors to unlock doors from the outside.
-  - Techniques include air dusters, hand movements or directing heat toward the sensor.
-  
-  **Electronic credentials & locks:**
-  - Exploitation of vulnerabilities in access control readers and electronic locks.
-  - Use of credential sniffing and cloning to steal and reuse access data (e.g., hardware sniffer installation behind readers to intercept badge data).
-  
-  **Keyed-alike systems:**
-  - Exploitation of keyed-alike systems that use the same physical key across multiple locks.
-  - A stolen/duplicated key can be used to grant access to multiple areas within a facility. 
-  
-  **Social engineering:**
-  - Impersonation / role-playing as authorized personnel 
-  - Tailgating
-  - Use of fake badges, uniforms, distractions to divert attention and reduce suspicion
+   **Lock manipulation:**
+   - Tools such as lockpicks and shims are used to bypass functional locks.
+   - Latch slipping tools exploit poorly maintained or misaligned locks.
+     
+   **Mechanical door bypass techniques:**
+   - Common attack surfaces include door edge gaps, hinges or improperly installed hardware.
+   - Tools include e.g., under-door tools, hinge pin removal tools, door latch bypass tools.
+   
+   **Request-to-Exit (REX) sensors:**
+   - Exploitation of exposed REX sensors to unlock doors from the outside.
+   - Techniques include air dusters, hand movements or directing heat toward the sensor.
+   
+   **Electronic credentials & locks:**
+   - Exploitation of vulnerabilities in access control readers and electronic locks.
+   - Use of credential sniffing and cloning to steal and reuse access data (e.g., hardware sniffer installation behind readers to intercept badge data).
+   
+   **Keyed-alike systems:**
+   - Exploitation of keyed-alike systems that use the same physical key across multiple locks.
+   - A stolen/duplicated key can be used to grant access to multiple areas within a facility. 
+   
+   **Social engineering:**
+   - Impersonation / role-playing as authorized personnel 
+   - Tailgating
+   - Use of fake badges, uniforms, distractions to divert attention and reduce suspicion
 
 **<ins>Other Takeaways</ins>**
 - Confidence is key. An appearance of authority or belonging can be as effective as technical bypass methods.
