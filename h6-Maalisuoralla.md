@@ -3,12 +3,12 @@
 
 ## I'll Let Myself In: Tactics & War Stories of Physical Pen Testing (Wild West Hackin' Fest)
 
-**Overview/ Definition of Physical Penetration Testing**
+**<ins>Overview/ Definition of Physical Penetration Testing</ins>**
 
 -	Physical penetration testing involves testing physical security defenses to expose vulnerabilities in facility access control systems and security.
 -	It’s not limited to lockpicking only. A wide variety of mechanical, electronic or social engineering techniques can be used to gain unauthorized access.
 
-**Tactics & Techniques used in Physical Penetration Testing **
+**<ins>Tactics & Techniques used in Physical Penetration Testing</ins>**
 
 **Lock manipulation:**
 - Tools such as lockpicks and shims are used to bypass functional locks.
