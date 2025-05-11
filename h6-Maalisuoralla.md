@@ -250,7 +250,9 @@
 - Openwall (2019) John the Ripper - command line options. Available at: https://www.openwall.com/john/doc/OPTIONS.shtml.
 - MSc, J.J. (2024). Exploiting vsftpd in Metasploitable 2. Medium. Available at: https://medium.com/@jasonjayjacobs/exploiting-vsftpd-in-metasploitable-2-cf975ead1173.
 - Spider65535 (2022). Vsftpd 2.3.4 Exploitation — Metasploitable 2 —by rohan patil. Medium. Available at: https://medium.com/@spider65535/server-hacking-metasploitable-2-2cbd0c46f759.
-
+- Linux Command Library. (2024). unshadow. Available at: https://linuxcommandlibrary.com/man/unshadow.
+- Gite, V. (2017). Understanding /etc/passwd File Format - nixCraft. nixCraft. Available at: https://www.cyberciti.biz/faq/understanding-etcpasswd-file-format/.
+- Gite, V. (2024). Understanding /etc/shadow file - nixCraft. nixCraft. Available at: https://www.cyberciti.biz/faq/understanding-etcshadow-file/.
 
 
 # Tehtävänanto:
