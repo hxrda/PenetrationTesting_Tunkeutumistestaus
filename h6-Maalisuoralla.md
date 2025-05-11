@@ -197,7 +197,7 @@
 2. Combine both files:
 	- `unshadow passwd_all shadow_all > unshadowed_all`
   
-  ![korkki](images/h6-images/b_10_2.png)
+	![korkki](images/h6-images/b_10_2.png)
 
 3. Run John the Ripper to crack all user passwords listed in the unshadowed file:
 	- `$HOME/john/run/john unshadowed_all`
