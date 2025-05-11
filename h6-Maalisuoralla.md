@@ -186,51 +186,52 @@
   - `mkdir oma_korkki`
   - `cd oma_korkki`
 
-- **OPTION 1 – Dump and crack all user entries</ins>**
+**OPTION 1 – Dump and crack all user entries</ins>**
   
 1. Dump system credentials (copy & paste)
-  - Open and copy contents of /etc/shadow: `cat /etc/shadow`
-  - Then: `nano shadow_all` & paste everything into shadow
-  - Open and copy contents of /etc/shadow: `cat /etc/passwd`
-  - Then: `nano passwd_all` & paste everything into passwd
+	- Open and copy contents of /etc/shadow: `cat /etc/shadow`
+	- Then: `nano shadow_all` & paste everything into shadow
+	- Open and copy contents of /etc/shadow: `cat /etc/passwd`
+	- Then: `nano passwd_all` & paste everything into passwd
     
 2. Combine both files:
-- `unshadow passwd_all shadow_all > unshadowed_all`
+	- `unshadow passwd_all shadow_all > unshadowed_all`
   
-  ![korkki](images/h6-images/b_10.png)
+  ![korkki](images/h6-images/b_10_2.png)
 
 3. Run John the Ripper to crack all user passwords listed in the unshadowed file:
-- `$HOME/john/run/john unshadowed_all`
-  
-- Optionally: `$HOME/john/run/john --format=crypt unshadowed`
-  - `--format=crypt` explicitly treats the hash as traditional DES-based unix crypt hash format. If not specified, John will auto-detect the format
+	- `$HOME/john/run/john unshadowed_all`
+	
+	- Optionally: `$HOME/john/run/john --format=crypt unshadowed`
+		- `--format=crypt` explicitly treats the hash as traditional DES-based unix crypt hash format. If not specified, John will auto-detect the format
 
-- Optionally specify some wordlist, e.g.: `$HOME/john/run/john --wordlist=/home/rodah/hashed/rockyou.txt unshadowed_all`
+	- Optionally specify some wordlist, e.g.: `$HOME/john/run/john --wordlist=/home/rodah/hashed/rockyou.txt unshadowed_all`
     
-  ![korkki](images/h6-images/b_11.png)
+  	![korkki](images/h6-images/b_11.png)
 
-- **OPTION 2 – Dump and crack only one user</ins>**
+**OPTION 2 – Dump and crack only one user</ins>**
 
 1. Extract only the attacker user’s entries:
-  - Open and copy contents of /etc/shadow: `cat /etc/shadow` or directly fetch the entry: `grep '^attacker:' /etc/shadow` /  `cat /etc/shadow | grep attacker`
-  - Then: `nano shadow_one` & paste attacker entry to shadow
-  - Open and copy contents of /etc/shadow: `cat /etc/passwd` or directly fetch the entry: `grep '^attacker:' /etc/passwd`  /  `cat /etc/passwd | grep attacker`
-  - Then: `nano passwd_one` & paste attacker entry passwd
+	- Open and copy contents of /etc/shadow: `cat /etc/shadow` or directly fetch the entry: `grep '^attacker:' /etc/shadow` /  `cat /etc/shadow | grep attacker`
+	- Then: `nano shadow_one` & paste attacker entry to shadow
+	- Open and copy contents of /etc/shadow: `cat /etc/passwd` or directly fetch the entry: `grep '^attacker:' /etc/passwd`  /  `cat /etc/passwd | grep attacker`
+	- Then: `nano passwd_one` & paste attacker entry passwd
 
 2. Combine both files:
-  - `unshadow passwd_one shadow_one > unshadowed_one`
+	- `unshadow passwd_one shadow_one > unshadowed_one`
     
-  - View the contents of the combined file: `cat unshadowed_one `
-  
-  ![korkki](images/h6-images/b_12.png)
+	- View the contents of the combined file: `cat unshadowed_one `
+
+	![korkki](images/h6-images/b_12.png)
 
 3. Run John the Ripper to crack all user passwords listed in the unshadowed file:
-  - `$HOME/john/run/john --format=crypt unshadowed_one`  
+	- `$HOME/john/run/john --format=crypt unshadowed_one`  
+	
+	- **Note**: John keeps cracked hashes in john.pot, regardless of which file they’ve been cracked from. Since selected the password for the user “attacker” has already been cracked using option 1, the result for unshadowed_one won’t display it in the terminal. To view the result: `$HOME/john/run/john --show unshadowed_all` (The result in this case won’t even be displayed with `$HOME/john/run/john --show unshadowed_one`)
+	
+	![korkki](images/h6-images/b_13.png)
 
-  - **Note**: John keeps cracked hashes in john.pot, regardless of which file they’ve been cracked from. Since selected the password for the user “attacker” has already been cracked using option 1, the result for unshadowed_one won’t display it in the terminal. To view the result: `$HOME/john/run/john --show unshadowed_all` (The result in this case won’t even be displayed with `$HOME/john/run/john --show unshadowed_one`)
-
-  ![korkki](images/h6-images/b_13.png)
-  ![korkki](images/h6-images/b_14.png)
+	![korkki](images/h6-images/b_14.png)
 
 **<ins>7. Other notes:</ins>**
 
