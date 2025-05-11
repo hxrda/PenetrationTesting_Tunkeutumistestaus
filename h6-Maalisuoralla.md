@@ -98,8 +98,8 @@
 -  Boot up both the Kali & Metasploitable VMs
   
 -  **Checking the IP addresses of the VM’s with `ifconfig` or `ip a`:**
-  - Kali Linux: eth1 - 192.168.56.3
-  - Metasploitable 2: eth0 - 192.168.56.4
+	- Kali Linux: eth1 - 192.168.56.3
+	- Metasploitable 2: eth0 - 192.168.56.4
     
 - **Verifying the connection between the VMs & that they are on the same network:**
   - `ping 192.168.56.4` (from Kali VM)
