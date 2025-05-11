@@ -159,12 +159,14 @@
 - Comparing contents (files, folders) of the attacking & target VMs:
   
 - Kali VM (attacker):
-- `ls -l`
+  
+	- `ls -l`
   
 - Metasploitable VM (target):
-  -`cd /` (go to root)
-  -`pwd`, 
-  -`ls -l`
+  
+	-`cd /` (go to root)
+	-`pwd`, 
+	-`ls -l`
 
   ![korkki](images/h6-images/b_8_1.png) 
   ![korkki](images/h6-images/b_8_2.png)
