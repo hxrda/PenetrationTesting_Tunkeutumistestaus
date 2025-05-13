@@ -242,9 +242,9 @@
 
 
 ## References / Lähteet:
-- 101LABS (2022). Lab 72 – Exploiting a vulnerable FTP service to gain a shell using Metasploit - 101Labs.net. Available at: https://www.101labs.net/comptia-security/lab-72-exploiting-a-vulnerable-ftp-service-to-gain-a-shell-using-metasploit/.
+- 101LABS (2022). Lab 72 – Exploiting a vulnerable FTP service to gain a shell using Metasploit - 101Labs.net. Available at: https://www.101labs.net/comptia-security/lab-72-exploiting-a-vulnerable-ftp-service-to-gain-a-shell-using-metasploit/.  
 ‌- RedHat. (2011). CVE-2011-2523. Available at: https://access.redhat.com/security/cve/cve-2011-2523
--  Metasploit (2024). Metasploit Documentation Penetration Testing Software, Pen Testing Security. Available at: https://docs.metasploit.com/.
+- Metasploit (2024). Metasploit Documentation Penetration Testing Software, Pen Testing Security. Available at: https://docs.metasploit.com/.
 - G MAN: Security (2024). CRACK the Password | JOHN the Ripper Password Cracking (5 Minutes) | Basic Tutorial! YouTube. Available at: https://www.youtube.com/watch?v=5MLprTAxYDA 
 - Openwall (2019). John the ripper documentation. Available at: https://www.openwall.com/john/doc/.
 - Openwall (2019) John the Ripper - command line options. Available at: https://www.openwall.com/john/doc/OPTIONS.shtml.
